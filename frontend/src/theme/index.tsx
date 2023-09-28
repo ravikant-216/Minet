@@ -10,7 +10,7 @@ declare module '@mui/material/styles' {
   interface Palette {
     gamma: {
       SUCCESS_100: string
-      SUCCESS_300: string
+      SUCCESS_500: string
       WARNING_100: string
       WARNING_300: string
       ERROR_100: string

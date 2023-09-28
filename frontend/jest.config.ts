@@ -2,13 +2,9 @@ import type { Config } from '@jest/types'
 // Sync object
 const config: Config.InitialOptions = {
   testEnvironment: 'jest-environment-jsdom',
-
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   transform: {
-    '^.+\\.(js|ts|tsx)?$': [
-      'ts-jest',
-      { tsConfig: 'tsconfig.json', diagnostics: true },
-    ],
+    '^.+\\.(js|ts|tsx)?$': 'babel-jest',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       'jest-transform-stub',
     '\\.(yaml)$': 'jest-raw-loader',

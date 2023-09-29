@@ -17,10 +17,11 @@ export type variant =
 export interface TypographyLabelProps {
   label1: string
   label2: string
-  color1: string
-  color2: string
+  color1?: string
+  color2?: string
   label1Variant: variant
   label2Variant: variant
+  gap?: number
   variant?: variant
   trendValue?: number
   trendDirection?: 'row' | 'column'
@@ -36,6 +37,7 @@ const TypographyLabel: React.FC<TypographyLabelProps> = ({
   color2,
   variant = 'caption1',
   trendValue,
+  gap = theme.spacing(1),
   trendDirection = 'row',
   position = 'left',
 }) => {
@@ -44,7 +46,7 @@ const TypographyLabel: React.FC<TypographyLabelProps> = ({
       display="flex"
       flexDirection="column"
       alignItems={position === 'left' ? 'flex-start' : 'flex-end'}
-      gap={theme.spacing(1)}
+      gap={gap}
     >
       <Typography variant={label1Variant} color={color1}>
         {label1}

@@ -1,15 +1,23 @@
-import { Typography, Button, ButtonProps, SxProps } from '@mui/material'
+import {
+  Typography,
+  Button,
+  ButtonProps,
+  SxProps,
+  TypographyVariant,
+} from '@mui/material'
 interface ButtonComponentProps extends ButtonProps {
   label: string
   textColor: string
   sx?: SxProps
   hoverColor?: string
+  typographyVarient?: TypographyVariant
 }
 const ButtonComponent = ({
   label,
   textColor,
   hoverColor,
   sx,
+  typographyVarient,
   ...buttonProps
 }: ButtonComponentProps) => {
   const hoverStyles: SxProps = {
@@ -24,7 +32,9 @@ const ButtonComponent = ({
       type="button"
       {...buttonProps}
     >
-      <Typography color={textColor}>{label}</Typography>
+      <Typography color={textColor} variant={typographyVarient}>
+        {label}
+      </Typography>
     </Button>
   )
 }

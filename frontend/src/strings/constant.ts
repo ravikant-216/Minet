@@ -1,0 +1,5 @@
+export const DASHBOARD = 'Dashboard'
+export const CAREERS = 'Careers'
+export const LEGAL_AND_PRIVACY = 'Legal & Privacy'
+export const MINET_TRADEMARK = '© 2021 Minet'
+export const NEED_HELP = 'NEED HELP'

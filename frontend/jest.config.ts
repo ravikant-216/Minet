@@ -19,7 +19,7 @@ const config: Config.InitialOptions = {
     '<rootDir>/src/index.tsx',
     '<rootDir>/src/themes/index.ts',
     '<rootDir>/src/__mocks__/',
-    '<rootDir>/src/utils/constants/credentials.ts',
+    '<rootDir>/src/strings/constants.ts',
     '.service.ts',
     '<rootDir>/src/api/',
     '<rootDir>/src/api/',

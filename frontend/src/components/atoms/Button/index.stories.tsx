@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react'
 import ButtonComponent from '.'
-import theme from '../../../theme/index'
+import theme from '@/theme/index'
 
 export default {
   component: ButtonComponent,

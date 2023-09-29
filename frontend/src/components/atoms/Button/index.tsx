@@ -2,7 +2,7 @@ import { Typography, Button, ButtonProps, SxProps } from '@mui/material'
 interface ButtonComponentProps extends ButtonProps {
   label: string
   textColor: string
-  sx: SxProps
+  sx?: SxProps
   hoverColor?: string
 }
 const ButtonComponent = ({

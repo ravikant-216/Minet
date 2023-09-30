@@ -3,6 +3,32 @@ export const CAREERS = 'Careers'
 export const LEGAL_AND_PRIVACY = 'Legal & Privacy'
 export const MINET_TRADEMARK = '© 2021 Minet'
 export const NEED_HELP = 'NEED HELP'
+import card from '@Assets/icons/bank-card.svg'
+import wallet from '@Assets/icons/wallet.svg'
+import money from '@Assets/icons/dollar.svg'
+import bitcoin from '@Assets/icons/bitcoin.svg'
+
+export const total = 'Total'
+export const minetFee = 'transaction fee'
+export const DELIVERY_FEE = 'Delivery fees'
+export const DEPOSIT_TO = 'Deposit to'
+export const PurchaseEtherium = {
+  paymentIcon: card,
+  paymentValue: 'Visa credit ...8845',
+  depositIcon: wallet,
+  depositValue: 'Etherium wallet',
+  deleveryFee: '0.005 ETH',
+  paymentText: 'Payment method',
+}
+
+export const SellBitcoin = {
+  paymentIcon: bitcoin,
+  paymentValue: 'Bitcoin wallet',
+  depositIcon: money,
+  depositValue: 'Rupee Coin',
+  deleveryFee: '0.001 BTC',
+  paymentText: 'Paying through',
+}
 export const GRAPH_DATA = [
   {
     name: 'Bitcoin',

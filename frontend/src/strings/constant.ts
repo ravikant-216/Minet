@@ -6,7 +6,10 @@ export const NEED_HELP = 'NEED HELP'
 import card from '@Assets/icons/bank-card.svg'
 import wallet from '@Assets/icons/wallet.svg'
 import money from '@Assets/icons/dollar.svg'
-import bitcoin from '@Assets/icons/bitcoin.svg'
+import bitcoin from '@Assets/icons/newBitcoin.svg'
+import ethirum from '@Assets/icons/Ethereum.svg'
+import xrp from '@Assets/icons/xrp.svg'
+import tether from '@Assets/icons/tether.svg'
 
 export const total = 'Total'
 export const minetFee = 'transaction fee'
@@ -68,6 +71,74 @@ export const TRANSACTION_TYPE = ['Sold', 'Purchased']
 export const TRANSACTION_IN_CRYPTO = '-0.0234510 BTC'
 export const TRANSACTION_IN_DOLLAR = '+$34,000.00'
 export const ALTERNATE_MESSAGE = 'Tick Image'
+export const PRICE_CORRELATION_WITH = 'Price correlation with'
+
+export const CORRELATION_CARD = [
+  {
+    id: 1,
+    cryptoImage: bitcoin,
+    cryptoName: 'Bitcoin',
+    value: 'Moves tightly together',
+    amount: 3285553.73,
+    value1: 100,
+  },
+  {
+    id: 2,
+    cryptoImage: ethirum,
+    cryptoName: 'Ethereum',
+    value: 'Moves tightly together',
+    amount: 230966.85,
+    value1: 86,
+  },
+  {
+    id: 3,
+    cryptoImage: xrp,
+    cryptoName: 'XRP',
+    value: 'Moves tightly together',
+    amount: 60.02,
+    value1: 10,
+  },
+  {
+    id: 4,
+    cryptoImage: tether,
+    cryptoName: 'Tether',
+    value: 'Moves tightly together',
+    amount: 74.28,
+    value1: 2,
+  },
+  {
+    id: 5,
+    cryptoImage: bitcoin,
+    cryptoName: 'Bitcoin',
+    value: 'Moves tightly together',
+    amount: 3285553.73,
+    value1: 100,
+  },
+  {
+    id: 6,
+    cryptoImage: ethirum,
+    cryptoName: 'Ethereum',
+    value: 'Moves tightly together',
+    amount: 230966.85,
+    value1: 86,
+  },
+  {
+    id: 7,
+    cryptoImage: xrp,
+    cryptoName: 'XRP',
+    value: 'Moves tightly together',
+    amount: 60.02,
+    value1: 10,
+  },
+  {
+    id: 8,
+    cryptoImage: tether,
+    cryptoName: 'Tether',
+    value: 'Moves tightly together',
+    amount: 74.28,
+    value1: 2,
+  },
+]
 
 export const MARKET_CAP = 'Market cap'
 export const VOL_24_H = 'Vol. 24H'

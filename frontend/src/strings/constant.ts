@@ -57,3 +57,10 @@ export const SINGLE_GRAPH_DATA = [50, 100, 95, 125, 120, 125]
 
 export const BITCOIN = 'Bitcoin'
 export const CRYPTO = 'crypto'
+
+export const TRANSACTION_CARD_DATE = 'June 23'
+export const TRANSACTION_CARD_COIN_NAME = 'Bitcoin BTC'
+export const TRANSACTION_TYPE = ['Sold', 'Purchased']
+export const TRANSACTION_IN_CRYPTO = '-0.0234510 BTC'
+export const TRANSACTION_IN_DOLLAR = '+$34,000.00'
+export const ALTERNATE_MESSAGE = 'Tick Image'

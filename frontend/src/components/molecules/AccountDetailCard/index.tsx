@@ -1,8 +1,7 @@
 import ButtonComponent from '@Components/atoms/Button/index'
 import { AMOUNT_DETAILS, BUY_MAX, SELL_MAX } from '@/strings/constant'
 import theme from '@/theme/index'
-import { Card, Stack, Typography, Box } from '@mui/material'
-import styled from 'styled-components'
+import { Card, Stack, Typography, Box, styled } from '@mui/material'
 import CustomSlider from '@/components/atoms/Slider'
 
 export interface AccountDetailCardProps {

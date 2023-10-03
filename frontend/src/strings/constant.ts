@@ -10,6 +10,7 @@ import bitcoin from '@Assets/icons/bitcoin.svg'
 import ethirum from '@Assets/icons/Ethereum.svg'
 import xrp from '@Assets/icons/xrp.svg'
 import tether from '@Assets/icons/tether.svg'
+import { PaymentMethodType } from '@/utils/types'
 
 export const total = 'Total'
 export const minetFee = 'transaction fee'
@@ -152,3 +153,12 @@ export const TIME_PERIOD = [
   { key: 5, value: '1Y' },
   { key: 6, value: 'ALL' },
 ]
+
+export const PaymentOptions: PaymentMethodType[] = [
+  {
+    name: 'USD Coin (Cash)',
+    balance: '$34,000',
+    type: 'Default',
+  },
+]
+export const PAYMENT_METHOD = 'Payment Method'

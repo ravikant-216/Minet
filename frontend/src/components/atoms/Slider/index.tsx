@@ -1,6 +1,5 @@
 import React from 'react'
-import { Slider, SliderProps } from '@mui/material'
-import styled from 'styled-components'
+import { Slider, SliderProps, styled } from '@mui/material'
 import theme from '@/theme'
 
 const StyleSlider = styled(Slider)({

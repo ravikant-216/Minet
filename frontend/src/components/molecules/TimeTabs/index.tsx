@@ -1,7 +1,6 @@
 import { TIME_PERIOD } from '@/strings/constant'
 import theme from '@/theme'
-import { Stack, Typography } from '@mui/material'
-import styled from 'styled-components'
+import { Stack, Typography, styled } from '@mui/material'
 
 const MainContainer = styled(Stack)({
   gap: theme.spacing(4),

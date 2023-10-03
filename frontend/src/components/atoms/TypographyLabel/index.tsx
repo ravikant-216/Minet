@@ -10,6 +10,7 @@ export type variant =
   | 'button'
   | 'body2'
   | 'body1'
+  | 'subtitle1'
   | 'subtitle2'
   | 'heading6'
   | 'heading4'

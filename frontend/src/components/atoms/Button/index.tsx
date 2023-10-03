@@ -7,7 +7,7 @@ import {
 } from '@mui/material'
 interface ButtonComponentProps extends ButtonProps {
   label: string
-  textColor: string
+  textColor?: string
   sx?: SxProps
   hoverColor?: string
   typographyVarient?: TypographyVariant

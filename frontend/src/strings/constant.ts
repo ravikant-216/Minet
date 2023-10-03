@@ -57,6 +57,10 @@ export const SINGLE_GRAPH_DATA = [50, 100, 95, 125, 120, 125]
 
 export const BITCOIN = 'Bitcoin'
 export const CRYPTO = 'crypto'
+export const AMOUNT_DETAILS = 'Amount Details'
+export const BUY_MAX = 'Buy max'
+export const SELL_MAX = 'Sell max'
+export const USD = 'USD Coin(cash)'
 
 export const TRANSACTION_CARD_DATE = 'June 23'
 export const TRANSACTION_CARD_COIN_NAME = 'Bitcoin BTC'

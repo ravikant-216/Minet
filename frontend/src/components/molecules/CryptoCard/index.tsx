@@ -10,6 +10,7 @@ interface CryptoCardProps extends BoxProps {
   amount: number
   rate?: number
   varient?: 'primary' | 'secondary'
+  textPosition?: 'right' | 'left'
 }
 
 const CryptoCard = ({
@@ -19,6 +20,7 @@ const CryptoCard = ({
   amount,
   rate,
   varient = 'primary',
+  textPosition = 'right',
   ...props
 }: CryptoCardProps) => {
   const primaryColor =
@@ -54,6 +56,7 @@ const CryptoCard = ({
             label1Variant="body1"
             label2Variant="caption2"
             color2={color}
+            position={textPosition}
           />
         </Stack>
       ) : (

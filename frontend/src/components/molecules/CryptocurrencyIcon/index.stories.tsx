@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { CryptoIcon, CryptoIconProps } from '.'
-import ethereum from '@Assets/icons/ethereum.svg'
+import ethereum from '@Assets/icons/Ethereum.svg'
 import theme from '@/theme'
 
 export default {

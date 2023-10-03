@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import CryptoCard from '.'
-import BitCoin from '@Assets/icons/bitCoin.svg'
+import BitCoin from '@Assets/icons/bitcoin.svg'
 import UsdCoin from '@Assets/icons/UsdCoin.svg'
 import Ethereum from '@Assets/icons/Ethereum.svg'
 

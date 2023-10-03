@@ -68,3 +68,8 @@ export const TRANSACTION_TYPE = ['Sold', 'Purchased']
 export const TRANSACTION_IN_CRYPTO = '-0.0234510 BTC'
 export const TRANSACTION_IN_DOLLAR = '+$34,000.00'
 export const ALTERNATE_MESSAGE = 'Tick Image'
+
+export const MARKET_CAP = 'Market cap'
+export const VOL_24_H = 'Vol. 24H'
+export const CIRCULATION_SUPPLY = 'Circulating Supply'
+export const ADD_TO_WATCHLIST = 'ADDED TO WATCHLIST'

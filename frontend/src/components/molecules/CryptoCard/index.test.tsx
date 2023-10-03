@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import CryptoCard from '.'
-import BitCoin from '@Assets/icons/bitCoin.svg'
+import BitCoin from '@Assets/icons/bitcoin.svg'
 
 describe('CryptoCard', () => {
   const props = {

@@ -16,6 +16,7 @@ interface IChipProps extends ChipProps {
   height?: string
   border?: string
   width?: string
+  isClicked?: boolean
   handleChip?: () => void
 }
 
@@ -28,6 +29,7 @@ const ChipComponent = ({
   borderRadius,
   height,
   width,
+  isClicked,
   border,
   handleChip,
 }: IChipProps) => {
@@ -47,7 +49,7 @@ const ChipComponent = ({
           backgroundColor: { background },
           padding: { padding },
           borderRadius: { borderRadius },
-          border: { border },
+          border: isClicked ? { border } : 'none',
           '&:hover': {
             backgroundColor: { background },
           },

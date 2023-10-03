@@ -6,7 +6,7 @@ export const NEED_HELP = 'NEED HELP'
 import card from '@Assets/icons/bank-card.svg'
 import wallet from '@Assets/icons/wallet.svg'
 import money from '@Assets/icons/dollar.svg'
-import bitcoin from '@Assets/icons/newBitcoin.svg'
+import bitcoin from '@Assets/icons/bitcoin.svg'
 import ethirum from '@Assets/icons/Ethereum.svg'
 import xrp from '@Assets/icons/xrp.svg'
 import tether from '@Assets/icons/tether.svg'
@@ -144,3 +144,11 @@ export const MARKET_CAP = 'Market cap'
 export const VOL_24_H = 'Vol. 24H'
 export const CIRCULATION_SUPPLY = 'Circulating Supply'
 export const ADD_TO_WATCHLIST = 'ADDED TO WATCHLIST'
+export const TIME_PERIOD = [
+  { key: 1, value: '1H' },
+  { key: 2, value: '24H' },
+  { key: 3, value: '1W' },
+  { key: 4, value: '1M' },
+  { key: 5, value: '1Y' },
+  { key: 6, value: 'ALL' },
+]

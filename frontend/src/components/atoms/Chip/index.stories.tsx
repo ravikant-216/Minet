@@ -32,5 +32,6 @@ Currency_Chip.args = {
   padding: '8px 16px',
   borderRadius: '4px',
   height: '38px',
+  isClicked: true,
   border: `2px solid #F7931A`,
 }

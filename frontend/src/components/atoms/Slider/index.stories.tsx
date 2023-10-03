@@ -3,6 +3,7 @@ import CustomSlider, { CustomSliderProps } from '@Components/atoms/Slider/index'
 
 export default {
   component: CustomSlider,
+  tags: ['autodocs'],
   argTypes: {
     onChange: { action: 'onChange' },
   },

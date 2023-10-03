@@ -48,21 +48,17 @@ const Dropdown: React.FC<DropdownProps> = ({
     }
   }
 
-  function Icon() {
-    return (
-      <Stack alignItems="center" justifyContent="center">
-        <img src={open ? dropup : dropdown} alt="dropdown" />
-      </Stack>
-    )
-  }
-
   return (
     <CustomFormControl fullWidth {...props}>
       <Select
         value={value}
         onChange={handleChange}
         sx={{ padding: padding }}
-        IconComponent={Icon}
+        IconComponent={() => (
+          <Stack alignItems="center" justifyContent="center">
+            <img src={open ? dropup : dropdown} alt="dropdown" />
+          </Stack>
+        )}
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
@@ -92,22 +88,25 @@ const Dropdown: React.FC<DropdownProps> = ({
           />
         }
       >
-        {children.map((child, index) => (
-          <MenuItem
-            value={index}
-            key={index}
-            sx={{
-              paddingY: theme.spacing(1),
-              '&:not(:last-child)': {
-                borderBottom: `${theme.spacing(0.25)} solid ${
-                  theme.palette.gamma.GREY_100
-                }`,
-              },
-            }}
-          >
-            {child}
-          </MenuItem>
-        ))}
+        {children.map((child, index) => {
+          const key = `menu-item-${index}`
+          return (
+            <MenuItem
+              value={index}
+              key={key}
+              sx={{
+                paddingY: theme.spacing(1),
+                '&:not(:last-child)': {
+                  borderBottom: `${theme.spacing(0.25)} solid ${
+                    theme.palette.gamma.GREY_100
+                  }`,
+                },
+              }}
+            >
+              {child}
+            </MenuItem>
+          )
+        })}
       </Select>
     </CustomFormControl>
   )

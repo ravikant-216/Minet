@@ -1,5 +1,4 @@
 import ButtonComponent from '@/components/atoms/Button'
-import Dropdown from '@/components/atoms/dropdown'
 import {
   CAREERS,
   DASHBOARD,
@@ -9,6 +8,7 @@ import {
 } from '@/strings/constant'
 import theme from '@/theme'
 import { Box, BoxProps, Stack, Typography } from '@mui/material'
+import Dropdown from '@Components/molecules/Dropdown'
 
 interface FooterProps extends BoxProps {
   width?: BoxProps['width']

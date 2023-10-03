@@ -57,7 +57,11 @@ const TypographyLabel: React.FC<TypographyLabelProps> = ({
         alignItems={trendDirection === 'row' ? 'center' : 'start'}
         gap={trendDirection === 'row' ? 0 : theme.spacing(1)}
       >
-        <Typography variant={label2Variant} color={color2}>
+        <Typography
+          sx={{ marginTop: theme.spacing(-1.5) }}
+          variant={label2Variant}
+          color={color2}
+        >
           {label2}
         </Typography>
         {trendValue && (

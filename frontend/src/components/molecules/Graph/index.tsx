@@ -36,9 +36,9 @@ const getChartOptions = (
       labels: {
         show: showLabel,
         style: {
-          colors: theme.palette.info.light,
+          colors: theme.palette.text.lowEmphasis,
         },
-        offsetX: -2.5,
+        offsetX: 2,
       },
       axisBorder: {
         show: false,
@@ -64,6 +64,7 @@ const getChartOptions = (
     },
     grid: {
       show: showGrid,
+      padding: { left: 0, right: -10, top: -10, bottom: -10 },
     },
     tooltip: {
       enabled: false,

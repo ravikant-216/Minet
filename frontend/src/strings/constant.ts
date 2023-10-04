@@ -162,3 +162,30 @@ export const PaymentOptions: PaymentMethodType[] = [
   },
 ]
 export const PAYMENT_METHOD = 'Payment Method'
+
+export const MY_PORTFOLIO_VALUE = 'My portfolio value'
+
+export const TOTAL_INVESTMENT = 'Total Investment'
+
+export const MOCK_DATA_ONE = {
+  series: GRAPH_DATA,
+  totalInvestmentsData: {
+    title: 'Total Investments',
+    trendRate: 5.0,
+    amount: '1000.00',
+  },
+  cryptoInvestmentsData: {
+    title: 'Crypto Investments',
+    trendRate: -2.5,
+    amount: '500.00',
+  },
+  plotData: PLOTS_DATA,
+}
+
+export const MOCK_DATA_TWO = {
+  totalInvestmentsData: {
+    title: 'Total Investments',
+    trendRate: 0.0,
+    amount: '0000.00',
+  },
+}

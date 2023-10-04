@@ -11,7 +11,15 @@ import ethirum from '@Assets/icons/Ethereum.svg'
 import xrp from '@Assets/icons/xrp.svg'
 import tether from '@Assets/icons/tether.svg'
 import theme from '@/theme'
-import { PaymentMethodType } from '@/utils/types'
+
+import MinetLogo from '@Assets/icons/minet.svg'
+import DashBoardIcon from '@Assets/icons/dashBoardIcon.svg'
+import PortfolioIcon from '@Assets/icons/portFolio.svg'
+import TradeIcon from '@Assets/icons/tradeIcon.svg'
+import NotificationIcon from '@Assets/icons/notification.svg'
+import LogoutIcon from '@Assets/icons/logout.svg'
+
+import { NavigationBarItem, PaymentMethodType } from '@/utils/types'
 
 export const total = 'Total'
 export const minetFee = 'transaction fee'
@@ -253,4 +261,12 @@ export const TRADE_SCREEN_TABS = [
     value: 'Watchlist',
     label: 'Watchlist',
   },
+]
+export const NavigatonItems: NavigationBarItem[] = [
+  { value: 'home', logo: MinetLogo },
+  { value: 'dashboard', logo: DashBoardIcon },
+  { value: 'portfolio', logo: PortfolioIcon },
+  { value: 'trade', logo: TradeIcon },
+  { value: 'notification', logo: NotificationIcon },
+  { value: 'logout', logo: LogoutIcon },
 ]

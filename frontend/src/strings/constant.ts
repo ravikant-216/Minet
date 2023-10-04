@@ -243,3 +243,14 @@ export const MOCK_DATA_TWO = {
     amount: '0000.00',
   },
 }
+
+export const TRADE_SCREEN_TABS = [
+  {
+    value: 'All Assets',
+    label: 'All Assets',
+  },
+  {
+    value: 'Watchlist',
+    label: 'Watchlist',
+  },
+]

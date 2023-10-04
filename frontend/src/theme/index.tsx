@@ -22,6 +22,16 @@ declare module '@mui/material/styles' {
       GREY_700: string
       GREY_WHITE: string
     }
+    tabs: {
+      BITCOIN: string
+      XRP: string
+      POLKADOT: string
+      ETHEREUM: string
+      TETHER: string
+      ETHEREUM_2: string
+      DOGE: string
+      BORDER: string
+    }
   }
 
   interface PaletteOptions {
@@ -38,6 +48,16 @@ declare module '@mui/material/styles' {
       GREY_500: string
       GREY_700: string
       GREY_WHITE: string
+    }
+    tabs: {
+      BITCOIN: string
+      XRP: string
+      POLKADOT: string
+      ETHEREUM: string
+      TETHER: string
+      ETHEREUM_2: string
+      DOGE: string
+      BORDER: string
     }
   }
 
@@ -96,6 +116,16 @@ const theme = createTheme({
       500: PALETTE.PRIMARY_500,
       700: PALETTE.PRIMARY_700,
       900: PALETTE.PRIMARY_900,
+    },
+    tabs: {
+      BITCOIN: PALETTE.TABS_BITCOIN,
+      XRP: PALETTE.TABS_XRP,
+      POLKADOT: PALETTE.TABS_POLKADOT,
+      ETHEREUM: PALETTE.TABS_ETHEREUM,
+      TETHER: PALETTE.TABS_TETHER,
+      ETHEREUM_2: PALETTE.TABS_ETHEREUM2,
+      DOGE: PALETTE.TABS_DOGE,
+      BORDER: PALETTE.TABS_BORDER,
     },
     gamma: {
       SUCCESS_100: PALETTE.GAMMA_SUCCESS_100,

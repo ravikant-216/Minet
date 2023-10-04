@@ -10,6 +10,7 @@ import bitcoin from '@Assets/icons/bitcoin.svg'
 import ethirum from '@Assets/icons/Ethereum.svg'
 import xrp from '@Assets/icons/xrp.svg'
 import tether from '@Assets/icons/tether.svg'
+import theme from '@/theme'
 import { PaymentMethodType } from '@/utils/types'
 
 export const total = 'Total'
@@ -154,6 +155,56 @@ export const TIME_PERIOD = [
   { key: 6, value: 'ALL' },
 ]
 
+export const SCROLLBAR_DATA = [
+  {
+    name: 'Bitcoin',
+    background: theme.palette.tabs.BITCOIN,
+  },
+  {
+    name: 'XRP',
+    background: theme.palette.tabs.XRP,
+  },
+  {
+    name: 'Polkadot',
+    background: theme.palette.tabs.POLKADOT,
+  },
+  {
+    name: 'Ethereum',
+    background: theme.palette.tabs.ETHEREUM,
+  },
+  {
+    name: 'Tether',
+    background: theme.palette.tabs.TETHER,
+  },
+  {
+    name: 'Ethereum 2',
+    background: theme.palette.tabs.ETHEREUM_2,
+  },
+  {
+    name: 'Dodge Coin',
+    background: theme.palette.tabs.DOGE,
+  },
+  {
+    name: 'Cardano',
+    background: theme.palette.tabs.BITCOIN,
+  },
+  {
+    name: 'USD Coin',
+    background: theme.palette.tabs.XRP,
+  },
+  {
+    name: 'Binance-USD',
+    background: theme.palette.tabs.POLKADOT,
+  },
+  {
+    name: 'Solana',
+    background: theme.palette.tabs.ETHEREUM,
+  },
+  {
+    name: 'Bitcoin Coin',
+    background: theme.palette.tabs.TETHER,
+  },
+]
 export const PaymentOptions: PaymentMethodType[] = [
   {
     name: 'USD Coin (Cash)',

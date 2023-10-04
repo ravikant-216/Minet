@@ -162,6 +162,9 @@ export const PaymentOptions: PaymentMethodType[] = [
   },
 ]
 export const PAYMENT_METHOD = 'Payment Method'
+export const PASSWORD_RESET_SUCCESS = 'Password reset successful'
+export const PASSWORD_RESET_INSTRUCTION =
+  'Click on button below to proceed to login'
 
 export const MY_PORTFOLIO_VALUE = 'My portfolio value'
 

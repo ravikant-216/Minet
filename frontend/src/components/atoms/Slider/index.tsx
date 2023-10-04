@@ -1,17 +1,18 @@
-import React from 'react'
-import { Slider, SliderProps, styled } from '@mui/material'
+import { Slider, SliderProps } from '@mui/material'
+import styled from 'styled-components'
 import theme from '@/theme'
 
 const StyleSlider = styled(Slider)({
-  color: theme.palette.grey[300],
+  color: theme.palette.text.lowEmphasis,
   '& .MuiSlider-rail': {
-    backgroundColor: `${theme.palette.grey[300]} !important`,
+    backgroundColor: `${theme.palette.text.lowEmphasis} !important`,
+    borderRadius: '2px',
   },
   '& .MuiSlider-thumb': {
-    width: theme.spacing(2.5),
-    height: theme.spacing(2.5),
+    width: theme.spacing(3),
+    height: theme.spacing(3),
     borderRadius: '50%',
-    backgroundColor: theme.palette.grey[300],
+    backgroundColor: theme.palette.text.lowEmphasis,
     boxShadow: 'none',
   },
 })

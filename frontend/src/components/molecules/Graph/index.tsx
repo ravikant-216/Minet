@@ -6,7 +6,7 @@ import { Box } from '@mui/material'
 
 import theme from '@/theme/index'
 
-interface GraphProps {
+export interface GraphProps {
   series: ApexAxisChartSeries | ApexNonAxisChartSeries
   strokeColors: string[]
   fillColors: string[]

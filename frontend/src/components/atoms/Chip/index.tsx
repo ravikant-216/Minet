@@ -9,7 +9,7 @@ import {
 interface IChipProps extends ChipProps {
   label: string
   textVariant: TypographyProps['variant']
-  textColor: string
+  textColor?: string
   background: string
   padding?: string
   borderRadius?: string
@@ -32,6 +32,7 @@ const ChipComponent = ({
   isClicked,
   border,
   handleChip,
+  ...props
 }: IChipProps) => {
   return (
     <Box>
@@ -53,6 +54,7 @@ const ChipComponent = ({
           '&:hover': {
             backgroundColor: { background },
           },
+          ...props.sx,
         }}
       />
     </Box>

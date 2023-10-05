@@ -6,10 +6,10 @@ export const NEED_HELP = 'NEED HELP'
 import ethirum from '@Assets/icons/Ethereum.svg'
 import card from '@Assets/icons/bank-card.svg'
 import bitcoin from '@Assets/icons/bitcoin.svg'
+import xrp from '@Assets/icons/xrp.svg'
 import money from '@Assets/icons/dollar.svg'
 import tether from '@Assets/icons/tether.svg'
 import wallet from '@Assets/icons/wallet.svg'
-import xrp from '@Assets/icons/xrp.svg'
 import theme from '@/theme'
 
 import MinetLogo from '@Assets/icons/minet.svg'
@@ -279,4 +279,31 @@ export const NavigatonItems: NavigationBarItem[] = [
   { value: 'trade', logo: TradeIcon },
   { value: 'notification', logo: NotificationIcon },
   { value: 'logout', logo: LogoutIcon },
+]
+
+export const SPEED_DELIVERY = 'Select speed delivery'
+export const INSTANT_TIME = 'Instant : 2-5 min'
+export const SELECT_DELIVERY_DATA = [
+  {
+    id: 1,
+    label1: 'Instant',
+    label2: '2-5 minutes',
+    infoBitcoin: 'Delivery fees: 0.001BTC',
+    infoEthereum: 'Delivery fees: 0.005ETH',
+  },
+  {
+    id: 2,
+    label1: 'Faster',
+    label2: '4 hours',
+    infoBitcoin: 'Delivery fees: 0.0001BTC',
+    infoEthereum: 'Delivery fees: 0.0005ETH',
+  },
+  {
+    id: 3,
+    label1: 'Fast',
+    label2: '120 hours',
+    infoBitcoin: 'Delivery fees: 0.00001BTC',
+    infoEthereum: 'Delivery fees: 0.00005ETH',
+  },
+  { id: 4, label1: 'None', label2: '', infoBitcoin: '', infoEthereum: '' },
 ]

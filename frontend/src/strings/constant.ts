@@ -3,8 +3,8 @@ export const CAREERS = 'Careers'
 export const LEGAL_AND_PRIVACY = 'Legal & Privacy'
 export const MINET_TRADEMARK = '© 2021 Minet'
 export const NEED_HELP = 'NEED HELP'
+import paymentBitcoin from '@Assets/icons/paymentBitcoin.svg'
 import theme from '@/theme'
-
 import bitcoin from '@Assets/icons/blackBitcoin.svg'
 import ethirum from '@Assets/icons/Ethereum.svg'
 import card from '@Assets/icons/bank-card.svg'
@@ -36,7 +36,7 @@ export const PurchaseEtherium = {
 }
 
 export const SellBitcoin = {
-  paymentIcon: bitcoin,
+  paymentIcon: paymentBitcoin,
   paymentValue: 'Bitcoin wallet',
   depositIcon: money,
   depositValue: 'Rupee Coin',
@@ -282,6 +282,13 @@ export const NavigatonItems: NavigationBarItem[] = [
   { value: 'logout', logo: LogoutIcon },
 ]
 
+export const BUY_NOW = 'BUY NOW'
+
+export const SELL_NOW = 'SELL NOW'
+
+export const TRANSACTION_FEE = 'transaction fee'
+
+export const TOTOAL = 'Total'
 export const SPEED_DELIVERY = 'Select speed delivery'
 
 export const INSTANT_TIME = 'Instant : 2-5 min'

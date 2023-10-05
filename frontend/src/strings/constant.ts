@@ -6,11 +6,14 @@ export const NEED_HELP = 'NEED HELP'
 import paymentBitcoin from '@Assets/icons/paymentBitcoin.svg'
 import theme from '@/theme'
 import bitcoin from '@Assets/icons/blackBitcoin.svg'
-import ethirum from '@Assets/icons/Ethereum.svg'
+import ethirum from '@Assets/icons/ethereum.svg'
 import card from '@Assets/icons/bank-card.svg'
 import money from '@Assets/icons/dollar.svg'
 import tether from '@Assets/icons/tether.svg'
 import wallet from '@Assets/icons/wallet.svg'
+import GoogleIcon from '@Assets/icons/google.svg'
+import FacebookIcon from '@Assets/icons/facebook.svg'
+import MicrosoftIcon from '@Assets/icons/microsoft.svg'
 import xrp from '@Assets/icons/xrp.svg'
 
 import DashBoardIcon from '@Assets/icons/dashBoardIcon.svg'
@@ -327,3 +330,27 @@ export const PASSWORD_MATCH = 'Passwords do not match'
 export const PASSWORD_ENTER = 'Enter Password'
 export const PASSWORD_RE_ENTER = 'Re-Enter Password'
 export const CURRENT_VALUE = 'Current Value'
+
+export const SOCIAL_LOGIN_DATA = [
+  { id: 1, icon: GoogleIcon, label: 'Google' },
+  { id: 2, icon: FacebookIcon, label: 'Facebook' },
+  { id: 3, icon: MicrosoftIcon, label: 'Microsoft' },
+]
+export const LOGIN_HEADING = 'Login to Minet'
+export const PASSWORD = 'Password'
+export const SIGN_IN = 'Sign in'
+export const OR = 'Or'
+export const DO_NOT_HAVE_ACCOUNT = 'Don’t have an account?'
+export const EMAIL_IS_REQUIRED = 'Email is required'
+export const IN_VALID_EMAIL = 'Invalid email format'
+export const PASSWORD_IS_REQUIRED = 'Password is required'
+
+export const enum PasswordValidationMessage {
+  MESSAGE_MIN_LENGTH = 'Password should have at least 8 characters.',
+  MESSAGE_SPECIAL_CHARS_REGEX = 'Password should contain at least one special character (!@#$%^&*(),.?":{}|<>).',
+  MESSAGE_NUMBER_REGEX = 'Password should contain at least one number (0-9).',
+  MESSAGE_LOWERCASE_REGEX = 'Password should contain at least one lowercase letter (a-z).',
+  MESSAGE_UPPERCASE_REGEX = 'Password should contain at least one uppercase letter (A-Z).',
+  MESSAGE_NO_SPACES = 'Password should not contain the spaces',
+}
+export const SIGN_UP = 'Signup'

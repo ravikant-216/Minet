@@ -34,17 +34,20 @@ const DeActiveTab = styled(Typography)({
 interface TimeTabProps {
   borderRadius: boolean
   width: string
+  height?: string
 }
-const TimeTabs = ({ borderRadius, width }: TimeTabProps) => {
+const TimeTabs = ({ borderRadius, width, height }: TimeTabProps) => {
   return (
     <MainContainer
       width={width}
+      height={height}
       flexDirection={'row'}
       data-testid="time-period-tabs"
     >
       {TIME_PERIOD.map((time) => {
         return time.key === 4 ? (
           <Tab
+            key={time.key}
             sx={borderRadius ? ActiveTabWithCircleBorder : {}}
             data-testid="active-tab"
           >
@@ -57,7 +60,7 @@ const TimeTabs = ({ borderRadius, width }: TimeTabProps) => {
             </Typography>
           </Tab>
         ) : (
-          <Tab>
+          <Tab key={time.key}>
             <DeActiveTab key={time.key} variant="caption2">
               {time.value}
             </DeActiveTab>

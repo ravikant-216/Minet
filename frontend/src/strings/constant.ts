@@ -4,9 +4,10 @@ export const LEGAL_AND_PRIVACY = 'Legal & Privacy'
 export const MINET_TRADEMARK = '© 2021 Minet'
 export const NEED_HELP = 'NEED HELP'
 import theme from '@/theme'
+
+import bitcoin from '@Assets/icons/blackBitcoin.svg'
 import ethirum from '@Assets/icons/Ethereum.svg'
 import card from '@Assets/icons/bank-card.svg'
-import bitcoin from '@Assets/icons/bitcoin.svg'
 import money from '@Assets/icons/dollar.svg'
 import tether from '@Assets/icons/tether.svg'
 import wallet from '@Assets/icons/wallet.svg'
@@ -282,7 +283,9 @@ export const NavigatonItems: NavigationBarItem[] = [
 ]
 
 export const SPEED_DELIVERY = 'Select speed delivery'
+
 export const INSTANT_TIME = 'Instant : 2-5 min'
+
 export const SELECT_DELIVERY_DATA = [
   {
     id: 1,
@@ -316,3 +319,4 @@ export const PASSWORD_MESSAGE =
 export const PASSWORD_MATCH = 'Passwords do not match'
 export const PASSWORD_ENTER = 'Enter Password'
 export const PASSWORD_RE_ENTER = 'Re-Enter Password'
+export const CURRENT_VALUE = 'Current Value'

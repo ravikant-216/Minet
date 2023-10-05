@@ -1,53 +1,65 @@
+import Image from '@/components/atoms/Image'
+import theme from '@/theme'
+import closeEye from '@Assets/icons/closeEye.svg'
+import openEye from '@Assets/icons/openEye.svg'
 import {
+  Box,
+  IconButton,
+  InputAdornment,
   OutlinedTextFieldProps,
   TextField,
-  styled,
-  InputAdornment,
-  IconButton,
-  Box,
   Typography,
+  styled,
 } from '@mui/material'
 import React, { useState } from 'react'
-import theme from '@/theme'
-import openEye from '@Assets/icons/openEye.svg'
-import closeEye from '@Assets/icons/closeEye.svg'
-import Image from '@/components/atoms/Image'
 
 export interface TextFieldProps extends Partial<OutlinedTextFieldProps> {
   style?: React.CSSProperties
   inputLabel?: string
 }
 
-const StyledTextField = styled(TextField)(() => ({
-  marginTop: theme.spacing(1.5),
-  width: '100%',
-  '& placeholder': {
-    color: `${theme.palette.text.lowEmphasis} !important`,
-    ...theme.typography.body2,
-    '&.Mui-focused': {
-      color: `${theme.palette.text.highEmphasis} !important`,
+const StyledTextField = styled(TextField)(
+  ({
+    padding = `${theme.spacing(3)} ${theme.spacing(4)}`,
+    height = `${theme.spacing(6)}`,
+  }: {
+    padding: string
+    height: string
+  }) => ({
+    marginTop: theme.spacing(1.5),
+    width: '100%',
+    '& placeholder': {
+      color: `${theme.palette.text.lowEmphasis} !important`,
+      ...theme.typography.body2,
+      '&.Mui-focused': {
+        color: `${theme.palette.text.highEmphasis} !important`,
+      },
     },
-  },
 
-  '& .MuiInput-underline:after': {
-    borderBottomColor: theme.palette.gamma.GREY_300,
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: theme.palette.gamma.GREY_300,
-      borderRadius: theme.spacing(2),
+    '& .MuiInput-underline:after': {
+      borderBottomColor: theme.palette.gamma.GREY_300,
     },
-    '&:hover fieldset': {
-      borderColor: theme.palette.gamma.GREY_300,
-      display: 'flex',
-      alignItems: 'center',
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: theme.palette.gamma.GREY_300,
+        borderRadius: theme.spacing(2),
+      },
+      '& .MuiOutlinedInput-input': {
+        padding: padding,
+        height: height,
+      },
+      '&:hover fieldset': {
+        borderColor: theme.palette.gamma.GREY_300,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: theme.palette.gamma.GREY_300,
+        border: `${theme.spacing(0.25)} solid ${theme.palette.gamma.GREY_300}`,
+      },
     },
-    '&.Mui-focused fieldset': {
-      borderColor: theme.palette.gamma.GREY_300,
-      border: `${theme.spacing(0.25)} solid ${theme.palette.gamma.GREY_300}`,
-    },
-  },
-}))
+  })
+)
 
 const InputField: React.FC<TextFieldProps> = ({
   inputLabel = 'Input Label',
@@ -66,6 +78,8 @@ const InputField: React.FC<TextFieldProps> = ({
         {inputLabel}
       </Typography>
       <StyledTextField
+        padding={props.style?.padding as string}
+        height={props.style?.height as string}
         {...props}
         type={showPassword ? 'text' : type}
         InputProps={{

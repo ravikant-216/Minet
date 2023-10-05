@@ -3,13 +3,13 @@ export const CAREERS = 'Careers'
 export const LEGAL_AND_PRIVACY = 'Legal & Privacy'
 export const MINET_TRADEMARK = '© 2021 Minet'
 export const NEED_HELP = 'NEED HELP'
-import card from '@Assets/icons/bank-card.svg'
-import wallet from '@Assets/icons/wallet.svg'
-import money from '@Assets/icons/dollar.svg'
-import bitcoin from '@Assets/icons/bitcoin.svg'
 import ethirum from '@Assets/icons/Ethereum.svg'
-import xrp from '@Assets/icons/xrp.svg'
+import card from '@Assets/icons/bank-card.svg'
+import bitcoin from '@Assets/icons/bitcoin.svg'
+import money from '@Assets/icons/dollar.svg'
 import tether from '@Assets/icons/tether.svg'
+import wallet from '@Assets/icons/wallet.svg'
+import xrp from '@Assets/icons/xrp.svg'
 import theme from '@/theme'
 
 import MinetLogo from '@Assets/icons/minet.svg'
@@ -251,6 +251,16 @@ export const MOCK_DATA_TWO = {
     amount: '0000.00',
   },
 }
+export const EMAIL = 'Email'
+export const FORGOTPASSWORD = 'Forgot Password'
+export const RESET_LINK = 'Send Reset Link'
+export const LOGIN = 'Login'
+export const BACK = 'Back to '
+export const RESET_CODE = 'Reset Code'
+export const RESET_PASSWORD = 'Reset Password'
+export const CODE = '8 digits code'
+export const EMAIL_REGEX = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
+export const MOCK_MAIL = 'you@company.com'
 
 export const TRADE_SCREEN_TABS = [
   {

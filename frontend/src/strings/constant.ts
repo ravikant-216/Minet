@@ -3,27 +3,35 @@ export const CAREERS = 'Careers'
 export const LEGAL_AND_PRIVACY = 'Legal & Privacy'
 export const MINET_TRADEMARK = '© 2021 Minet'
 export const NEED_HELP = 'NEED HELP'
-import paymentBitcoin from '@Assets/icons/paymentBitcoin.svg'
 import theme from '@/theme'
-import bitcoin from '@Assets/icons/blackBitcoin.svg'
-import ethirum from '@Assets/icons/ethereum.svg'
 import card from '@Assets/icons/bank-card.svg'
+import bitcoin from '@Assets/icons/blackBitcoin.svg'
 import money from '@Assets/icons/dollar.svg'
+import ethirum from '@Assets/icons/ethereum.svg'
+import FacebookIcon from '@Assets/icons/facebook.svg'
+import GoogleIcon from '@Assets/icons/google.svg'
+import MicrosoftIcon from '@Assets/icons/microsoft.svg'
+import paymentBitcoin from '@Assets/icons/paymentBitcoin.svg'
 import tether from '@Assets/icons/tether.svg'
 import wallet from '@Assets/icons/wallet.svg'
-import GoogleIcon from '@Assets/icons/google.svg'
-import FacebookIcon from '@Assets/icons/facebook.svg'
-import MicrosoftIcon from '@Assets/icons/microsoft.svg'
 import xrp from '@Assets/icons/xrp.svg'
 
 import DashBoardIcon from '@Assets/icons/dashBoardIcon.svg'
-import LogoutIcon from '@Assets/icons/logout.svg'
 import MinetLogo from '@Assets/icons/minet.svg'
-import NotificationIcon from '@Assets/icons/notification.svg'
 import PortfolioIcon from '@Assets/icons/portFolio.svg'
 import TradeIcon from '@Assets/icons/tradeIcon.svg'
 
 import { NavigationBarItem, PaymentMethodType } from '@/utils/types'
+import binance from '@Assets/icons/binance.svg'
+import bitcoin1 from '@Assets/icons/bitcoin1.svg'
+import cardeno from '@Assets/icons/cardano.svg'
+import dogecoin from '@Assets/icons/dogecoin.svg'
+import ethereum from '@Assets/icons/ethereum1.svg'
+import LogoutIcon from '@Assets/icons/logout.svg'
+import NotificationIcon from '@Assets/icons/notification.svg'
+import polkadot from '@Assets/icons/polkadot.svg'
+import tether1 from '@Assets/icons/tether1.svg'
+import xrp1 from '@Assets/icons/xrp1.svg'
 
 export const total = 'Total'
 export const minetFee = 'transaction fee'
@@ -354,3 +362,13 @@ export const enum PasswordValidationMessage {
   MESSAGE_NO_SPACES = 'Password should not contain the spaces',
 }
 export const SIGN_UP = 'Signup'
+export const CARDS = [
+  { icon: ethereum, label: 'Ethereum', subLabel: '$30,054.88' },
+  { icon: bitcoin1, label: 'Bitcoin', subLabel: '$30,054.88' },
+  { icon: binance, label: 'Binance', subLabel: '$30,054.88' },
+  { icon: tether1, label: 'Tether', subLabel: '$30,054.88' },
+  { icon: cardeno, label: 'Cardano', subLabel: '$30,054.88' },
+  { icon: xrp1, label: 'XRP', subLabel: '$30,054.88' },
+  { icon: dogecoin, label: 'Dogecoin', subLabel: '$30,054.88' },
+  { icon: polkadot, label: 'Polkadot', subLabel: '$30,054.88' },
+]

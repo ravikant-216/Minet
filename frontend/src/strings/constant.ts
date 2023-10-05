@@ -3,21 +3,21 @@ export const CAREERS = 'Careers'
 export const LEGAL_AND_PRIVACY = 'Legal & Privacy'
 export const MINET_TRADEMARK = '© 2021 Minet'
 export const NEED_HELP = 'NEED HELP'
+import theme from '@/theme'
 import ethirum from '@Assets/icons/Ethereum.svg'
 import card from '@Assets/icons/bank-card.svg'
 import bitcoin from '@Assets/icons/bitcoin.svg'
-import xrp from '@Assets/icons/xrp.svg'
 import money from '@Assets/icons/dollar.svg'
 import tether from '@Assets/icons/tether.svg'
 import wallet from '@Assets/icons/wallet.svg'
-import theme from '@/theme'
+import xrp from '@Assets/icons/xrp.svg'
 
-import MinetLogo from '@Assets/icons/minet.svg'
 import DashBoardIcon from '@Assets/icons/dashBoardIcon.svg'
+import LogoutIcon from '@Assets/icons/logout.svg'
+import MinetLogo from '@Assets/icons/minet.svg'
+import NotificationIcon from '@Assets/icons/notification.svg'
 import PortfolioIcon from '@Assets/icons/portFolio.svg'
 import TradeIcon from '@Assets/icons/tradeIcon.svg'
-import NotificationIcon from '@Assets/icons/notification.svg'
-import LogoutIcon from '@Assets/icons/logout.svg'
 
 import { NavigationBarItem, PaymentMethodType } from '@/utils/types'
 
@@ -307,3 +307,12 @@ export const SELECT_DELIVERY_DATA = [
   },
   { id: 4, label1: 'None', label2: '', infoBitcoin: '', infoEthereum: '' },
 ]
+export const PASSWORD_REGEX =
+  /^(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/
+
+export const PASSWORD_HINT = 'Please enter a valid password'
+export const PASSWORD_MESSAGE =
+  ' A min of 8 charaters with atleasr 1 special character and number included'
+export const PASSWORD_MATCH = 'Passwords do not match'
+export const PASSWORD_ENTER = 'Enter Password'
+export const PASSWORD_RE_ENTER = 'Re-Enter Password'

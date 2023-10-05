@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions'
 import ForgotPasswordForm, { ForgotPasswordFormProps } from '.'
 
 export default {
-  title: 'Components/ForgotPasswordForm',
   component: ForgotPasswordForm,
 } as Meta
 

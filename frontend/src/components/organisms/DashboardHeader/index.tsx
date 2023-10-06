@@ -32,7 +32,12 @@ const DashboardHeader = ({
       <Typography color={theme.palette.text.highEmphasis} variant="h6">
         {dashboardHeading}
       </Typography>
-      <Stack gap={theme.spacing(5.25)} alignItems={'center'} direction={'row'}>
+      <Stack
+        gap={theme.spacing(5.25)}
+        alignItems={'center'}
+        height={theme.spacing(10.5)}
+        direction={'row'}
+      >
         {isButton && (
           <Stack gap={theme.spacing(3)} direction={'row'}>
             <ButtonComponent

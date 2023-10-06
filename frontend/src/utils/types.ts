@@ -33,3 +33,25 @@ export interface TableData {
   marketCap: number
   checked: boolean
 }
+
+export interface CoinType {
+  id: string
+  name: string
+  image: string
+  price: string
+  sign: string
+}
+export interface User {
+  id: string
+  name: string
+}
+
+export interface Transacton {
+  id: string
+  date: string
+  transactionType: 'buy' | 'sold'
+  cryptoType: CoinType
+  amount: number
+  status: 'success' | 'pending' | 'cancel'
+  user: User
+}

@@ -10,16 +10,19 @@ interface TradeCardProps {
   price: string
   change: string
   marketCap: string
-  checked: boolean
+  checked?: boolean
   onCardClick?: () => void
   onStarClick?: () => void
 }
 const Container = styled(Stack)({
   display: 'flex',
+  justifyContent: 'space-between',
   flexDirection: 'row',
+  height: theme.spacing(18.5),
   borderRadius: theme.spacing(1),
   border: `1px solid ${theme.palette.gamma.GREY_100}`,
   padding: `${theme.spacing(4)} ${theme.spacing(6)}`,
+  backgroundColor: theme.palette.gamma.GREY_WHITE,
 })
 
 const Card = styled(Stack)({

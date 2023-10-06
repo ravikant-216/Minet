@@ -22,3 +22,14 @@ export interface GraphPlotData {
   name: string
   data: number[]
 }
+
+export interface TableData {
+  id: number
+  name: string
+  src: string
+  label: string
+  price: number
+  change: string
+  marketCap: number
+  checked: boolean
+}

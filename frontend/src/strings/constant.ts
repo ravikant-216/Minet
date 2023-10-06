@@ -3,19 +3,22 @@ export const CAREERS = 'Careers'
 export const LEGAL_AND_PRIVACY = 'Legal & Privacy'
 export const MINET_TRADEMARK = '© 2021 Minet'
 export const NEED_HELP = 'NEED HELP'
+import paymentBitcoin from '@Assets/icons/paymentBitcoin.svg'
 import theme from '@/theme'
-import card from '@Assets/icons/bank-card.svg'
 import bitcoin from '@Assets/icons/blackBitcoin.svg'
+import card from '@Assets/icons/bank-card.svg'
 import money from '@Assets/icons/dollar.svg'
 import ethirum from '@Assets/icons/ethereum.svg'
 import FacebookIcon from '@Assets/icons/facebook.svg'
 import GoogleIcon from '@Assets/icons/google.svg'
 import MicrosoftIcon from '@Assets/icons/microsoft.svg'
-import paymentBitcoin from '@Assets/icons/paymentBitcoin.svg'
 import tether from '@Assets/icons/tether.svg'
 import wallet from '@Assets/icons/wallet.svg'
 import xrp from '@Assets/icons/xrp.svg'
-
+import Ethirum from '@Assets/icons/ethirum2.svg'
+import bitcoinTable from '@Assets/icons/bitcoinTable.svg'
+import cardano from '@Assets/icons/cardano.svg'
+import dodge from '@Assets/icons/dodge.svg'
 import DashBoardIcon from '@Assets/icons/dashBoardIcon.svg'
 import MinetLogo from '@Assets/icons/minet.svg'
 import PortfolioIcon from '@Assets/icons/portFolio.svg'
@@ -24,7 +27,6 @@ import TradeIcon from '@Assets/icons/tradeIcon.svg'
 import { NavigationBarItem, PaymentMethodType } from '@/utils/types'
 import binance from '@Assets/icons/binance.svg'
 import bitcoin1 from '@Assets/icons/bitcoin1.svg'
-import cardeno from '@Assets/icons/cardano.svg'
 import dogecoin from '@Assets/icons/dogecoin.svg'
 import ethereum from '@Assets/icons/ethereum1.svg'
 import LogoutIcon from '@Assets/icons/logout.svg'
@@ -339,6 +341,125 @@ export const PASSWORD_ENTER = 'Enter Password'
 export const PASSWORD_RE_ENTER = 'Re-Enter Password'
 export const CURRENT_VALUE = 'Current Value'
 
+export const COINS = [
+  {
+    id: 1,
+    name: 'Bitcoin',
+    src: bitcoin,
+    label: 'BTC',
+    price: 3285553.73,
+    change: '+1.06%',
+    marketCap: 60.1,
+    checked: false,
+  },
+  {
+    id: 2,
+    name: 'Ethereum',
+    src: ethirum,
+    label: 'ETH',
+    price: 126678.1,
+    change: '-5.49%',
+    marketCap: 25.4,
+    checked: false,
+  },
+  {
+    id: 3,
+    name: 'Ethereum 2',
+    src: Ethirum,
+    label: 'ETH2',
+    price: 216678.1,
+    change: '-5.49%',
+    marketCap: 25.4,
+    checked: false,
+  },
+  {
+    id: 4,
+    name: 'Tether',
+    src: tether,
+    label: 'USDT',
+    price: 74.31,
+    change: '+0.11%',
+    marketCap: 4.6,
+    checked: false,
+  },
+  {
+    id: 5,
+    name: 'Bitcoin Coin',
+    src: bitcoinTable,
+    label: 'BNB',
+    price: 24942.54,
+    change: '-3.69%',
+    marketCap: 4.2,
+    checked: false,
+  },
+  {
+    id: 6,
+    name: 'Cardano',
+    src: cardano,
+    label: 'ADA',
+    price: 104.52,
+    change: '-1.82%',
+    marketCap: 3.4,
+    checked: false,
+  },
+  {
+    id: 7,
+    name: 'XRP',
+    src: xrp,
+    label: 'XRP',
+    price: 57.21,
+    change: '+1.11%',
+    marketCap: 2.7,
+    checked: false,
+  },
+  {
+    id: 8,
+    name: 'Dodge Coin',
+    src: dodge,
+    label: 'DOC',
+    price: 17.64,
+    change: '-6.96%',
+    marketCap: 2.3,
+    checked: false,
+  },
+  {
+    id: 9,
+    name: 'USD Coin',
+    src: bitcoin,
+    label: 'USD',
+    price: 74.26,
+    change: '+1.01%',
+    marketCap: 2.1,
+    checked: false,
+  },
+  {
+    id: 10,
+    name: 'Binance',
+    src: xrp,
+    label: 'BIN',
+    price: 30054.88,
+    change: '-1.09%',
+    marketCap: 1.1,
+    checked: false,
+  },
+  {
+    id: 11,
+    name: 'Polkadot',
+    src: bitcoinTable,
+    label: 'PKD',
+    price: 1642.39,
+    change: '+2.06',
+    marketCap: 2.3,
+    checked: false,
+  },
+]
+
+export const NAME = 'Name'
+export const PRICE = 'Price'
+export const CHANGE = 'Change'
+export const MARKETCAP = 'MarketCap'
+export const WATCH = 'Watch'
+export const ALTERNATE = 'Up and Down Arrow'
 export const SOCIAL_LOGIN_DATA = [
   { id: 1, icon: GoogleIcon, label: 'Google' },
   { id: 2, icon: FacebookIcon, label: 'Facebook' },
@@ -367,7 +488,7 @@ export const CARDS = [
   { icon: bitcoin1, label: 'Bitcoin', subLabel: '$30,054.88' },
   { icon: binance, label: 'Binance', subLabel: '$30,054.88' },
   { icon: tether1, label: 'Tether', subLabel: '$30,054.88' },
-  { icon: cardeno, label: 'Cardano', subLabel: '$30,054.88' },
+  { icon: cardano, label: 'Cardano', subLabel: '$30,054.88' },
   { icon: xrp1, label: 'XRP', subLabel: '$30,054.88' },
   { icon: dogecoin, label: 'Dogecoin', subLabel: '$30,054.88' },
   { icon: polkadot, label: 'Polkadot', subLabel: '$30,054.88' },

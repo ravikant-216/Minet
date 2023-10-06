@@ -471,7 +471,9 @@ export const SIGN_IN = 'Sign in'
 export const OR = 'Or'
 export const DO_NOT_HAVE_ACCOUNT = 'Don’t have an account?'
 export const EMAIL_IS_REQUIRED = 'Email is required'
+export const NAME_IS_REQUIRED = 'Name is required'
 export const IN_VALID_EMAIL = 'Invalid email format'
+export const IN_VALID_USERNAME = 'Invalid username'
 export const PASSWORD_IS_REQUIRED = 'Password is required'
 
 export const enum PasswordValidationMessage {
@@ -494,6 +496,15 @@ export const CARDS = [
   { icon: polkadot, label: 'Polkadot', subLabel: '$30,054.88' },
 ]
 
+export const SignUP = 'Signup with Minet'
+export const NAME_LABEL = 'Name'
+export const NAME_PLACEHOLDER = 'Eg: John Doe'
+export const EMAIL_PLACEHOLDER = 'you@company.com'
+export const CREATE_PASSWORD_PLACEHOLDER = 'Create Password'
+export const PASSWORD_CHECK =
+  'A min of 8 charaters with atleast 1 special character and number included'
+export const SIGN_UP_BUTTON = 'Sign Up'
+export const ALREADY_HAVE_AN_ACCOUNT = 'Already have an account?'
 export const PURCHASE = 'Purchase'
 export const TRANSACTION_MESSAGE =
   'is completed, please check your balance in your'

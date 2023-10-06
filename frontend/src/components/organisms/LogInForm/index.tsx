@@ -65,7 +65,7 @@ const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
   return (
     <MainContainer data-testId="log-in">
       <Container>
-        <Typography color={theme.palette.text.highEmphasis} variant="h4">
+        <Typography color={theme.palette.text.highEmphasis} variant="heading4">
           {LOGIN_HEADING}
         </Typography>
         <Stack gap={theme.spacing(6)}>

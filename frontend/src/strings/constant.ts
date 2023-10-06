@@ -373,5 +373,14 @@ export const CARDS = [
   { icon: polkadot, label: 'Polkadot', subLabel: '$30,054.88' },
 ]
 
+export const PURCHASE = 'Purchase'
+export const TRANSACTION_MESSAGE =
+  'is completed, please check your balance in your'
+export const RUPEE_COIN = 'Rupee coin'
+export const CRYPTO_WALLET = 'crypto wallet'
+export const SELL_CRYPTO = 'SELL CRYPTO'
+export const BUY_CRYPTO = 'BUY CRYPTO'
+export const USD_COIN_BUTTON = 'GO TO USD COIN'
+export const Sell = 'Sell'
 export const SELL = 'Sell'
 export const BUY = 'Buy'

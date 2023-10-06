@@ -372,3 +372,6 @@ export const CARDS = [
   { icon: dogecoin, label: 'Dogecoin', subLabel: '$30,054.88' },
   { icon: polkadot, label: 'Polkadot', subLabel: '$30,054.88' },
 ]
+
+export const SELL = 'Sell'
+export const BUY = 'Buy'

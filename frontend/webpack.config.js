@@ -1,6 +1,6 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-
+const Dotenv = require('dotenv-webpack')
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   resolve: {
@@ -40,6 +40,7 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
     }),
+    new Dotenv(),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],

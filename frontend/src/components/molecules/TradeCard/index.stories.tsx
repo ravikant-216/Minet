@@ -20,7 +20,7 @@ BitcoinCard.args = {
   currencyName: 'Bitcoin',
   currencyCode: 'BTC',
   price: '$3,285,553.73',
-  change: '+1.06%',
+  change: 1.06,
   marketCap: '$60.1T',
   checked: true,
 }
@@ -31,7 +31,7 @@ EthereumCard.args = {
   currencyName: 'Ethereum',
   currencyCode: 'ETH',
   price: '$216,678.10',
-  change: '-5.49%',
+  change: -5.49,
   marketCap: '$25.4T',
   checked: false,
 }

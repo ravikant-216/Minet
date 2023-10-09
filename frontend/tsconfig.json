@@ -18,6 +18,11 @@
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
       "resolveJsonModule": true,
+      "types": [
+         "node",
+         "jest",
+         "@testing-library/jest-dom"
+      ],
       "baseUrl": "./",
       "paths": {
          "@/*": [

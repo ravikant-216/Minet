@@ -31,7 +31,7 @@ export interface TableData {
   src: string
   label: string
   price: number
-  change: string
+  change: number
   marketCap: number
   checked: boolean
 }
@@ -58,6 +58,16 @@ export interface Transacton {
   user: User
 }
 
+export interface TradeData {
+  change: string
+  checked: boolean
+  id: number
+  label: string
+  marketCap: number
+  name: string
+  price: number
+  src: string
+}
 export interface WatchListItemType {
   id: string
   name: string

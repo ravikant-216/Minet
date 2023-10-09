@@ -9,7 +9,7 @@ const defaultProps = {
   currencyName: 'Bitcoin',
   currencyCode: 'BTC',
   price: '$45,000',
-  change: '+5%',
+  change: +5,
   marketCap: '$1.5T',
   checked: true,
   onCardClick: mockOnClick,
@@ -51,9 +51,9 @@ describe('Trade Card', () => {
   })
 
   test('sets the color of change text to red when change does not include "+"', () => {
-    const { getByText } = render(<TradeCard {...defaultProps} change="-3%" />)
+    const { getByText } = render(<TradeCard {...defaultProps} change={-3} />)
 
     const changeText = getByText('-3%')
-    expect(changeText).toHaveStyle('color: red')
+    expect(changeText).toHaveStyle('color: rgb(183, 26, 51)')
   })
 })

@@ -8,7 +8,7 @@ interface TradeCardProps {
   currencyName: string
   currencyCode: string
   price: string
-  change: string
+  change: number
   marketCap: string
   checked?: boolean
   onCardClick?: () => void
@@ -54,6 +54,12 @@ const TradeCard = ({
   onCardClick,
   onStarClick,
 }: TradeCardProps) => {
+  const sign = change >= 0 ? '+' : '-'
+  const color =
+    change >= 0
+      ? theme.palette.gamma.SUCCESS_500
+      : theme.palette.gamma.ERROR_300
+
   return (
     <Container data-testid={`watchlistIcon_${currencyName}`}>
       <Card onClick={onCardClick}>
@@ -79,11 +85,8 @@ const TradeCard = ({
         <StyleTypography variant="body2">{price}</StyleTypography>
       </StyleStack>
       <StyleStack width={theme.spacing(59.75)} onClick={onCardClick}>
-        <Typography
-          color={change.includes('+') ? 'green' : 'red'}
-          variant="body2"
-        >
-          {change}
+        <Typography color={color} variant="body2">
+          {`${sign}${Math.abs(change)}%`}
         </Typography>
       </StyleStack>
       <StyleStack width={theme.spacing(59.25)} onClick={onCardClick}>

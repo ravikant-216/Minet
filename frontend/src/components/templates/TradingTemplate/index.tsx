@@ -83,6 +83,8 @@ const TradingTemplate: React.FC<TradingTemplateProps> = ({
               width={'100%'}
               position={'static'}
               padding={theme.spacing(6)}
+              marginLeft={theme.spacing(-8)}
+              paddingRight={0}
             />
           </Stack>
         </Box>

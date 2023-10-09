@@ -1,5 +1,6 @@
 import { SxProps, createTheme } from '@mui/material/styles'
 import { PALETTE } from './themeConstant'
+
 declare module '@mui/material/styles' {
   interface TypeText {
     highEmphasis?: string

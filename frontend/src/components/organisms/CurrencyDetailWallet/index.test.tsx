@@ -27,7 +27,6 @@ describe('CurrencyDetailWallet', () => {
       .getByTestId('search-input')
       .querySelector('input')
     fireEvent.change(getSearchField!, { target: { value: 'aritra' } })
-    console.log(getSearchField?.value)
     expect(getSearchField?.value).toBe('aritra')
     expect(screen.queryByTestId('aritra')).toBeNull()
     fireEvent.change(getSearchField!, { target: { value: '' } })

@@ -42,6 +42,7 @@ export const WatchListCurrencyCard = ({
           display: 'flex',
           flexDirection: 'column',
           width: 'fit-content',
+          justifyContent: 'space-between',
         }}
       >
         <CryptoIcon
@@ -62,9 +63,8 @@ export const WatchListCurrencyCard = ({
           width={`${theme.spacing(11.25)}`}
           height={`${theme.spacing(5)}`}
           sx={{
-            marginLeft: `${theme.spacing(13.75)}`,
-            position: 'absolute',
-            top: `${theme.spacing(25)}`,
+            ml: theme.spacing(13),
+            mb: 5,
           }}
         />
       </Box>
@@ -83,7 +83,7 @@ export const WatchListCurrencyCard = ({
           marginRight={`-${theme.spacing(2)}`}
           marginLeft={`-${theme.spacing(4.5)}`}
           padding={0}
-          width="100%"
+          width="95%"
         >
           <Graph
             {...props.graphProps}

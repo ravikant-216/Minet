@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, screen } from '@testing-library/react'
 import Dropdown from '.'
 
 describe('Dropdown', () => {
@@ -11,24 +11,22 @@ describe('Dropdown', () => {
   })
 
   it('renders without crashing', () => {
-    const { getByRole } = render(
-      <Dropdown onSelect={mockOnSelect}>{options}</Dropdown>
-    )
-    expect(getByRole('button')).toBeInTheDocument()
+    render(<Dropdown onSelect={mockOnSelect}>{options}</Dropdown>)
+    screen.getByRole('combobox')
   })
 
   it('displays the correct number of options', () => {
     const { getByRole, getAllByRole, getByText } = render(
       <Dropdown onSelect={mockOnSelect}>{options}</Dropdown>
     )
-    fireEvent.mouseDown(getByRole('button'))
+    fireEvent.mouseDown(getByRole('combobox'))
     expect(getAllByRole('option')).toHaveLength(options.length)
     fireEvent.click(getByText('Option 2'))
     expect(mockOnSelect).toHaveBeenCalledWith(1)
   })
   it('does not crash when onSelect is not provided', () => {
     const { getByRole, getByText } = render(<Dropdown>{options}</Dropdown>)
-    fireEvent.mouseDown(getByRole('button'))
+    fireEvent.mouseDown(getByRole('combobox'))
     fireEvent.click(getByText('Option 2'))
   })
 })

@@ -1,3 +1,5 @@
+import { TypographyVariant as MuiTypographyVariant } from '@mui/material'
+
 export interface PaymentMethodType {
   name: string
   balance: string
@@ -55,3 +57,14 @@ export interface Transacton {
   status: 'success' | 'pending' | 'cancel'
   user: User
 }
+
+export interface WatchListItemType {
+  id: string
+  name: string
+  image: string
+  value: string
+  graphData: GraphPlotData
+  trendValue: number
+}
+
+export type TypographyVariant = MuiTypographyVariant | 'caption2'

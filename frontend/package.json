@@ -27,7 +27,7 @@
     "@mui/material": "^5.14.11",
     "@mui/styled-engine-sc": "^5.14.11",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "apexcharts": "^3.43.0",
+    "apexcharts": "^3.6.2",
     "babel-jest": "^29.7.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "jest-raw-loader": "^1.0.1",

@@ -1,10 +1,5 @@
-import {
-  Typography,
-  Button,
-  ButtonProps,
-  SxProps,
-  TypographyVariant,
-} from '@mui/material'
+import { TypographyVariant } from '@/utils/types'
+import { Typography, Button, ButtonProps, SxProps } from '@mui/material'
 interface ButtonComponentProps extends ButtonProps {
   label: string
   textColor?: string

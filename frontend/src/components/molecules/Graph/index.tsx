@@ -31,6 +31,11 @@ const getChartOptions = (
       toolbar: {
         show: false,
       },
+      events: {
+        mounted: (chart) => {
+          chart.windowResizeHandler()
+        },
+      },
     },
     xaxis: {
       labels: {
@@ -64,7 +69,7 @@ const getChartOptions = (
     },
     grid: {
       show: showGrid,
-      padding: { left: 0, right: -10, top: -10, bottom: -10 },
+      // padding: { left: 0, right: -10, top: -10, bottom: -10 },
     },
     tooltip: {
       enabled: false,
@@ -114,6 +119,7 @@ const Graph = ({
         options={options}
         series={series}
         width={width}
+        maxWidth="100%"
         height={height}
         type="area"
       ></Chart>

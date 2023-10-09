@@ -22,7 +22,7 @@ Default.args = {
   color2: theme.palette.text.highEmphasis,
   trendValue: 1.2,
   graphProps: {
-    height: '98px',
+    height: 'inherit',
     opacity: 0.5,
     series: [
       {

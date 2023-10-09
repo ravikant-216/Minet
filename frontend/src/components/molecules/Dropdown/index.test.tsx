@@ -12,21 +12,21 @@ describe('Dropdown', () => {
 
   it('renders without crashing', () => {
     render(<Dropdown onSelect={mockOnSelect}>{options}</Dropdown>)
-    screen.getByRole('combobox')
+    screen.getByText('Option 1')
   })
 
   it('displays the correct number of options', () => {
-    const { getByRole, getAllByRole, getByText } = render(
+    const { getAllByRole, getByText } = render(
       <Dropdown onSelect={mockOnSelect}>{options}</Dropdown>
     )
-    fireEvent.mouseDown(getByRole('combobox'))
+    fireEvent.mouseDown(getByText('Option 1'))
     expect(getAllByRole('option')).toHaveLength(options.length)
     fireEvent.click(getByText('Option 2'))
     expect(mockOnSelect).toHaveBeenCalledWith(1)
   })
   it('does not crash when onSelect is not provided', () => {
-    const { getByRole, getByText } = render(<Dropdown>{options}</Dropdown>)
-    fireEvent.mouseDown(getByRole('combobox'))
+    const { getByText } = render(<Dropdown>{options}</Dropdown>)
+    fireEvent.mouseDown(getByText('Option 1'))
     fireEvent.click(getByText('Option 2'))
   })
 })

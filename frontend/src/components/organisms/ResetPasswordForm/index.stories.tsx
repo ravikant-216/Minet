@@ -13,4 +13,5 @@ const Template: Story<ResetPasswordFormProps> = (args) => (
 export const Default = Template.bind({})
 Default.args = {
   onSubmit: action('onSubmit'),
+  onSuccess: action('onSuccess'),
 }

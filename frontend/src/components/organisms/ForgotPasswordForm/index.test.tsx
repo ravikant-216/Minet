@@ -3,8 +3,25 @@ import ForgotPasswordForm from '.'
 
 describe('ForgotPasswordForm', () => {
   it('renders correctly', () => {
-    const { getByText } = render(<ForgotPasswordForm loginOnClick={() => {}} />)
-    expect(getByText('Forgot Password')).toBeInTheDocument()
+    const mockOnSuccess = jest.fn()
+    const { getByPlaceholderText } = render(
+      <ForgotPasswordForm
+        loginOnClick={() => {}}
+        step={2}
+        onSuccess={mockOnSuccess}
+      />
+    )
+    expect(screen.getByTestId('button')).toBeDisabled()
+    fireEvent.change(getByPlaceholderText('8 digits code'), {
+      target: { value: '123456' },
+    })
+    expect(screen.getByTestId('button')).toBeDisabled()
+    fireEvent.change(getByPlaceholderText('8 digits code'), {
+      target: { value: '12345678' },
+    })
+    expect(screen.getByTestId('button')).not.toBeDisabled()
+    fireEvent.click(screen.getByTestId('button'))
+    expect(mockOnSuccess).toBeCalled()
   })
 
   it('enables the button when email is valid', () => {
@@ -21,16 +38,6 @@ describe('ForgotPasswordForm', () => {
     expect(mockLoginOnClick).toBeCalled()
     fireEvent.change(getByPlaceholderText('you@company.com'), {
       target: { value: 'test@example.com' },
-    })
-    expect(screen.getByTestId('button')).not.toBeDisabled()
-    fireEvent.click(screen.getByTestId('button'))
-    expect(screen.getByTestId('button')).toBeDisabled()
-    fireEvent.change(getByPlaceholderText('8 digits code'), {
-      target: { value: '123456' },
-    })
-    expect(screen.getByTestId('button')).toBeDisabled()
-    fireEvent.change(getByPlaceholderText('8 digits code'), {
-      target: { value: '12345678' },
     })
     expect(screen.getByTestId('button')).not.toBeDisabled()
     fireEvent.click(screen.getByTestId('button'))

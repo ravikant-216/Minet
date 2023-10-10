@@ -18,18 +18,21 @@ import {
 export interface ForgotPasswordFormProps {
   loginOnClick: () => void
   onSubmit?: (value: string) => void
+  onSuccess?: () => void
+  step?: number
   sx?: SxProps
 }
 
 const ForgotPasswordForm = ({
   loginOnClick,
   onSubmit,
+  onSuccess,
+  step = 1,
   sx,
 }: ForgotPasswordFormProps) => {
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('')
   const [isDisabled, setIsDisabled] = useState(true)
-  const [step, setStep] = useState(1)
 
   useEffect(() => {
     if (step === 1) {
@@ -72,7 +75,7 @@ const ForgotPasswordForm = ({
           variant="contained"
           disabled={isDisabled}
           onClick={() => {
-            step === 1 ? setStep(2) : onSubmit?.(email)
+            step === 1 ? onSubmit?.(email) : onSuccess?.()
           }}
           textColor={theme.palette.gamma.GREY_WHITE}
           hoverColor={theme.palette.primary.main}

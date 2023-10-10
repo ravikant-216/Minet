@@ -37,7 +37,12 @@ describe('ResetPasswordForm', () => {
     fireEvent.change(passwordInput, { target: { value: 'password1!' } })
     fireEvent.change(confirmPasswordInput, { target: { value: 'password1!' } })
     fireEvent.click(screen.getByTestId('button'))
-    fireEvent.click(screen.getByTestId('button'))
     expect(onSubmit).toHaveBeenCalledWith('password1!')
+  })
+  it('calls onSuccess when passwords match and are valid', () => {
+    const onSuccess = jest.fn()
+    render(<ResetPasswordForm onSuccess={onSuccess} step={2} />)
+    fireEvent.click(screen.getByTestId('button'))
+    expect(onSuccess).toHaveBeenCalled()
   })
 })

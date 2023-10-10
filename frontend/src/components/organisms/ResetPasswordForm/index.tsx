@@ -16,10 +16,15 @@ import {
 } from '@/strings/constant'
 export interface ResetPasswordFormProps {
   onSubmit?: (value: string) => void
+  onSuccess?: () => void
+  step?: number
 }
 
-const ResetPasswordForm = ({ onSubmit }: ResetPasswordFormProps) => {
-  const [step, setStep] = useState(1)
+const ResetPasswordForm = ({
+  onSubmit,
+  onSuccess,
+  step = 1,
+}: ResetPasswordFormProps) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
@@ -73,8 +78,8 @@ const ResetPasswordForm = ({ onSubmit }: ResetPasswordFormProps) => {
         <ButtonComponent
           label={step === 1 ? RESET_PASSWORD : LOGIN}
           variant="contained"
-          disabled={password !== confirmPassword || isDisabled}
-          onClick={() => (step === 1 ? setStep(2) : onSubmit?.(password))}
+          disabled={(password !== confirmPassword || isDisabled) && step === 1}
+          onClick={() => (step === 1 ? onSubmit?.(password) : onSuccess?.())}
           textColor={theme.palette.gamma.GREY_WHITE}
           hoverColor={theme.palette.primary.main}
           sx={{

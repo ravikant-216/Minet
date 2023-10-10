@@ -1,6 +1,7 @@
 import { CoinType, Transacton, User, WatchListItemType } from '@/utils/types'
-import bitcoin from '@Assets/icons/blackBitcoin.svg'
+import bitcoin from '@Assets/icons/bitcoin.svg'
 import ethereum from '@Assets/icons/ethereum.svg'
+import ethereum2Black from '@Assets/icons/ethereum2Black.svg'
 
 export const coins: CoinType[] = [
   {
@@ -50,7 +51,7 @@ export const WatchListItems: WatchListItemType[] = [
   {
     id: '3',
     name: 'Ethereum 2',
-    image: ethereum as string,
+    image: ethereum2Black as string,
     value: '$1,297.24',
     graphData: {
       name: 'Ethereum 2',

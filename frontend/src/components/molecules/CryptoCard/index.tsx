@@ -38,12 +38,20 @@ const CryptoCard = ({
   return (
     <Box {...props} my={2} display="flex" justifyContent="space-between">
       <Stack direction="row" gap={2.5}>
-        <Image src={image} alt={name} />
+        <Image
+          src={image}
+          alt={name}
+          imageProps={{
+            width: theme.spacing(10.5),
+            height: theme.spacing(10.5),
+          }}
+        />
         <TypographyLabel
           label1={name}
           label2={sign}
           label1Variant="body1"
           label2Variant="caption2"
+          gap={2}
           color1={theme.palette.text.highEmphasis}
           color2={theme.palette.text.lowEmphasis}
         />

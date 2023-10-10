@@ -542,7 +542,7 @@ export const TRADE_DATA = [
     marketCap: 60.1,
     name: 'Bitcoin',
     price: 3285553.73,
-    src: 'static/media/public/assests/icons/blackBitcoin.svg',
+    src: bitcoin1,
   },
   {
     change: -5.49,

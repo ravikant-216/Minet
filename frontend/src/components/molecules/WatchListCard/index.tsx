@@ -47,6 +47,10 @@ const WatchListCard = ({
         <Stack direction="row" gap={6} alignItems="center">
           <Stack direction="row">
             <CryptoIcon
+              imageProps={{
+                height: theme.spacing(14),
+                width: theme.spacing(14),
+              }}
               icon={image}
               label1={name}
               label2={sign}

@@ -10,3 +10,12 @@ export const checkUser = (email: string, password: string) => {
     api_routes.GET_USER_BY_EMAIL_AND_PASSWORD(email, password)
   )
 }
+
+export const addUser = (name: string, email: string, password: string) => {
+  return apiClient.post(api_routes.ADD_USER, {
+    name: name,
+    email: email,
+    password: password,
+    balance: 50000,
+  })
+}

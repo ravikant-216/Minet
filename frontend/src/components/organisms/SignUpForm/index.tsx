@@ -44,7 +44,7 @@ const SignUpButton = styled(ButtonComponent)({
   },
 })
 interface SignUpProps {
-  onSignUp: () => void
+  onSignUp: (name: string, email: string, password: string) => void
   onIconClick: () => void
 }
 
@@ -74,6 +74,10 @@ const SignUp = ({ onIconClick, onSignUp }: SignUpProps) => {
   ) => {
     setPassword(event.target.value)
     setPasswordError(evaluatePasswordStrength(event.target.value))
+  }
+
+  const handleSignUpClick = () => {
+    onSignUp(name, email, password)
   }
 
   const isDisabled =
@@ -135,7 +139,7 @@ const SignUp = ({ onIconClick, onSignUp }: SignUpProps) => {
             disabled={isDisabled}
             textColor={theme.palette.gamma.GREY_WHITE}
             variant="contained"
-            onClick={onSignUp}
+            onClick={handleSignUpClick}
           />
         </Stack>
         <Divider>

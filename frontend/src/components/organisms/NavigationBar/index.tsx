@@ -15,7 +15,7 @@ const NavigationBar = ({
   ...props
 }: NavigationBarProps) => {
   return (
-    <Stack {...props} gap={11} justifyContent="center" mt={6} mx={6}>
+    <Stack {...props} gap={11} justifyContent="center" pt={6} px={6}>
       {items.map(({ value, logo }) => (
         <Image
           boxProps={{ justifySelf: 'center' }}

@@ -24,11 +24,11 @@ const Footer = ({
       position="fixed"
       left={theme.spacing(6)}
       bottom={theme.spacing(6)}
-      mr={6}
+      mt={6}
       width={width}
       {...props}
     >
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between" width="100%">
         <Stack direction="row" alignItems="center" gap={6}>
           <ButtonComponent
             typographyVarient="body2"

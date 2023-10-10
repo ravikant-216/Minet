@@ -2,7 +2,7 @@ import AvatarComponent from '@/components/atoms/Avatar'
 import ButtonComponent from '@/components/atoms/Button'
 import { BUY, SELL } from '@/strings/constant'
 import theme from '@/theme'
-import { Box, Stack, Typography, styled } from '@mui/material'
+import { Box, BoxProps, Stack, Typography, styled } from '@mui/material'
 import ExpandMoreIcon from '@Assets/icons/chevron-down.svg'
 import Image from '@/components/atoms/Image'
 
@@ -13,7 +13,7 @@ const Container = styled(Box)({
   justifyContent: 'space-between',
 })
 
-interface DashboardHeaderProps {
+interface DashboardHeaderProps extends BoxProps {
   dashboardHeading: string
   avatar: string
   isButton: boolean
@@ -26,9 +26,10 @@ const DashboardHeader = ({
   avatar,
   onBuy,
   onSell,
+  ...props
 }: DashboardHeaderProps) => {
   return (
-    <Container>
+    <Container {...props}>
       <Typography color={theme.palette.text.highEmphasis} variant="h6">
         {dashboardHeading}
       </Typography>

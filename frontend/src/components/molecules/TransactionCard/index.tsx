@@ -1,11 +1,18 @@
-import { Box, Stack, styled, Typography, useTheme } from '@mui/material'
+import {
+  Box,
+  Stack,
+  StackProps,
+  styled,
+  Typography,
+  useTheme,
+} from '@mui/material'
 import Image from '@Components/atoms/Image'
 import TickMarkIcon from '@Assets/icons/Tick.svg'
 import TypographyLabel from '@/components/atoms/TypographyLabel'
 import ChipComponent from '@/components/atoms/Chip/index'
 import { ALTERNATE_MESSAGE } from '@/strings/constant'
 
-interface RecentTransactionPropsTypes {
+interface RecentTransactionPropsTypes extends StackProps {
   transactionDate: Date
   cryptoName: string
   transactionType: string
@@ -15,8 +22,6 @@ interface RecentTransactionPropsTypes {
 
 const Layout = styled(Stack)(({ theme }) => ({
   height: theme.spacing(17.5),
-  width: theme.spacing(87.5),
-  gap: theme.spacing(2),
 }))
 
 const InnerLayout = styled(Box)({
@@ -44,6 +49,7 @@ const RecentTransactionCard = ({
   cryptoName,
   cryptoAmount,
   dollarAmount,
+  ...props
 }: RecentTransactionPropsTypes) => {
   const theme = useTheme()
 
@@ -52,7 +58,7 @@ const RecentTransactionCard = ({
     day: 'numeric',
   })
   return (
-    <Layout data-testid="transaction-card">
+    <Layout data-testid="transaction-card" {...props}>
       <Typography variant="caption2">{formattedDate}</Typography>
       <InnerLayout>
         <ImageContainer>

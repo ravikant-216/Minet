@@ -1,4 +1,11 @@
-import { CoinType, Transacton, User, WatchListItemType } from '@/utils/types'
+import {
+  CoinType,
+  CryptoDetailType,
+  RencentTransactionType,
+  Transacton,
+  User,
+  WatchListItemType,
+} from '@/utils/types'
 import bitcoin from '@Assets/icons/bitcoin.svg'
 import ethereum from '@Assets/icons/ethereum.svg'
 import ethereum2Black from '@Assets/icons/ethereum2Black.svg'
@@ -58,6 +65,61 @@ export const WatchListItems: WatchListItemType[] = [
       data: [0, 100, 50, 75, 75, 150, 10, 100, 140],
     },
     trendValue: -1.5,
+  },
+]
+
+export const CryptoDetailData: CryptoDetailType[] = [
+  {
+    id: '7590808b-044e-4140-b34b-9466cdc15cca',
+    name: 'Bitcoin',
+    symbol: 'BTC',
+    icon: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
+    price: 3285553.73,
+    change: 1.06,
+    marketCap: 60.1,
+    volume: 2.9,
+    circulatingSupply: 18.8,
+  },
+  {
+    id: '221264a8-6d9e-435e-be0e-e8d253865581',
+    name: 'Ethereum',
+    symbol: 'ETH',
+    icon: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880',
+    price: 216678.1,
+    change: -5.49,
+    marketCap: 25.4,
+    volume: 2.3,
+    circulatingSupply: 18.2,
+  },
+  {
+    id: '4a63bcb7-c943-41b7-a5cc-25c4a66ee1db',
+    name: 'Tether',
+    symbol: 'USDT',
+    icon: 'https://assets.coingecko.com/coins/images/325/large/Tether.png?1668148663',
+    price: 216678.1,
+    change: -5.49,
+    marketCap: 25.4,
+    volume: 5.5,
+    circulatingSupply: 17.8,
+  },
+]
+
+export const RecentTransactions: RencentTransactionType[] = [
+  {
+    id: '1',
+    transactionDate: new Date(),
+    cryptoName: 'Bitcoin BTC',
+    transactionType: 'Sold',
+    cryptoAmount: '-0.0234510 BTC',
+    dollarAmount: '+34000.00',
+  },
+  {
+    id: '2',
+    transactionDate: new Date(),
+    cryptoName: 'Bitcoin BTC',
+    transactionType: 'Purchased',
+    cryptoAmount: '+0.00010 BTC',
+    dollarAmount: '+34000.00',
   },
 ]
 

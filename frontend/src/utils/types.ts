@@ -68,6 +68,28 @@ export interface TradeData {
   price: number
   src: string
 }
+
+export type CryptoDetailType = {
+  id: string
+  name: string
+  symbol: string
+  icon: string
+  price: number
+  change: number
+  marketCap: number
+  volume: number
+  circulatingSupply: number
+}
+
+export interface RencentTransactionType {
+  id: string
+  transactionDate: Date
+  cryptoName: string
+  transactionType: 'Sold' | 'Purchased'
+  cryptoAmount: string
+  dollarAmount: string
+}
+
 export interface WatchListItemType {
   id: string
   name: string

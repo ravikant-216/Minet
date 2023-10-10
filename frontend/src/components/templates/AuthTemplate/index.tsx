@@ -12,20 +12,12 @@ interface AuthTemplateProps {
 const MainContainer = styled(Grid)({
   width: '100vw',
   height: '100vh',
-  overflow: 'auto',
+  overflow: 'hidden',
 })
 
 const RightContainer = styled(Grid)({
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
-})
-
-const FormContainer = styled(Grid)({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: theme.spacing(128),
 })
 
 const LeftContainer = styled(Grid)({
@@ -45,7 +37,7 @@ const AuthTemplate = ({ image, data }: AuthTemplateProps) => {
         />
       </LeftContainer>
       <RightContainer item xs={12} md={6}>
-        <FormContainer>{data}</FormContainer>
+        {data}
       </RightContainer>
     </MainContainer>
   )

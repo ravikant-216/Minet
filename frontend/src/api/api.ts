@@ -4,3 +4,9 @@ import apiClient from './axios'
 export const getAllCoins = () => {
   return apiClient.get(api_routes.GET_ALL_COINS)
 }
+
+export const checkUser = (email: string, password: string) => {
+  return apiClient.get(
+    api_routes.GET_USER_BY_EMAIL_AND_PASSWORD(email, password)
+  )
+}

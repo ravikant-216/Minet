@@ -26,11 +26,13 @@ import { Box, Divider, Stack, Typography, styled } from '@mui/material'
 import { useState } from 'react'
 
 const MainContainer = styled(Box)({
-  padding: `${theme.spacing(24)} ${theme.spacing(8)}`,
-  gap: theme.spacing(16),
+  width: theme.spacing(128),
+  height: theme.spacing(152),
+  gap: theme.spacing(6),
+  marginTop: theme.spacing(5),
 })
 const Container = styled(Stack)({
-  gap: theme.spacing(8),
+  gap: theme.spacing(6),
 })
 
 const SignUpButton = styled(ButtonComponent)({

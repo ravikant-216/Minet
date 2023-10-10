@@ -4,10 +4,12 @@ import SocialLoginButton from '@/components/molecules/SocialLoginButton'
 import {
   DO_NOT_HAVE_ACCOUNT,
   EMAIL,
+  EMAIL_PLACEHOLDER,
   FORGOTPASSWORD,
   LOGIN_HEADING,
   OR,
   PASSWORD,
+  PASSWORD_ENTER,
   SIGN_IN,
   SIGN_UP,
   SOCIAL_LOGIN_DATA,
@@ -18,11 +20,13 @@ import { Box, Divider, Stack, Typography, styled } from '@mui/material'
 import { useState } from 'react'
 
 const MainContainer = styled(Box)({
-  padding: `${theme.spacing(24)} ${theme.spacing(8)}`,
-  gap: theme.spacing(16),
+  width: theme.spacing(128),
+  height: theme.spacing(152),
+  gap: theme.spacing(6),
+  marginTop: theme.spacing(10),
 })
 const Container = styled(Stack)({
-  gap: theme.spacing(8),
+  gap: theme.spacing(6),
 })
 
 const SignInButton = styled(ButtonComponent)({
@@ -34,8 +38,8 @@ const SignInButton = styled(ButtonComponent)({
   },
 })
 interface LogInProps {
-  onSignIn: () => void
-  onIconClick: () => void
+  onSignIn: (email: string, password: string) => void
+  onIconClick?: () => void
 }
 
 const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
@@ -61,6 +65,11 @@ const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
       }
     }
   }
+
+  const handleSignInClick = () => {
+    onSignIn(email, password)
+  }
+
   const isDisabled = !email || !!emailError || !password || !!passwordError
   return (
     <MainContainer data-testId="log-in">
@@ -73,7 +82,7 @@ const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
             <InputField
               inputLabel={EMAIL}
               value={email}
-              placeholder="you@company.com"
+              placeholder={EMAIL_PLACEHOLDER}
               onChange={(e) => handleChange(e, 'email')}
               type="text"
               size="small"
@@ -91,7 +100,7 @@ const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
             <InputField
               inputLabel={PASSWORD}
               value={password}
-              placeholder="Enter Password"
+              placeholder={PASSWORD_ENTER}
               type="password"
               onChange={(e) => handleChange(e, 'password')}
               size="small"
@@ -116,9 +125,9 @@ const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
             hoverColor={theme.palette.primary.main}
             label={SIGN_IN}
             disabled={isDisabled}
-            textColor="#FFFFFF"
+            textColor={theme.palette.gamma.GREY_WHITE}
             variant="contained"
-            onClick={onSignIn}
+            onClick={handleSignInClick}
           />
         </Stack>
         <Divider>

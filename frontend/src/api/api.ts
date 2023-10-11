@@ -28,3 +28,18 @@ export const updatePassword = (newPassword: string, userId: string) => {
 export const checkUserByEmail = (email: string) => {
   return apiClient.get(api_routes.GET_USER_BY_EMAIL(email))
 }
+export const getAllTransactions = () => {
+  return apiClient.get(api_routes.GET_ALL_TRANSACTIONS)
+}
+
+export const getUserById = (id: string) => {
+  return apiClient.get(api_routes.GET_USER_BY_ID(id))
+}
+
+export const getCryptoById = (id: string) => {
+  return apiClient.get(api_routes.GET_CRYPTO_BY_ID(id))
+}
+
+export const getAllTransactionsByCryptoId = (cryptoId: string) => {
+  return apiClient.get(api_routes.GET_ALL_TRANSACTIONS_BY_CRYPTO_ID(cryptoId))
+}

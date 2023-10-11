@@ -1,6 +1,6 @@
 import Image from '@/components/atoms/Image'
-import FilterIcon from '@Assets/icons/filterIcon.svg'
 import theme from '@/theme'
+import FilterIcon from '@Assets/icons/filterIcon.svg'
 import SearchIcon from '@Assets/icons/search.svg'
 import {
   Box,
@@ -12,14 +12,14 @@ import {
   Typography,
 } from '@mui/material'
 
-import Dropdown from '@/components/molecules/Dropdown'
 import CurrencyDetailWalletCard from '@/components/molecules/CurrencyDetailWalletCard'
-import { Transacton } from '@/utils/types'
-import { useState } from 'react'
+import Dropdown from '@/components/molecules/Dropdown'
 import { ONE_M, TOTAL_BALANCE } from '@/strings/constant'
+import { Transaction } from '@/utils/types'
+import { useState } from 'react'
 
 interface CurrencyDetailWalletProps extends StackProps {
-  transactions: Transacton[]
+  transactions: Transaction[]
   textAlign: 'right' | 'left'
   totalBalance: string
 }
@@ -31,7 +31,7 @@ const CurrencyDetailWallet = ({
   ...props
 }: CurrencyDetailWalletProps) => {
   const [transactions, setTransactions] =
-    useState<Transacton[]>(initialTransaction)
+    useState<Transaction[]>(initialTransaction)
 
   const [search, setSearch] = useState('')
 
@@ -136,8 +136,8 @@ const CurrencyDetailWallet = ({
                   day={+dateObj.getDay()}
                   mounth={month}
                   type={status}
-                  cyprtoAmount={`$${transaction.amount}`}
-                  price={`+${amount} ${cryptoType.sign}`}
+                  cyprtoAmount={`+${amount} ${cryptoType.sign}`}
+                  price={`+$${cryptoType.price} `}
                   label1={cryptoType.name}
                   label2={`from ${transaction.user.name}`}
                 />

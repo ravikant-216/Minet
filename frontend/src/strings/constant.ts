@@ -3,26 +3,26 @@ export const CAREERS = 'Careers'
 export const LEGAL_AND_PRIVACY = 'Legal & Privacy'
 export const MINET_TRADEMARK = '© 2021 Minet'
 export const NEED_HELP = 'NEED HELP'
-import paymentBitcoin from '@Assets/icons/paymentBitcoin.svg'
 import theme from '@/theme'
-import bitcoin from '@Assets/icons/blackBitcoin.svg'
 import card from '@Assets/icons/bank-card.svg'
+import bitcoinTable from '@Assets/icons/bitcoinTable.svg'
+import bitcoin from '@Assets/icons/blackBitcoin.svg'
+import cardano from '@Assets/icons/cardano.svg'
+import DashBoardIcon from '@Assets/icons/dashBoardIcon.svg'
+import dodge from '@Assets/icons/dodge.svg'
 import money from '@Assets/icons/dollar.svg'
 import ethirum from '@Assets/icons/ethereum.svg'
+import Ethirum from '@Assets/icons/ethirum2.svg'
 import FacebookIcon from '@Assets/icons/facebook.svg'
 import GoogleIcon from '@Assets/icons/google.svg'
 import MicrosoftIcon from '@Assets/icons/microsoft.svg'
+import MinetLogo from '@Assets/icons/minet.svg'
+import paymentBitcoin from '@Assets/icons/paymentBitcoin.svg'
+import PortfolioIcon from '@Assets/icons/portFolio.svg'
 import tether from '@Assets/icons/tether.svg'
+import TradeIcon from '@Assets/icons/tradeIcon.svg'
 import wallet from '@Assets/icons/wallet.svg'
 import xrp from '@Assets/icons/xrp.svg'
-import Ethirum from '@Assets/icons/ethirum2.svg'
-import bitcoinTable from '@Assets/icons/bitcoinTable.svg'
-import cardano from '@Assets/icons/cardano.svg'
-import dodge from '@Assets/icons/dodge.svg'
-import DashBoardIcon from '@Assets/icons/dashBoardIcon.svg'
-import MinetLogo from '@Assets/icons/minet.svg'
-import PortfolioIcon from '@Assets/icons/portFolio.svg'
-import TradeIcon from '@Assets/icons/tradeIcon.svg'
 
 import { NavigationBarItem, PaymentMethodType } from '@/utils/types'
 import binance from '@Assets/icons/binance.svg'
@@ -663,3 +663,18 @@ export const MY_WALLET = 'My Wallet'
 export const RECENT_TRANSACTION = 'Recent transactions'
 export const VIEW_ALL = 'View All'
 export const MY_PORTFOLIO = 'My portfolio'
+export const BITCOIN_DATA = {
+  id: '7590808b-044e-4140-b34b-9466cdc15cca',
+  name: 'Bitcoin',
+  symbol: 'BTC',
+  icon: bitcoin1,
+  price: 3285553.73,
+  change: 1.06,
+  marketCap: 60.1,
+  volume: 2.9,
+  circulatingSupply: 18.8,
+}
+export const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+})

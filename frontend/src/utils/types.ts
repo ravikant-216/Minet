@@ -48,7 +48,7 @@ export interface User {
   name: string
 }
 
-export interface Transacton {
+export interface Transaction {
   id: string
   date: string
   transactionType: 'buy' | 'sold'
@@ -86,3 +86,27 @@ export interface userDataType {
 }
 
 export type TypographyVariant = MuiTypographyVariant | 'caption2'
+
+export interface TransactionData {
+  id: string
+  date: string
+  status: string
+  type: string
+  price: number
+  quantity: number
+  description: string
+  user: User
+  crypto: CryptoData
+}
+
+export interface CryptoData {
+  id: string
+  name: string
+  symbol: string
+  icon: string
+  price: number
+  change: number
+  marketCap: number
+  volume: number
+  circulatingSupply: number
+}

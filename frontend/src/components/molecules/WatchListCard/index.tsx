@@ -36,6 +36,7 @@ const WatchListCard = ({
 }: WatchListCardProps) => {
   return (
     <Box
+      data-testid="watchlist-card"
       padding={6}
       border={`1px solid ${theme.palette.gamma.GREY_100}`}
       borderRadius={1}

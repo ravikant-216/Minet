@@ -56,14 +56,30 @@ const TradingTemplate: React.FC<TradingTemplateProps> = ({
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh', overflow: 'hidden' }}>
-      <Box sx={{ width: theme.spacing(20), minHeight: '100vh' }}>
+      <Box
+        sx={{
+          width: theme.spacing(20),
+          minHeight: '100vh',
+        }}
+      >
         <NavigationBar
           navigationItems={NavigatonItems}
           handleOnClick={handleNavigation}
         />
       </Box>
-      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <Box sx={{ height: theme.spacing(20) }}>
+      <Box
+        sx={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <Box
+          sx={{
+            height: theme.spacing(20),
+            borderBottom: `1px solid ${theme.palette.gamma.GREY_100}`,
+          }}
+        >
           <Dashboard
             dashboardHeading={dashboardHeading}
             avatar={avatar}
@@ -78,11 +94,15 @@ const TradingTemplate: React.FC<TradingTemplateProps> = ({
         </Box>
         <Box sx={{ flex: 1, overflowY: 'auto' }}>{children}</Box>
         <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
-          <Stack width={'100%'}>
+          <Stack
+            width={'100%'}
+            borderTop={`1px solid ${theme.palette.gamma.GREY_100}`}
+          >
             <Footer
               width={'100%'}
               position={'static'}
-              padding={theme.spacing(6)}
+              pb={theme.spacing(6)}
+              pl={theme.spacing(6)}
               marginLeft={theme.spacing(-8)}
               paddingRight={0}
             />

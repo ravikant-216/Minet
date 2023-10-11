@@ -2,7 +2,7 @@ import {
   CoinType,
   CryptoDetailType,
   RencentTransactionType,
-  Transacton,
+  Transaction,
   User,
   WatchListItemType,
 } from '@/utils/types'
@@ -123,7 +123,7 @@ export const RecentTransactions: RencentTransactionType[] = [
   },
 ]
 
-export const transactions: Transacton[] = [
+export const transactions: Transaction[] = [
   {
     id: '1',
     date: new Date().toISOString(),

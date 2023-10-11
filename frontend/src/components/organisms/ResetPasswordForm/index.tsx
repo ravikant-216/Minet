@@ -41,7 +41,12 @@ const ResetPasswordForm = ({
   }, [password])
 
   return (
-    <Box display="flex" flexDirection="column" gap={9}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap={9}
+      justifyContent={'center'}
+    >
       <Typography variant="heading4" color={theme.palette.text.highEmphasis}>
         {RESET_PASSWORD}
       </Typography>

@@ -20,6 +20,11 @@ export const addUser = (name: string, email: string, password: string) => {
   })
 }
 
+export const updatePassword = (newPassword: string, userId: string) => {
+  return apiClient.patch(api_routes.UPDATE_PASSWORD(userId), {
+    password: newPassword,
+  })
+}
 export const checkUserByEmail = (email: string) => {
   return apiClient.get(api_routes.GET_USER_BY_EMAIL(email))
 }

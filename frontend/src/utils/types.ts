@@ -77,4 +77,12 @@ export interface WatchListItemType {
   trendValue: number
 }
 
+export interface userDataType {
+  id: string
+  name: string
+  email: string
+  password: string
+  balance: number
+}
+
 export type TypographyVariant = MuiTypographyVariant | 'caption2'

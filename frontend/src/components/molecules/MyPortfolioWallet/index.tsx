@@ -14,14 +14,14 @@ import {
   TOTAL_BALANCE,
   VIEW_ALL,
 } from '@/strings/constant'
-import { CryptoDetailType, RencentTransactionType } from '@/utils/types'
+import { CryptoDetailType, RecentTransactionType } from '@/utils/types'
 import RecentTransactionCard from '../TransactionCard'
 
 interface MyPortfolioWalletProps extends StackProps {
   coins: CryptoDetailType[]
   usdWalletBalance: number
   totalBalance: number
-  recentTransactions?: RencentTransactionType[]
+  recentTransactions?: RecentTransactionType[]
 }
 
 const MyPortfolioWallet = ({
@@ -42,9 +42,10 @@ const MyPortfolioWallet = ({
           <Image src={ListIcon} alt="ListIcon" />
         </Stack>
       </Stack>
-      <Stack>
+      <Stack height={theme.spacing(46)} overflow="auto" my={3}>
         {coins.map(({ id, name, symbol, price, icon, change }) => (
           <CryptoCard
+            pr={2}
             key={id}
             name={name}
             sign={symbol}

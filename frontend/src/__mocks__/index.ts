@@ -1,8 +1,8 @@
 import {
   CoinType,
   CryptoDetailType,
-  RencentTransactionType,
   Transaction,
+  RecentTransactionType,
   User,
   WatchListItemType,
 } from '@/utils/types'
@@ -28,8 +28,12 @@ export const coins: CoinType[] = [
 ]
 
 export const user: User = {
-  id: '1',
+  id: 'b62177be-aca1-45d3-ab0e-60a9f4c79a5e',
   name: 'John Doe',
+  email: 'john@gmail.com',
+  password: 'JohnDoe@001',
+  balance: 34000,
+  isNewUser: false,
 }
 
 export const WatchListItems: WatchListItemType[] = [
@@ -104,7 +108,7 @@ export const CryptoDetailData: CryptoDetailType[] = [
   },
 ]
 
-export const RecentTransactions: RencentTransactionType[] = [
+export const RecentTransactions: RecentTransactionType[] = [
   {
     id: '1',
     transactionDate: new Date(),

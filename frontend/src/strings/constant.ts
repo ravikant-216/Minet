@@ -678,3 +678,5 @@ export const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
 })
+export const CLICK_ONCURRENCY =
+  'Click on currency name below to display it on the graph'

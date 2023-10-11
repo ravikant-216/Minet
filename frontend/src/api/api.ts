@@ -11,6 +11,14 @@ export const checkUser = (email: string, password: string) => {
   )
 }
 
+export const getAllTransactionByUserId = (userId: string) => {
+  return apiClient.get(api_routes.GET_ALL_TRANSACTION_BY_USERID(userId))
+}
+
+export const getWatchListByUserId = (userId: string) => {
+  return apiClient.get(api_routes.GET_WATCHLIST_BY_USER_ID(userId))
+}
+
 export const addUser = (name: string, email: string, password: string) => {
   return apiClient.post(api_routes.ADD_USER, {
     name: name,

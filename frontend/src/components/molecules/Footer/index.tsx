@@ -24,7 +24,7 @@ const Footer = ({
       position="fixed"
       left={theme.spacing(6)}
       bottom={theme.spacing(6)}
-      mt={6}
+      py={6}
       width={width}
       {...props}
     >

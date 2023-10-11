@@ -53,6 +53,10 @@ export const WatchListCurrencyCard = ({
           label2Variant={props.label2Variant}
           color1={props.color1}
           color2={props.color2}
+          imageProps={{
+            height: theme.spacing(10.5),
+            width: theme.spacing(10.5),
+          }}
         />
         <ChipComponent
           label={'24h'}

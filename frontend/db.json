@@ -24,7 +24,7 @@
       "id": "221264a8-6d9e-435e-be0e-e8d253865581",
       "name": "Ethereum",
       "symbol": "ETH",
-      "icon": "https://svgshare.com/i/yNp.svg",
+      "icon": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
       "price": 216678.1,
       "change": -5.49,
       "marketCap": 25.4,
@@ -102,11 +102,61 @@
     {
       "id": "6f2b8e3f-9d3b-4f1d-9d8c-3e3e3e3e3e2e",
       "date": "2023-07-29T02:35:42",
-      "status": "SUCCESS",
-      "type": "SELL",
+      "status": "success",
+      "type": "Sold",
       "price": 3234,
       "quantity": 0.032343,
       "description": "From Teja Minnikanti",
+      "user": {
+        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
+        "name": "John Doe",
+        "email": "john@gmail.com",
+        "password": "JohnDoe@001",
+        "balance": 34000
+      },
+      "crypto": {
+        "id": "6f2b8e3f-9d9b-4f1d-9d8c-3e3f3e3e3e2e",
+        "name": "Dogecoin",
+        "symbol": "DOGE",
+        "icon": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
+        "price": 17.64,
+        "change": -6.96,
+        "marketCap": 2.3,
+        "volume": 3.4,
+        "circulatingSupply": 54.2
+      }
+    },
+    {
+      "id": "6f2b8e3f-9d3b-4f1d-9d8c-3e3e3e3e3e2e",
+      "date": "2023-07-29T02:35:42",
+      "status": "success",
+      "type": "Sold",
+      "price": 3234,
+      "quantity": 0.032343,
+      "description": "From Teja Minnikanti",
+      "user": {
+        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
+        "name": "John Doe",
+        "email": "john@gmail.com",
+        "password": "JohnDoe@001",
+        "balance": 34000
+      },
+      "crypto": {
+        "id": "6f2b8e3f-9d9b-4f1d-9d8c-3e3f3e3e3e2e",
+        "name": "Dogecoin",
+        "symbol": "DOGE",
+        "icon": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
+        "price": 17.64,
+        "change": -6.96,
+        "marketCap": 2.3,
+        "volume": 3.4,
+        "circulatingSupply": 54.2
+      }
+    }
+  ],
+  "watchlist": [
+    {
+      "id": 1,
       "user": {
         "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
         "name": "John Doe",
@@ -127,13 +177,51 @@
       }
     },
     {
-      "id": "4f2b8e3f-9d3b-4f1d-9d8c-3e3e3e3e3er4",
-      "date": "2023-07-29T02:35:42",
-      "status": "SUCCESS",
-      "type": "SELL",
-      "price": 3234,
-      "quantity": 0.032343,
-      "description": "From Teja Minnikanti",
+      "id": 1,
+      "user": {
+        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
+        "name": "John Doe",
+        "email": "john@gmail.com",
+        "password": "JohnDoe@001",
+        "balance": 34000
+      },
+      "crypto": {
+        "id": "6f2b8e3f-9d9b-4f1d-9d8c-3e3f3e3e3e2e",
+        "name": "Dogecoin",
+        "symbol": "DOGE",
+        "icon": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
+        "price": 17.64,
+        "change": -6.96,
+        "marketCap": 2.3,
+        "volume": 3.4,
+        "circulatingSupply": 54.2
+      }
+    },
+    {
+      "id": 1,
+      "user": {
+        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
+        "name": "John Doe",
+        "email": "john@gmail.com",
+        "password": "JohnDoe@001",
+        "balance": 34000
+      },
+      "crypto": {
+        "id": "221264a8-6d9e-435e-be0e-e8d253865581",
+        "name": "Ethereum",
+        "symbol": "ETH",
+        "icon": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
+        "price": 216678.1,
+        "change": -5.49,
+        "marketCap": 25.4,
+        "volume": 2.3,
+        "circulatingSupply": 18.2
+      }
+    }
+  ],
+  "wallet": [
+    {
+      "id": "7590808b-048e-4140-b34b-9466cdc15cca",
       "user": {
         "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
         "name": "John Doe",
@@ -151,21 +239,7 @@
         "marketCap": 60.1,
         "volume": 2.9,
         "circulatingSupply": 18.8
-      }
-    }
-  ],
-  "watchlist": [
-    {
-      "id": 1,
-      "user_id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
-      "cryptoId": "7590808b-044e-4140-b34b-9466cdc15cca"
-    }
-  ],
-  "wallet": [
-    {
-      "id": "7590808b-048e-4140-b34b-9466cdc15cca",
-      "user_id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
-      "cryptoId": "7590808b-044e-4140-b34b-9466cdc15cca",
+      },
       "totalBalance": 0.47344
     }
   ]

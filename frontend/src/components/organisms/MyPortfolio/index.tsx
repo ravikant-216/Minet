@@ -105,7 +105,7 @@ const MyPortfolio = ({
 }: PortfolioValueProps) => {
   const theme = useTheme()
   return (
-    <Box gap={theme.spacing(3)} data-testId="myportfolio">
+    <Box gap={theme.spacing(3)} data-testid="myportfolio" mt={6} width="100%">
       <HeaderGrid>
         <Typography variant="subtitle1">{MY_PORTFOLIO_VALUE}</Typography>
         <HeaderGrid>

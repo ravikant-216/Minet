@@ -46,6 +46,10 @@ export interface CoinType {
 export interface User {
   id: string
   name: string
+  email: string
+  password: string
+  balance: number
+  isNewUser?: boolean
 }
 
 export interface Transaction {
@@ -68,6 +72,39 @@ export interface TradeData {
   price: number
   src: string
 }
+
+export type CryptoDetailType = {
+  id: string
+  name: string
+  symbol: string
+  icon: string
+  price: number
+  change: number
+  marketCap: number
+  volume: number
+  circulatingSupply: number
+}
+
+export interface RecentTransactionType {
+  id: string
+  transactionDate: Date
+  cryptoName: string
+  transactionType: 'Sold' | 'Purchased'
+  cryptoAmount: string
+  dollarAmount: string
+}
+
+export interface TransactionData {
+  id: string
+  date: string
+  status: 'success' | 'pending' | 'cancel'
+  type: 'Sold' | 'Purchased'
+  price: number
+  quantity: number
+  description: string
+  user: User
+  crypto: CryptoDetailType
+}
 export interface WatchListItemType {
   id: string
   name: string
@@ -84,20 +121,13 @@ export interface userDataType {
   password: string
   balance: number
 }
+export interface DashBoardWatchListItem {
+  id: string
+  user: User
+  crypto: CryptoDetailType
+}
 
 export type TypographyVariant = MuiTypographyVariant | 'caption2'
-
-export interface TransactionData {
-  id: string
-  date: string
-  status: string
-  type: string
-  price: number
-  quantity: number
-  description: string
-  user: User
-  crypto: CryptoData
-}
 
 export interface CryptoData {
   id: string

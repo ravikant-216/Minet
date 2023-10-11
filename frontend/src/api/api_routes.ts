@@ -7,6 +7,11 @@ const GET_USER_BY_EMAIL = (email: string) => `/users?email=${email}`
 const GET_ALL_TRANSACTIONS = '/transactions'
 const GET_ALL_TRANSACTIONS_BY_CRYPTO_ID = (cryptoId: string) =>
   `/transactions?cryptoId=${cryptoId}`
+const GET_WATCHLIST_BY_USER_ID = (userId: string) =>
+  `/watchlist?user.id=${userId}`
+
+const GET_ALL_TRANSACTION_BY_USERID = (userId: string) =>
+  `/transactions?user.id=${userId}`
 
 const GET_USER_BY_ID = (id: string) => `/users/${id}`
 const GET_CRYPTO_BY_ID = (id: string) => `/crypto/${id}`
@@ -20,4 +25,6 @@ export default {
   GET_USER_BY_ID,
   GET_CRYPTO_BY_ID,
   GET_ALL_TRANSACTIONS_BY_CRYPTO_ID,
+  GET_WATCHLIST_BY_USER_ID,
+  GET_ALL_TRANSACTION_BY_USERID,
 }

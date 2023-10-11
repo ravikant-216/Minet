@@ -19,6 +19,7 @@ import { DISCOVER_ASSETS, VIEW_WATCHLIST, WATCHLIST } from '@/strings/constant'
 
 interface DashBoardWatchListProps extends StackProps {
   items: WatchListItemType[]
+  discoverAssetOnClick?: () => void
 }
 
 const StyledDivider = styled(Divider)({
@@ -28,7 +29,11 @@ const StyledDivider = styled(Divider)({
   alignSelf: 'center',
 })
 
-const DashBoardWatchList = ({ items, ...props }: DashBoardWatchListProps) => {
+const DashBoardWatchList = ({
+  items,
+  discoverAssetOnClick,
+  ...props
+}: DashBoardWatchListProps) => {
   return (
     <Stack {...props}>
       <Stack direction="row" justifyContent="space-between">
@@ -41,6 +46,7 @@ const DashBoardWatchList = ({ items, ...props }: DashBoardWatchListProps) => {
           <Typography variant="subtitle1">{WATCHLIST}</Typography>
           <StyledDivider flexItem orientation="vertical" variant="middle" />
           <ButtonComponent
+            onClick={discoverAssetOnClick}
             label={DISCOVER_ASSETS}
             typographyVarient="caption2"
             endIcon={

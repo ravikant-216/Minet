@@ -27,7 +27,7 @@ const DashBoardTemplate = ({
       sx={{ background: theme.palette.primary[100] }}
       overflow="none"
       boxSizing="border-box"
-      height="95vh"
+      height="100vh"
     >
       <NavigationBar
         navigationItems={NavigatonItems}

@@ -13,11 +13,14 @@ import searchIcon from '@Assets/icons/search.svg'
 import crossIcon from '@Assets/icons/transaction_state.svg'
 import dropdown from '@Assets/icons/chevron-down.svg'
 import { useState } from 'react'
-import TradeTabel from '@/components/molecules/TradingTable'
 import { TableData } from '@/utils/types'
+import TradeTabel from '@/components/molecules/TradingTable'
 
 interface SearchTradeTableProps {
   onCardClick: (id: number) => void
+  tradeTableData: TableData[]
+  watchListData: TableData[]
+  onStarIconClick: (id: number, checked: boolean) => void
 }
 
 const MainContainer = styled(Stack)({
@@ -60,33 +63,17 @@ const StyleTypography = styled(Typography)({
   paddingTop: theme.spacing(1.2),
   color: theme.palette.gamma.GREY_500,
 })
-const SearchTradeTable = ({ onCardClick }: SearchTradeTableProps) => {
+const SearchTradeTable = ({
+  tradeTableData,
+  watchListData,
+  onStarIconClick,
+  onCardClick,
+}: SearchTradeTableProps) => {
   const [tabValue, setTabValue] = useState<string>(TABS[0].value)
   const [searchText, setSearchText] = useState<string>('')
-  const [assets, setAssets] = useState<TableData[]>(TRADE_DATA)
-  const [watchList, setWatchList] = useState<TableData[]>([])
+  const [assets, setAssets] = useState<TableData[]>(tradeTableData)
+  const [watchList, setWatchList] = useState<TableData[]>(watchListData)
   const displayedData = tabValue === TABS[0].value ? assets : watchList
-
-  const handleWatchList = (id: number, checked: boolean) => {
-    setAssets((prevData) => {
-      return prevData.map((row) => {
-        if (row.id === id) {
-          const updatedRow = { ...row, checked: !checked }
-          return updatedRow
-        }
-        return row
-      })
-    })
-    setWatchList((prevData) => {
-      return prevData.map((row) => {
-        if (row.id === id) {
-          const updatedRow = { ...row, checked: !checked }
-          return updatedRow
-        }
-        return row
-      })
-    })
-  }
 
   const onClearSearch = () => {
     if (searchText) {
@@ -204,7 +191,7 @@ const SearchTradeTable = ({ onCardClick }: SearchTradeTableProps) => {
       <TradeTabel
         cardClick={onCardClick}
         data={displayedData}
-        watchlist={(id, checked) => handleWatchList(id, checked)}
+        watchlist={(id, checked) => onStarIconClick(id, checked)}
       />
     </MainContainer>
   )

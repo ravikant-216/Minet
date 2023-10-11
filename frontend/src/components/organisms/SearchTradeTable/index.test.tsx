@@ -1,11 +1,19 @@
 import { render, fireEvent, screen } from '@testing-library/react'
 import SearchTradeTable from '.'
-import { TABS } from '@/strings/constant'
+import { TABS, TRADE_DATA } from '@/strings/constant'
 
 describe('Search Trade Table', () => {
   const cardClick = jest.fn()
+  const starIconClick = jest.fn()
   beforeEach(() => {
-    render(<SearchTradeTable onCardClick={cardClick} />)
+    render(
+      <SearchTradeTable
+        tradeTableData={TRADE_DATA}
+        watchListData={TRADE_DATA.filter((t) => t.checked)}
+        onCardClick={cardClick}
+        onStarIconClick={starIconClick}
+      />
+    )
   })
   it('renders without crashing and contains expected elements', () => {
     const tradeTable = screen.getByTestId('Trade-table')
@@ -45,16 +53,17 @@ describe('Search Trade Table', () => {
     expect(screen.getByTestId('watchlistIcon_Bitcoin')).toBeInTheDocument()
   })
 
-  it('checks WatchList data when an item is added into WatchList', () => {
-    const ethereum = screen.getByTestId('watchlistIcon_Ethereum')
+  it('checks WatchList data onclick', () => {
     const uncheckedIcon = screen.getAllByAltText('Unchecked icon')[0]
     const checkedIcon = screen.getAllByAltText('Checked Icon')[1]
     expect(uncheckedIcon).toBeInTheDocument()
     fireEvent.click(uncheckedIcon)
     const tab2 = screen.getByText('Watchlist')
     fireEvent.click(tab2)
-    expect(ethereum).toBeInTheDocument()
-    expect(checkedIcon).toBeInTheDocument()
+    expect(starIconClick).toHaveBeenCalledTimes(1)
+
+    fireEvent.click(checkedIcon)
+    expect(starIconClick).toHaveBeenCalledTimes(2)
   })
   it('handles search functionality along with tab change correctly', () => {
     const searchField = screen.getByPlaceholderText('Search all assets')
@@ -87,6 +96,52 @@ describe('Search Trade Table', () => {
 
     fireEvent.click(screen.getByText(TABS[1].value))
 
+    expect(screen.getByTestId('watchlistIcon_Bitcoin')).toBeInTheDocument()
+    expect(screen.getByTestId('watchlistIcon_Bitcoin Coin')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByText(TABS[0].value))
+
+    fireEvent.change(screen.getByPlaceholderText('Search all assets'), {
+      target: { value: '' },
+    })
+
+    expect(screen.getByTestId('watchlistIcon_Bitcoin')).toBeInTheDocument()
+    expect(screen.getByTestId('watchlistIcon_Bitcoin Coin')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByText(TABS[1].value))
+
+    expect(screen.getByTestId('watchlistIcon_Bitcoin')).toBeInTheDocument()
+    expect(screen.getByTestId('watchlistIcon_Bitcoin Coin')).toBeInTheDocument()
+  })
+  it('filters watchlist by name and checked status', () => {
+    const searchText = 'Bitcoin'
+    fireEvent.click(screen.getByText(TABS[1].value))
+    fireEvent.change(screen.getByPlaceholderText('Search all assets'), {
+      target: { value: searchText },
+    })
+    expect(screen.getByTestId('watchlistIcon_Bitcoin')).toBeInTheDocument()
+    expect(screen.getByTestId('watchlistIcon_Bitcoin Coin')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByText(TABS[0].value))
+
+    fireEvent.change(screen.getByPlaceholderText('Search all assets'), {
+      target: { value: '' },
+    })
+
+    expect(screen.getByTestId('watchlistIcon_Bitcoin')).toBeInTheDocument()
+    expect(screen.getByTestId('watchlistIcon_Bitcoin Coin')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByText(TABS[1].value))
+
+    expect(screen.getByTestId('watchlistIcon_Bitcoin')).toBeInTheDocument()
+    expect(screen.getByTestId('watchlistIcon_Bitcoin Coin')).toBeInTheDocument()
+  })
+  it('filters watchlist by name and checked status', () => {
+    const searchText = 'Bitcoin'
+    fireEvent.click(screen.getByText(TABS[1].value))
+    fireEvent.change(screen.getByPlaceholderText('Search all assets'), {
+      target: { value: searchText },
+    })
     expect(screen.getByTestId('watchlistIcon_Bitcoin')).toBeInTheDocument()
     expect(screen.getByTestId('watchlistIcon_Bitcoin Coin')).toBeInTheDocument()
 

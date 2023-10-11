@@ -47,7 +47,7 @@ const ForgotPasswordForm = ({
       display={'flex'}
       flexDirection={'column'}
       justifyContent="center"
-      width={'100%'}
+      width={theme.spacing(128)}
       gap={8}
       sx={{ ...sx, height: '100%' }}
     >

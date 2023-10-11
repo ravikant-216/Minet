@@ -19,3 +19,7 @@ export const addUser = (name: string, email: string, password: string) => {
     balance: 50000,
   })
 }
+
+export const checkUserByEmail = (email: string) => {
+  return apiClient.get(api_routes.GET_USER_BY_EMAIL(email))
+}

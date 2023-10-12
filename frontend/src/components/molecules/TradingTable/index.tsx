@@ -17,8 +17,8 @@ import {
 
 export interface TradeTableProps {
   data: TableData[]
-  watchlist: (id: number, checked: boolean) => void
-  cardClick: (id: number) => void
+  watchlist: (id: string, checked: boolean) => void
+  cardClick: (id: string) => void
 }
 
 const MainStack = styled(Stack)({
@@ -92,8 +92,8 @@ const TradeTabel = ({ data, cardClick, watchlist }: TradeTableProps) => {
             currencyName={item.name}
             currencyCode={item.label}
             checked={item.checked}
-            onStarClick={() => watchlist(item.id, item.checked)}
-            onCardClick={() => cardClick(item.id)}
+            onStarClick={() => watchlist(item.id as string, item.checked)}
+            onCardClick={() => cardClick(item.id as string)}
           />
         ))}
       </Stack>

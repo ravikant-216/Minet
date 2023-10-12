@@ -156,56 +156,6 @@
   ],
   "watchlist": [
     {
-      "id": 1,
-      "user": {
-        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
-        "name": "John Doe",
-        "email": "john@gmail.com",
-        "password": "JohnDoe@001",
-        "balance": 34000
-      },
-      "crypto": {
-        "id": "7590808b-044e-4140-b34b-9466cdc15cca",
-        "name": "Bitcoin",
-        "symbol": "BTC",
-        "icon": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
-        "price": 3285553.73,
-        "change": 1.06,
-        "marketCap": 60.1,
-        "volume": 2.9,
-        "circulatingSupply": 18.8
-      }
-    },
-    {
-      "id": 1,
-      "user": {
-        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
-        "name": "John Doe",
-        "email": "john@gmail.com",
-        "password": "JohnDoe@001",
-        "balance": 34000
-      },
-      "crypto": {
-        "id": "6f2b8e3f-9d9b-4f1d-9d8c-3e3f3e3e3e2e",
-        "name": "Dogecoin",
-        "symbol": "DOGE",
-        "icon": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
-        "price": 17.64,
-        "change": -6.96,
-        "marketCap": 2.3,
-        "volume": 3.4,
-        "circulatingSupply": 54.2
-      }
-    },
-    {
-      "id": 1,
-      "user": {
-        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
-        "name": "John Doe",
-        "email": "john@gmail.com",
-        "password": "JohnDoe@001",
-        "balance": 34000
-      },
       "crypto": {
         "id": "221264a8-6d9e-435e-be0e-e8d253865581",
         "name": "Ethereum",
@@ -216,7 +166,38 @@
         "marketCap": 25.4,
         "volume": 2.3,
         "circulatingSupply": 18.2
-      }
+      },
+      "user": {
+        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
+        "name": "John Doe",
+        "email": "john@gmail.com",
+        "password": "JohnDoe@001",
+        "balance": 34000,
+        "isNewUser": false
+      },
+      "id": "a779d85b-87f9-4a75-a145-07011771f998"
+    },
+    {
+      "crypto": {
+        "id": "4a63bcb7-c943-41b7-a5cc-25c4a66ee1db",
+        "name": "Tether",
+        "symbol": "USDT",
+        "icon": "https://assets.coingecko.com/coins/images/325/large/Tether.png?1668148663",
+        "price": 216678.1,
+        "change": -5.49,
+        "marketCap": 25.4,
+        "volume": 5.5,
+        "circulatingSupply": 17.8
+      },
+      "user": {
+        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
+        "name": "John Doe",
+        "email": "john@gmail.com",
+        "password": "JohnDoe@001",
+        "balance": 34000,
+        "isNewUser": false
+      },
+      "id": "20803fc7-416d-4097-837f-f5fb833d0f1e"
     }
   ],
   "wallet": [

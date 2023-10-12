@@ -1,4 +1,9 @@
-import { Transaction, TransactionData } from './types'
+import {
+  CryptoData,
+  Transaction,
+  TransactionData,
+  WatchlistData,
+} from './types'
 
 export const formatCurrency = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -38,4 +43,29 @@ export const formatTransactions = (transactionsData: TransactionData[]) => {
     tempCryptoQuantitySum,
     tempTransactionPriceSum,
   }
+}
+
+export const formatCryptoData = ({
+  cryptoData,
+  watchlistData,
+}: {
+  cryptoData: CryptoData[]
+  watchlistData: WatchlistData[]
+}) => {
+  return cryptoData.map((crypto) => {
+    const isOnWatchlist = watchlistData.some(
+      (watchlistItem) => watchlistItem.crypto.id === crypto.id
+    )
+
+    return {
+      change: crypto.change,
+      checked: isOnWatchlist,
+      id: crypto.id,
+      label: crypto.symbol,
+      marketCap: crypto.marketCap,
+      name: crypto.name,
+      price: crypto.price,
+      src: crypto.icon,
+    }
+  })
 }

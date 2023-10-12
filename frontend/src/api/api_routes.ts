@@ -1,4 +1,5 @@
 const GET_ALL_COINS = '/crypto'
+const WATCHLIST = '/watchlist'
 const GET_USER_BY_EMAIL_AND_PASSWORD = (email: string, password: string) =>
   `/users?email=${email}&password=${password}`
 const ADD_USER = '/users'
@@ -15,6 +16,11 @@ const GET_ALL_TRANSACTION_BY_USERID = (userId: string) =>
 
 const GET_USER_BY_ID = (id: string) => `/users/${id}`
 const GET_CRYPTO_BY_ID = (id: string) => `/crypto/${id}`
+const GET_WATCHLISTDATA_BY_USER_ID = (userId: string) =>
+  `/watchlist?user.id=${userId}`
+
+const GET_WATCHLIST_BY_ID = (watchListId: string) => `/watchlist/${watchListId}`
+
 export default {
   GET_ALL_COINS,
   GET_USER_BY_EMAIL_AND_PASSWORD,
@@ -27,4 +33,7 @@ export default {
   GET_ALL_TRANSACTIONS_BY_CRYPTO_ID,
   GET_WATCHLIST_BY_USER_ID,
   GET_ALL_TRANSACTION_BY_USERID,
+  GET_WATCHLISTDATA_BY_USER_ID,
+  GET_WATCHLIST_BY_ID,
+  WATCHLIST,
 }

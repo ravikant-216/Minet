@@ -1,8 +1,6 @@
 import './App.css'
-import { user } from './__mocks__'
-
-import DashBoardPage from './pages/DashBoardPage'
+import TradePage from './pages/TradePage'
 
 export const App = () => {
-  return <DashBoardPage user={user} />
+  return <TradePage />
 }

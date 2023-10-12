@@ -12,15 +12,15 @@ import {
 import searchIcon from '@Assets/icons/search.svg'
 import crossIcon from '@Assets/icons/transaction_state.svg'
 import dropdown from '@Assets/icons/chevron-down.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TableData } from '@/utils/types'
 import TradeTabel from '@/components/molecules/TradingTable'
 
 interface SearchTradeTableProps {
-  onCardClick: (id: number) => void
+  onCardClick: (id: string) => void
   tradeTableData: TableData[]
   watchListData: TableData[]
-  onStarIconClick: (id: number, checked: boolean) => void
+  onStarIconClick: (id: string, checked: boolean) => void
 }
 
 const MainContainer = styled(Stack)({
@@ -75,6 +75,10 @@ const SearchTradeTable = ({
   const [watchList, setWatchList] = useState<TableData[]>(watchListData)
   const displayedData = tabValue === TABS[0].value ? assets : watchList
 
+  useEffect(() => {
+    setAssets(tradeTableData)
+    setWatchList(watchListData)
+  }, [tradeTableData, watchListData])
   const onClearSearch = () => {
     if (searchText) {
       setSearchText('')
@@ -127,7 +131,7 @@ const SearchTradeTable = ({
   }
 
   return (
-    <MainContainer>
+    <MainContainer data-testid="search-trade-table">
       <Container>
         <Tabs
           tabs={TABS}

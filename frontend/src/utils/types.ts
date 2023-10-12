@@ -63,9 +63,9 @@ export interface Transaction {
 }
 
 export interface TradeData {
-  change: string
+  change: number
   checked: boolean
-  id: number
+  id: string
   label: string
   marketCap: number
   name: string
@@ -139,4 +139,10 @@ export interface CryptoData {
   marketCap: number
   volume: number
   circulatingSupply: number
+}
+
+export interface WatchlistData {
+  id: string
+  user: User
+  crypto: CryptoData
 }

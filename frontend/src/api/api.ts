@@ -1,3 +1,4 @@
+import { WatchlistData } from '@/utils/types'
 import api_routes from './api_routes'
 import apiClient from './axios'
 
@@ -50,4 +51,16 @@ export const getCryptoById = (id: string) => {
 
 export const getAllTransactionsByCryptoId = (cryptoId: string) => {
   return apiClient.get(api_routes.GET_ALL_TRANSACTIONS_BY_CRYPTO_ID(cryptoId))
+}
+
+export const getWatchlistDataByUserId = (userId: string) => {
+  return apiClient.get(api_routes.GET_WATCHLISTDATA_BY_USER_ID(userId))
+}
+
+export const deleteWatchlistById = (watchListId: string) => {
+  return apiClient.delete(api_routes.GET_WATCHLIST_BY_ID(watchListId))
+}
+
+export const addWatchlist = (watchListData: Partial<WatchlistData>) => {
+  return apiClient.post(api_routes.WATCHLIST, watchListData)
 }

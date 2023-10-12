@@ -16,7 +16,7 @@ import CurrencyDetailWalletCard from '@/components/molecules/CurrencyDetailWalle
 import Dropdown from '@/components/molecules/Dropdown'
 import { ONE_M, TOTAL_BALANCE } from '@/strings/constant'
 import { Transaction } from '@/utils/types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface CurrencyDetailWalletProps extends StackProps {
   transactions: Transaction[]
@@ -30,10 +30,13 @@ const CurrencyDetailWallet = ({
   totalBalance,
   ...props
 }: CurrencyDetailWalletProps) => {
-  const [transactions, setTransactions] =
-    useState<Transaction[]>(initialTransaction)
+  const [transactions, setTransactions] = useState<Transaction[]>([])
 
   const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    if (initialTransaction) setTransactions(initialTransaction)
+  }, [initialTransaction])
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
@@ -118,6 +121,7 @@ const CurrencyDetailWallet = ({
         border={`1px solid ${theme.palette.gamma.GREY_100}`}
         borderRadius={1}
         overflow="auto"
+        sx={{ backgroundColor: theme.palette.gamma.GREY_WHITE }}
       >
         <Stack gap={4}>
           {transactions.map((transaction, index) => {

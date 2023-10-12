@@ -647,6 +647,7 @@ export const TRADE_DATA = [
   },
 ]
 
+export const RECEIVED = 'Received '
 export const IMAGE = 'Image'
 export const TOTAL_BALANCE = 'Total balance'
 export const ONE_M = '1M'
@@ -664,6 +665,9 @@ export const MY_WALLET = 'My Wallet'
 export const RECENT_TRANSACTION = 'Recent transactions'
 export const VIEW_ALL = 'View All'
 export const MY_PORTFOLIO = 'My portfolio'
+export const WALLET = 'Wallet'
+export const CASH_DEPOSIT = 'CASH DEPOSIT'
+export const WITHDRAWAL = 'WITHDRAWAL'
 export const BITCOIN_DATA = {
   id: '7590808b-044e-4140-b34b-9466cdc15cca',
   name: 'Bitcoin',

@@ -53,6 +53,9 @@ export const getAllTransactionsByCryptoId = (cryptoId: string) => {
   return apiClient.get(api_routes.GET_ALL_TRANSACTIONS_BY_CRYPTO_ID(cryptoId))
 }
 
+export const getAllTransactionsByUserId = (id: string) => {
+  return apiClient.get(api_routes.GET_ALL_TRANSACTION_BY_USERID(id))
+}
 export const getWatchlistDataByUserId = (userId: string) => {
   return apiClient.get(api_routes.GET_WATCHLISTDATA_BY_USER_ID(userId))
 }

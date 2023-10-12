@@ -34,6 +34,7 @@ import NotificationIcon from '@Assets/icons/notification.svg'
 import polkadot from '@Assets/icons/polkadot.svg'
 import tether1 from '@Assets/icons/tether1.svg'
 import xrp1 from '@Assets/icons/xrp1.svg'
+import { user } from '@/__mocks__'
 
 export const total = 'Total'
 export const minetFee = 'transaction fee'
@@ -680,3 +681,25 @@ export const formatter = new Intl.NumberFormat('en-US', {
 })
 export const CLICK_ONCURRENCY =
   'Click on currency name below to display it on the graph'
+
+export const TRANSACTION = {
+  id: '6f2b8e3f-9d3b-4f1d-9d8c-3e3e3e3e3e2e',
+  date: '2023-07-29T02:35:42',
+  status: 'success',
+  type: 'Sold',
+  price: 3234,
+  quantity: 0.032343,
+  description: 'From Teja Minnikanti',
+  user: user,
+  crypto: {
+    id: '6f2b8e3f-9d9b-4f1d-9d8c-3e3f3e3e3e2e',
+    name: 'Dogecoin',
+    symbol: 'DOGE',
+    icon: '[Dogecoin Icon]',
+    price: 17.64,
+    change: -6.96,
+    marketCap: 2.3,
+    volume: 3.4,
+    circulatingSupply: 54.2,
+  },
+}

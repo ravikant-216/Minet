@@ -49,7 +49,7 @@ const PaymentSuccessCard = ({
   onClick,
 }: PaymentSuccessCardProps) => {
   return (
-    <Container>
+    <Container data-testid="payment-success-card">
       <Stack alignItems={'center'} gap={theme.spacing(6)}>
         <Image
           src={success}

@@ -29,6 +29,22 @@ export const addUser = (name: string, email: string, password: string) => {
   })
 }
 
+export const addAuthUser = async (
+  name: string,
+  email: string,
+  password: string
+) => {
+  const response = await checkUserByEmail(email)
+  if (response.data.length == 0) {
+    const newUserResponse = addUser(name, email, password)
+    localStorage.setItem('user', JSON.stringify(newUserResponse))
+    return newUserResponse
+  } else {
+    localStorage.setItem('user', JSON.stringify(response.data))
+    return response
+  }
+}
+
 export const updatePassword = (newPassword: string, userId: string) => {
   return apiClient.patch(api_routes.UPDATE_PASSWORD(userId), {
     password: newPassword,

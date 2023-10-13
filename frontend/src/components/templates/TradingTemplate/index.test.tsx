@@ -1,6 +1,15 @@
 import { render, fireEvent } from '@testing-library/react'
 import TradingTemplate from '.'
+import { useAuth0 } from '@auth0/auth0-react'
 
+jest.mock('@auth0/auth0-react', () => ({
+  useAuth0: jest.fn(),
+}))
+
+const logoutMock = jest.fn()
+;(useAuth0 as jest.Mock).mockReturnValue({
+  logout: logoutMock,
+})
 describe('TradingTemplate', () => {
   const dashboardHeading = 'Dashboard Heading'
   const isButton = true
@@ -30,5 +39,6 @@ describe('TradingTemplate', () => {
     fireEvent.click(getByAltText('logout'))
     fireEvent.click(getByAltText('notification'))
     expect(getByText('Body')).toBeInTheDocument()
+    expect(logoutMock).toHaveBeenCalledTimes(1)
   })
 })

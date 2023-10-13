@@ -2,6 +2,16 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import DashboardHeader from '.'
 import avatar from '@Assets/icons/avatar.svg'
+import { useAuth0 } from '@auth0/auth0-react'
+
+jest.mock('@auth0/auth0-react', () => ({
+  useAuth0: jest.fn(),
+}))
+
+const logoutMock = jest.fn()
+;(useAuth0 as jest.Mock).mockReturnValue({
+  logout: logoutMock,
+})
 
 describe('DashboardHeader Component', () => {
   it('renders without errors', () => {
@@ -62,5 +72,6 @@ describe('DashboardHeader Component', () => {
 
     expect(getByAltText('avatar')).toBeInTheDocument()
     expect(getByAltText('Dropdown Icon')).toBeInTheDocument()
+    fireEvent.click(getByAltText('Dropdown Icon'))
   })
 })

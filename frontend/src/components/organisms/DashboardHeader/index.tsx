@@ -5,6 +5,7 @@ import theme from '@/theme'
 import { Box, BoxProps, Stack, Typography, styled } from '@mui/material'
 import ExpandMoreIcon from '@Assets/icons/chevron-down.svg'
 import Image from '@/components/atoms/Image'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const Container = styled(Box)({
   display: 'flex',
@@ -28,6 +29,7 @@ const DashboardHeader = ({
   onSell,
   ...props
 }: DashboardHeaderProps) => {
+  const { logout } = useAuth0()
   return (
     <Container {...props}>
       <Typography color={theme.palette.text.highEmphasis} variant="h6">
@@ -83,6 +85,9 @@ const DashboardHeader = ({
             imageProps={{
               width: theme.spacing(8),
               height: theme.spacing(8),
+            }}
+            onClick={() => {
+              logout()
             }}
           />
         </Stack>

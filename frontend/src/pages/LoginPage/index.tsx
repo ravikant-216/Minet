@@ -4,8 +4,10 @@ import LoginImage from '@Assets/images/Login.svg'
 import LogInForm from '@/components/organisms/LogInForm'
 import { Box } from '@mui/material'
 import { checkUser } from '@/api/api'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const LoginPage = () => {
+  const { loginWithRedirect } = useAuth0()
   const handleSignIn = async (email: string, password: string) => {
     try {
       const response = await checkUser(email, password)
@@ -17,7 +19,11 @@ const LoginPage = () => {
     }
   }
   const handleGoogleLogin = async () => {
-    // navigate to Home page
+    loginWithRedirect({
+      authorizationParams: {
+        connection: 'google-oauth2',
+      },
+    })
   }
   return (
     <Box data-testId="login-page">

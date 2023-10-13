@@ -13,6 +13,7 @@ import {
 } from '@/strings/constant'
 import avatar from '@Assets/icons/avatar.svg'
 import theme from '@/theme'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export interface TradingTemplateProps {
   children: ReactNode
@@ -25,6 +26,7 @@ const TradingTemplate: React.FC<TradingTemplateProps> = ({
   dashboardHeading,
   isButton,
 }) => {
+  const { logout } = useAuth0()
   const handleNavigation = (value: string) => {
     switch (value) {
       case DASHBOARD1:
@@ -44,8 +46,7 @@ const TradingTemplate: React.FC<TradingTemplateProps> = ({
         // Will implement later at the time of page integration
         break
       case LOGOUT:
-        // Handle logout
-        // Will implement later at the time of page integration
+        logout()
         break
       default:
         // Navigate to home page

@@ -5,7 +5,7 @@ interface ImageProps {
   imageProps?: React.ImgHTMLAttributes<HTMLImageElement>
   src: string
   alt: string
-  onClick?: React.MouseEventHandler<HTMLElement>
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 
 const Image = ({ src, alt, boxProps, imageProps, onClick }: ImageProps) => {

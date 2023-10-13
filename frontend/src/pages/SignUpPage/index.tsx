@@ -4,8 +4,10 @@ import SignUpImage from '@Assets/images/SignUp.svg'
 import SignUpForm from '@/components/organisms/SignUpForm'
 import { Box } from '@mui/material'
 import { addUser } from '@/api/api'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const SignUpPage = () => {
+  const { loginWithRedirect } = useAuth0()
   const handleSignIn = async (
     name: string,
     email: string,
@@ -19,7 +21,11 @@ const SignUpPage = () => {
     }
   }
   const handleGoogleLogin = async () => {
-    // navigate to Home page
+    loginWithRedirect({
+      authorizationParams: {
+        connection: 'google-oauth2',
+      },
+    })
   }
   return (
     <Box data-testId="signup-page">

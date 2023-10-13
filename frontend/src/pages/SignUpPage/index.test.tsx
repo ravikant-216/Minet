@@ -12,6 +12,12 @@ jest.mock('@/api/api', () => ({
   addUser: jest.fn(),
 }))
 
+jest.mock('@auth0/auth0-react', () => ({
+  useAuth0: () => ({
+    loginWithRedirect: jest.fn(),
+  }),
+}))
+
 describe('SignUpPage component', () => {
   test('handles successful sign-up', async () => {
     const mockResponse = {

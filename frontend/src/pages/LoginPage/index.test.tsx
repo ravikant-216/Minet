@@ -8,6 +8,12 @@ jest.mock('@/api/api', () => ({
   checkUser: jest.fn(),
 }))
 
+jest.mock('@auth0/auth0-react', () => ({
+  useAuth0: () => ({
+    loginWithRedirect: jest.fn(),
+  }),
+}))
+
 describe('LoginPage component', () => {
   test('handles successful sign-in', async () => {
     const mockResponse = [
@@ -23,7 +29,6 @@ describe('LoginPage component', () => {
     ;(checkUser as jest.Mock).mockResolvedValue({ data: mockResponse })
 
     render(<LoginPage />)
-
     const emailInput = screen.getByPlaceholderText(EMAIL_PLACEHOLDER)
     const passwordInput = screen.getByPlaceholderText(PASSWORD_ENTER)
     const signInButton = screen.getByRole('button', { name: 'Sign in' })

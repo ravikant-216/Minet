@@ -1,10 +1,11 @@
 import DashboardHeader from '@/components/organisms/DashboardHeader'
 import NavigationBar from '@/components/organisms/NavigationBar'
-import { NavigatonItems } from '@/strings/constant'
+import { DASHBOARD1, LOGOUT, NavigatonItems } from '@/strings/constant'
 import { Stack } from '@mui/material'
 import avatar from '@Assets/icons/avatar.svg'
 import Footer from '@/components/molecules/Footer'
 import theme from '@/theme'
+import { useAuth0 } from '@auth0/auth0-react'
 
 interface DashBoardTemplateProps {
   children: React.ReactNode
@@ -17,9 +18,22 @@ const DashBoardTemplate = ({
   title,
   isButton = true,
 }: DashBoardTemplateProps) => {
+  const { logout } = useAuth0()
+
   const handleOnClick = (value: string) => {
-    //*Will be doing during integration
-    console.log(value)
+    switch (value) {
+      case DASHBOARD1:
+        // Navigate to dashboard page
+        // Will implement later at the time of page integration
+        break
+      case LOGOUT:
+        logout()
+        break
+      default:
+        // Navigate to home page
+        // Will implement later at the time of page integration
+        break
+    }
   }
   return (
     <Stack

@@ -5,6 +5,7 @@ import {
   RecentTransactionType,
   User,
   WatchListItemType,
+  Wallet,
 } from '@/utils/types'
 import bitcoin from '@Assets/icons/bitcoin.svg'
 import ethereum from '@Assets/icons/ethereum.svg'
@@ -192,3 +193,26 @@ export const transactions: Transaction[] = [
     transactionType: 'sold',
   },
 ]
+
+export const walletMock: Wallet = {
+  id: '7590808b-048e-4140-b34b-9466cdc15cca',
+  user: {
+    id: 'b62177be-aca1-45d3-ab0e-60a9f4c79a5e',
+    name: 'John Doe',
+    email: 'john@gmail.com',
+    password: 'JohnDoe@001',
+    balance: 34000,
+  },
+  crypto: {
+    id: 'dd9f0c6a-72ec-4d6e-8f05-84555cff3102',
+    name: 'USD Coin',
+    symbol: 'USDC',
+    icon: 'https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389',
+    price: 74.31,
+    change: 0.11,
+    marketCap: 4.6,
+    volume: 2.1,
+    circulatingSupply: 12.8,
+  },
+  totalBalance: 24000,
+}

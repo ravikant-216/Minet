@@ -1,5 +1,4 @@
-import { Divider, styled, Box, Typography } from '@mui/material'
-import { Stack } from '@mui/system'
+import { Divider, styled, Box, Typography, Stack } from '@mui/material'
 import theme from '@/theme'
 import ButtonComponent from '@Components/atoms/Button'
 import TransactionStepper from '@Components/molecules/VerticalStepper'

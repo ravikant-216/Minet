@@ -13,7 +13,7 @@ interface SelectDeliveryProps {
   isOpen: boolean
   coinType: string
   transactionFees: string
-  onDropDownClick: () => void
+  onDropDownClick?: () => void
 }
 
 const Container = styled(Stack)({

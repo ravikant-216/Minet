@@ -146,3 +146,10 @@ export interface WatchlistData {
   user: User
   crypto: CryptoData
 }
+
+export interface Wallet {
+  id: string
+  user: User
+  crypto: CryptoData
+  totalBalance: number
+}

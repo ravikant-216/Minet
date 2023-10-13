@@ -56,7 +56,6 @@ export const formatCryptoData = ({
     const isOnWatchlist = watchlistData.some(
       (watchlistItem) => watchlistItem.crypto.id === crypto.id
     )
-
     return {
       change: crypto.change,
       checked: isOnWatchlist,

@@ -29,7 +29,14 @@ const MyPortfolioCard = ({ ...props }: MyPortfolioCardProps) => {
         gap={1}
         flexDirection={'column'}
       >
-        <Image src={props.icon} alt={'icon'} />
+        <Image
+          src={props.icon}
+          alt={'icon'}
+          imageProps={{
+            height: theme.spacing(14),
+            width: theme.spacing(14),
+          }}
+        />
         <Typography variant="body1" color={theme.palette.text.highEmphasis}>
           {props.label}
         </Typography>

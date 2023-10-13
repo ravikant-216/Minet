@@ -152,6 +152,34 @@
         "volume": 3.4,
         "circulatingSupply": 54.2
       }
+    },
+    {
+      "date": "Thu Oct 12 2023 17:14:16 GMT+0530 (India Standard Time)",
+      "type": "Purchased",
+      "user": {
+        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
+        "name": "John Doe",
+        "email": "john@gmail.com",
+        "password": "JohnDoe@001",
+        "balance": 34000,
+        "isNewUser": false
+      },
+      "price": 13000,
+      "crypto": {
+        "id": "7590808b-044e-4140-b34b-9466cdc15cca",
+        "name": "Bitcoin",
+        "symbol": "BTC",
+        "icon": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
+        "price": 3285553.73,
+        "change": 1.06,
+        "marketCap": 60.1,
+        "volume": 2.9,
+        "circulatingSupply": 18.8
+      },
+      "status": "success",
+      "quantity": 0.0036523523844487547,
+      "description": "From Badgley",
+      "id": "bc3c5081-5072-441e-a9f4-dd25793ed4bb"
     }
   ],
   "watchlist": [
@@ -211,6 +239,28 @@
         "balance": 34000
       },
       "crypto": {
+        "id": "dd9f0c6a-72ec-4d6e-8f05-84555cff3102",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "icon": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389",
+        "price": 74.31,
+        "change": 0.11,
+        "marketCap": 4.6,
+        "volume": 2.1,
+        "circulatingSupply": 12.8
+      },
+      "totalBalance": 24000
+    },
+    {
+      "user": {
+        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
+        "name": "John Doe",
+        "email": "john@gmail.com",
+        "password": "JohnDoe@001",
+        "balance": 34000,
+        "isNewUser": false
+      },
+      "crypto": {
         "id": "7590808b-044e-4140-b34b-9466cdc15cca",
         "name": "Bitcoin",
         "symbol": "BTC",
@@ -221,7 +271,8 @@
         "volume": 2.9,
         "circulatingSupply": 18.8
       },
-      "totalBalance": 0.47344
+      "totalBalance": 0.0073047047688975094,
+      "id": "7bb76a14-5687-47e3-972b-e80ceddd91d8"
     }
   ]
 }

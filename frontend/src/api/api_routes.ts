@@ -32,6 +32,8 @@ const GET_WATCHLIST_BY_ID = (watchListId: string) => `/watchlist/${watchListId}`
 const GET_WALLET_BY_COIN_ID = (coinId: string) =>
   `${WALLET}?crypto.id=${coinId}`
 
+const GET_WALLET_BY_USER_ID = (userId: string) => `${WALLET}?user.id=${userId}`
+
 export default {
   GET_ALL_COINS,
   GET_USER_BY_EMAIL_AND_PASSWORD,
@@ -52,4 +54,5 @@ export default {
   GET_WALLET_BY_ID,
   GET_USD_WALLET_BY_USER_ID,
   GET_WALLET_BY_COIN_ID,
+  GET_WALLET_BY_USER_ID,
 }

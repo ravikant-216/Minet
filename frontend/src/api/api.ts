@@ -88,6 +88,10 @@ export const getUsbWalletDetailsByUserId = (userId: string) => {
   return apiClient.get(api_routes.GET_USD_WALLET_BY_USER_ID(userId))
 }
 
+export const updateUsdWallet = (userId: string, data: Partial<Wallet>) => {
+  return apiClient.post(api_routes.GET_USD_WALLET_BY_USER_ID(userId), data)
+}
+
 export const getWalletByCoinId = (coinId: string) => {
   return apiClient.get(api_routes.GET_WALLET_BY_COIN_ID(coinId))
 }
@@ -102,4 +106,8 @@ export const createTransaction = (data: Omit<TransactionData, 'id'>) => {
 
 export const updateWallet = (walletId: string, data: Partial<Wallet>) => {
   return apiClient.patch(api_routes.GET_WALLET_BY_ID(walletId), data)
+}
+
+export const getWalletByUserId = (userId: string) => {
+  return apiClient.get(api_routes.GET_WALLET_BY_USER_ID(userId))
 }

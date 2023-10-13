@@ -69,6 +69,7 @@ const AccountDetailCard = ({
             onChange={onSliderChange}
             orientation="vertical"
             valueLabelDisplay="auto"
+            step={0.000001}
             sx={{
               height: theme.spacing(22),
               width: theme.spacing(0.5),

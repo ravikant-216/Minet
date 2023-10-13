@@ -2,6 +2,7 @@ import {
   createTransaction,
   createWallet,
   getAllTransactionByUserId,
+  getUsbWalletDetailsByUserId,
   getWalletByCoinId,
   updateWallet,
 } from '@/api/api'
@@ -33,17 +34,38 @@ const fetchAllTransactionByUserId = async (
 const createNewTransaction = async (data: Omit<TransactionData, 'id'>) => {
   try {
     const wallet = await getWalletByCoinId(data.crypto.id)
+    const usdWalletRequest = await getUsbWalletDetailsByUserId(data.user.id)
+    const usdWallet = usdWalletRequest.data[0] as Wallet
     const resData = wallet.data as Wallet[]
+    let currentWalllet: Wallet | undefined = undefined
     if (resData.length === 0) {
-      await createWallet({
+      const response = await createWallet({
         user: data.user,
         crypto: data.crypto,
         totalBalance: data.quantity,
       })
+      currentWalllet = response.data as Wallet
     } else {
-      await updateWallet(resData[0].id, {
-        totalBalance: resData[0].totalBalance + data.quantity,
-      })
+      currentWalllet = resData[0]
+    }
+    if (data.type === 'Purchased') {
+      await Promise.all([
+        updateWallet(currentWalllet.id, {
+          totalBalance: currentWalllet.totalBalance + data.quantity,
+        }),
+        updateWallet(usdWallet.id, {
+          totalBalance: usdWallet.totalBalance - data.price,
+        }),
+      ])
+    } else {
+      await Promise.all([
+        updateWallet(currentWalllet.id, {
+          totalBalance: currentWalllet.totalBalance - data.quantity,
+        }),
+        updateWallet(usdWallet.id, {
+          totalBalance: usdWallet.totalBalance + data.price,
+        }),
+      ])
     }
     const transaction = await createTransaction(data)
     return transaction.data as TransactionData

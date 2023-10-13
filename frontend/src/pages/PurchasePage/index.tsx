@@ -6,7 +6,7 @@ import CryptoSelectCard from '@/components/organisms/CryptoSelectCard'
 import PaymentCardComponent from '@/components/organisms/PaymentSummaryCard'
 import DashBoardTemplate from '@/components/templates/DashBoardTemplate'
 import coinService from '@/service/coin.service'
-import { PaymentOptions } from '@/strings/constant'
+import { PaymentOptions, TRANSACTION_FREE_AMOUNT } from '@/strings/constant'
 import { Stack, Typography } from '@mui/material'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { CryptoDetailType, User, Wallet } from '@/utils/types'
@@ -63,18 +63,20 @@ const PurchagePage = ({ user }: PurchaseScreenProps) => {
     setSliderValue(value)
   }
 
-  const handleCreateNewTransaction = async (totalAmount: number) => {
-    await transactionService.createNewTransaction({
-      date: new Date().toString(),
-      type: 'Purchased',
-      user: user,
-      price: totalAmount,
-      crypto: selectCoin as CryptoDetailType,
-      status: 'success',
-      quantity,
-      description: 'From Badgley',
-    })
-    //After new transaction we will redirected to succressful page
+  const handleCreateNewTransaction = async () => {
+    if (sliderValue > 0) {
+      await transactionService.createNewTransaction({
+        date: new Date().toString(),
+        type: 'Purchased',
+        user: user,
+        price: sliderValue,
+        crypto: selectCoin as CryptoDetailType,
+        status: 'success',
+        quantity,
+        description: 'From Badgley',
+      })
+      //After new transaction we will redirected to succressful page
+    }
   }
 
   return (
@@ -96,9 +98,11 @@ const PurchagePage = ({ user }: PurchaseScreenProps) => {
           <AccountDetailCard
             isBuy={true}
             userBalance={`${formatCurrency.format(
-              usdWallet?.totalBalance as number
+              (usdWallet?.totalBalance as number) - TRANSACTION_FREE_AMOUNT
             )}`}
-            sliderMaxValue={usdWallet?.totalBalance ?? 34000}
+            sliderMaxValue={
+              (usdWallet?.totalBalance as number) - TRANSACTION_FREE_AMOUNT
+            }
             sliderValue={`1${
               selectCoin?.symbol as string
             } = ${formatCurrency.format(selectCoin?.price as number)}`}

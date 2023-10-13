@@ -98,90 +98,7 @@
       "circulatingSupply": 54.2
     }
   ],
-  "transactions": [
-    {
-      "id": "6f2b8e3f-9d3b-4f1d-9d8c-3e3e3e3e3e2e",
-      "date": "2023-07-29T02:35:42",
-      "status": "success",
-      "type": "Sold",
-      "price": 3234,
-      "quantity": 0.032343,
-      "description": "From Teja Minnikanti",
-      "user": {
-        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
-        "name": "John Doe",
-        "email": "john@gmail.com",
-        "password": "JohnDoe@001",
-        "balance": 34000
-      },
-      "crypto": {
-        "id": "6f2b8e3f-9d9b-4f1d-9d8c-3e3f3e3e3e2e",
-        "name": "Dogecoin",
-        "symbol": "DOGE",
-        "icon": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
-        "price": 17.64,
-        "change": -6.96,
-        "marketCap": 2.3,
-        "volume": 3.4,
-        "circulatingSupply": 54.2
-      }
-    },
-    {
-      "id": "6f2b8e3f-9d3b-4f1d-9d8c-3e3e3e3e3e2e",
-      "date": "2023-07-29T02:35:42",
-      "status": "success",
-      "type": "Sold",
-      "price": 3234,
-      "quantity": 0.032343,
-      "description": "From Teja Minnikanti",
-      "user": {
-        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
-        "name": "John Doe",
-        "email": "john@gmail.com",
-        "password": "JohnDoe@001",
-        "balance": 34000
-      },
-      "crypto": {
-        "id": "6f2b8e3f-9d9b-4f1d-9d8c-3e3f3e3e3e2e",
-        "name": "Dogecoin",
-        "symbol": "DOGE",
-        "icon": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
-        "price": 17.64,
-        "change": -6.96,
-        "marketCap": 2.3,
-        "volume": 3.4,
-        "circulatingSupply": 54.2
-      }
-    },
-    {
-      "date": "Thu Oct 12 2023 17:14:16 GMT+0530 (India Standard Time)",
-      "type": "Purchased",
-      "user": {
-        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
-        "name": "John Doe",
-        "email": "john@gmail.com",
-        "password": "JohnDoe@001",
-        "balance": 34000,
-        "isNewUser": false
-      },
-      "price": 13000,
-      "crypto": {
-        "id": "7590808b-044e-4140-b34b-9466cdc15cca",
-        "name": "Bitcoin",
-        "symbol": "BTC",
-        "icon": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
-        "price": 3285553.73,
-        "change": 1.06,
-        "marketCap": 60.1,
-        "volume": 2.9,
-        "circulatingSupply": 18.8
-      },
-      "status": "success",
-      "quantity": 0.0036523523844487547,
-      "description": "From Badgley",
-      "id": "bc3c5081-5072-441e-a9f4-dd25793ed4bb"
-    }
-  ],
+  "transactions": [],
   "watchlist": [
     {
       "crypto": {
@@ -249,30 +166,7 @@
         "volume": 2.1,
         "circulatingSupply": 12.8
       },
-      "totalBalance": 24000
-    },
-    {
-      "user": {
-        "id": "b62177be-aca1-45d3-ab0e-60a9f4c79a5e",
-        "name": "John Doe",
-        "email": "john@gmail.com",
-        "password": "JohnDoe@001",
-        "balance": 34000,
-        "isNewUser": false
-      },
-      "crypto": {
-        "id": "7590808b-044e-4140-b34b-9466cdc15cca",
-        "name": "Bitcoin",
-        "symbol": "BTC",
-        "icon": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
-        "price": 3285553.73,
-        "change": 1.06,
-        "marketCap": 60.1,
-        "volume": 2.9,
-        "circulatingSupply": 18.8
-      },
-      "totalBalance": 0.0073047047688975094,
-      "id": "7bb76a14-5687-47e3-972b-e80ceddd91d8"
+      "totalBalance": 50000
     }
   ]
 }

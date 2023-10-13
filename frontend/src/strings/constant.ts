@@ -707,3 +707,6 @@ export const TRANSACTION = {
     circulatingSupply: 54.2,
   },
 }
+
+export const TRANSACTION_FREE_AMOUNT = 1000
+export const SELL_CRYPTO_CAMEL = 'Sell Crypto'

@@ -14,7 +14,7 @@ interface BalanceCardProps extends BoxProps {
   name: string
   detail: string
   detailVariant: TypographyVariant | 'caption2'
-  detailColor: string
+  detailColor?: string
 }
 
 const BalanceCard = ({
@@ -46,7 +46,14 @@ const BalanceCard = ({
         border={`1px solid ${theme.palette.gamma.GREY_100}`}
       >
         <Stack direction="row" alignItems="center" gap={3}>
-          <Image src={logo} alt="BitCoin" />
+          <Image
+            src={logo}
+            alt="BitCoin"
+            imageProps={{
+              height: theme.spacing(8),
+              width: theme.spacing(8),
+            }}
+          />
           <Typography variant="caption1">{name}</Typography>
         </Stack>
         <Typography variant={detailVariant} color={detailColor}>

@@ -8,8 +8,8 @@ import { Stack, Typography, styled } from '@mui/material'
 import DollarIcon from '@Assets/icons/dollarBlue.svg'
 import ButtonComponent from '@/components/atoms/Button'
 import DashBoardTemplate from '@/components/templates/DashBoardTemplate'
-import { getAllTransactionByUserId } from '@/api/api'
-import { Transaction, TransactionData } from '@/utils/types'
+import transactionService from '@/service/recentTransaction.service'
+import { Transaction } from '@/utils/types'
 
 const StyleStack = styled(Stack)({
   border: `1px solid ${theme.palette.gamma.GREY_100}`,
@@ -37,9 +37,8 @@ const CashWalletScreen = ({ id }: { id: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAllTransactionByUserId(id)
-        const data = response.data as TransactionData[]
-        setTransaction(data as Transaction[])
+        const response = await transactionService.fetchAllTransactions(id)
+        setTransaction(response as Transaction[])
       } catch (err) {
         console.log(err)
       }

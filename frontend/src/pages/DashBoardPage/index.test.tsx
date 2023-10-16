@@ -14,6 +14,7 @@ import { ThemeProvider } from '@mui/material'
 import theme from '@/theme'
 import { act } from 'react-dom/test-utils'
 import { CLICK_ONCURRENCY } from '@/strings/constant'
+import { BrowserRouter } from 'react-router-dom'
 
 jest.mock('react-apexcharts', () => ({
   __esModule: true,
@@ -46,7 +47,9 @@ describe('DashBoardPage', () => {
     act(() => {
       render(
         <ThemeProvider theme={theme}>
-          <DashBoardPage user={user} />
+          <BrowserRouter>
+            <DashBoardPage user={user} />
+          </BrowserRouter>
         </ThemeProvider>
       )
     })
@@ -64,7 +67,9 @@ describe('DashBoardPage', () => {
     act(() => {
       render(
         <ThemeProvider theme={theme}>
-          <DashBoardPage user={{ ...user, isNewUser: true }} />
+          <BrowserRouter>
+            <DashBoardPage user={{ ...user, isNewUser: true }} />
+          </BrowserRouter>
         </ThemeProvider>
       )
     })
@@ -99,7 +104,9 @@ describe('DashBoardPage', () => {
     act(() => {
       render(
         <ThemeProvider theme={theme}>
-          <DashBoardPage user={{ ...user, isNewUser: true }} />
+          <BrowserRouter>
+            <DashBoardPage user={{ ...user, isNewUser: true }} />
+          </BrowserRouter>
         </ThemeProvider>
       )
     })

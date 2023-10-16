@@ -5,16 +5,35 @@ import LoginImage from '@Assets/images/Login.svg'
 import LoginForm from '@Components/organisms/LogInForm'
 import AuthTemplate from '.'
 import { SIGN_UP } from '@/strings/constant'
+import * as Router from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
+
+const navigateMock = jest.fn()
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+}))
+jest.spyOn(Router, 'useNavigate').mockImplementation(() => navigateMock)
 
 describe('Auth Template', () => {
   const iconClick = jest.fn()
   const signInClick = jest.fn()
+  const signupClick = jest.fn()
+  const forgotPasswordClick = jest.fn()
   it('render login Page with Auth Template', () => {
     render(
-      <AuthTemplate
-        image={LoginImage}
-        data={<LoginForm onIconClick={iconClick} onSignIn={signInClick} />}
-      />
+      <BrowserRouter>
+        <AuthTemplate
+          image={LoginImage}
+          data={
+            <LoginForm
+              onSignup={signupClick}
+              onForgotPassword={forgotPasswordClick}
+              onIconClick={iconClick}
+              onSignIn={signInClick}
+            />
+          }
+        />
+      </BrowserRouter>
     )
     expect(screen.getByAltText('Image')).toBeInTheDocument()
     expect(screen.getByTestId('log-in')).toBeInTheDocument()

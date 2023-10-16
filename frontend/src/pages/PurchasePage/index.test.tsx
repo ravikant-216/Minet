@@ -5,9 +5,16 @@ import coinService from '@/service/coin.service'
 import walletService from '@/service/wallet.service'
 import transactionService from '@/service/transaction.service'
 import { BUY_NOW } from '@/strings/constant'
+import { BrowserRouter } from 'react-router-dom'
+import * as Router from 'react-router'
 
 describe('Purchase Page', () => {
+  const navigateMock = jest.fn()
   beforeEach(() => {
+    jest.mock('react-router-dom', () => ({
+      ...jest.requireActual('react-router-dom'),
+    }))
+    jest.spyOn(Router, 'useNavigate').mockImplementation(() => navigateMock)
     jest
       .spyOn(coinService, 'fetchAllCoins')
       .mockReturnValue(Promise.resolve(CryptoDetailData))
@@ -17,7 +24,11 @@ describe('Purchase Page', () => {
     jest.spyOn(transactionService, 'createNewTransaction')
   })
   test('Render Purchase page', async () => {
-    render(<PurchagePage user={user} />)
+    render(
+      <BrowserRouter>
+        <PurchagePage user={user} />
+      </BrowserRouter>
+    )
     screen.getByText('Payment Method')
     await waitFor(() => {
       expect(coinService.fetchAllCoins).toBeCalled()

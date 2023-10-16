@@ -1,5 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { useLocation, Location, useNavigate } from 'react-router-dom'
+import {
+  useLocation,
+  Location,
+  useNavigate,
+  BrowserRouter,
+} from 'react-router-dom'
 import PaymentPage from '../PaymentPage'
 import { TRANSACTION } from '@/strings/constant'
 jest.mock('react-router-dom', () => ({
@@ -25,7 +30,11 @@ describe('PaymentPage', () => {
   })
 
   it('renders PaymentSuccessCard with correct props', () => {
-    render(<PaymentPage />)
+    render(
+      <BrowserRouter>
+        <PaymentPage />
+      </BrowserRouter>
+    )
 
     const paymentSuccessCard = screen.getByTestId('payment-success-card')
     expect(paymentSuccessCard).toBeInTheDocument()
@@ -33,7 +42,11 @@ describe('PaymentPage', () => {
   })
 
   it('calls onClick when button is clicked', () => {
-    render(<PaymentPage />)
+    render(
+      <BrowserRouter>
+        <PaymentPage />
+      </BrowserRouter>
+    )
 
     const buyCryptoButton = screen.getByRole('button', { name: 'SELL CRYPTO' })
     const goToUsdCoinButton = screen.getByRole('button', {
@@ -49,7 +62,11 @@ describe('PaymentPage', () => {
         transaction: undefined,
       },
     } as Location<unknown>)
-    render(<PaymentPage />)
+    render(
+      <BrowserRouter>
+        <PaymentPage />
+      </BrowserRouter>
+    )
     expect(screen.queryByTestId('payment-success-card')).not.toBeInTheDocument()
   })
 })

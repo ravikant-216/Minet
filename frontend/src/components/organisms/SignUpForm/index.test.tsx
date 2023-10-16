@@ -2,17 +2,27 @@ import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import SignUp from '.'
+import { LOGIN } from '@/strings/constant'
 
 describe('SignUp Component', () => {
   const iconClick = jest.fn()
   const signUpClick = jest.fn()
+  const signInClick = jest.fn()
 
   beforeEach(() => {
-    render(<SignUp onIconClick={iconClick} onSignUp={signUpClick} />)
+    render(
+      <SignUp
+        onIconClick={iconClick}
+        onSignUp={signUpClick}
+        onSignIn={signInClick}
+      />
+    )
   })
 
   it('renders without errors', () => {
     expect(screen.getByTestId('sign-up')).toBeInTheDocument()
+    fireEvent.click(screen.getByText(LOGIN))
+    expect(signInClick).toHaveBeenCalledTimes(1)
   })
 
   it('displays the correct details', () => {

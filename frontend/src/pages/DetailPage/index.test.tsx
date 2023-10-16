@@ -1,8 +1,9 @@
-import { getAllTransactionsByCryptoId } from '@/api/api'
+import { getAllTransactionsByCryptoId, getCryptoById } from '@/api/api'
 import theme from '@/theme/index'
 import { ThemeProvider } from '@emotion/react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import DetailPage from './index'
+import { BrowserRouter } from 'react-router-dom'
 
 jest.mock('react-apexcharts', () => ({
   __esModule: true,
@@ -14,6 +15,21 @@ jest.mock('@/api/api')
 describe('DetailPage', () => {
   beforeEach(() => {
     jest.resetAllMocks()
+    ;(getCryptoById as jest.Mock).mockResolvedValue({
+      data: [
+        {
+          id: '7590808b-044e-4140-b34b-9466cdc15cca',
+          name: 'Bitcoin',
+          symbol: 'BTC',
+          icon: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
+          price: 3285553.73,
+          change: 1.06,
+          marketCap: 60.1,
+          volume: 2.9,
+          circulatingSupply: 18.8,
+        },
+      ],
+    })
     ;(getAllTransactionsByCryptoId as jest.Mock).mockResolvedValue({
       data: [
         {
@@ -53,14 +69,13 @@ describe('DetailPage', () => {
 
   it('renders the WatchListCard component', async () => {
     renderWithTheme(
-      <DetailPage
-        cryptoId={'7590808b-044e-4140-b34b-9466cdc15cca'}
-        userId="b62177be-aca1-45d3-ab0e-60a9f4c79a5e"
-      />
+      <BrowserRouter>
+        <DetailPage userId="b62177be-aca1-45d3-ab0e-60a9f4c79a5e" />
+      </BrowserRouter>
     )
     const component = await screen.findByTestId('watchlist-card')
     expect(component).toBeInTheDocument()
-    fireEvent.click(screen.getByText('Watchlist'))
+    fireEvent.click(screen.getByText('Wallet'))
     expect(screen.getByText('Total balance')).toBeInTheDocument()
   })
 })

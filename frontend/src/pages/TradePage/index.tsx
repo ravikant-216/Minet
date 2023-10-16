@@ -7,13 +7,14 @@ import {
   getWatchlistDataByUserId,
 } from '@/api/api'
 import SearchTradeTable from '@/components/organisms/SearchTradeTable'
-import TradingTemplate from '@/components/templates/TradingTemplate'
+import DashBoardTemplate from '@/components/templates/DashBoardTemplate'
 import theme from '@/theme'
 import { formatCryptoData } from '@/utils/functions'
 import { CryptoData, TradeData, User, WatchlistData } from '@/utils/types'
 import { Box } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const StyledBox = styled(Box)({
   padding: theme.spacing(6),
@@ -27,6 +28,9 @@ const TradePageComponent = ({ user }: { user: User }) => {
   )
   const [watchlistData, setWatchlistData] = useState<WatchlistData[]>([])
   const [cryptoData, setCryptoData] = useState<CryptoData[]>([])
+
+  const navigate = useNavigate()
+
   const fetchData = async (userId: string) => {
     try {
       const cryptoRes = await getAllCoins()
@@ -66,8 +70,7 @@ const TradePageComponent = ({ user }: { user: User }) => {
   }
 
   const onCardClick = (id: string) => {
-    //redirect to coin will implement during the routing of pages
-    console.log(id)
+    navigate(`/detail/${id}`)
   }
 
   return (
@@ -83,9 +86,9 @@ const TradePageComponent = ({ user }: { user: User }) => {
 }
 const TradePage = () => {
   return (
-    <TradingTemplate isButton={true} dashboardHeading={'Tarde'}>
+    <DashBoardTemplate isButton={true} title={'Tarde'}>
       <TradePageComponent user={user} />
-    </TradingTemplate>
+    </DashBoardTemplate>
   )
 }
 

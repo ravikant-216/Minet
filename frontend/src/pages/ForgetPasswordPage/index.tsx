@@ -4,14 +4,17 @@ import LoginImage from '@Assets/images/Login.svg'
 import { Box } from '@mui/material'
 import ForgotPasswordForm from '@/components/organisms/ForgotPasswordForm'
 import { checkUserByEmail } from '@/api/api'
+import { useNavigate } from 'react-router-dom'
 
 const ForgotPasswordPage = () => {
+  const navigate = useNavigate()
   const [step, setStep] = useState<number>(1)
   const handleEmail = async (email: string) => {
     try {
       const response = await checkUserByEmail(email)
+
       if (response.data.length > 0) {
-        localStorage.setItem('user', response.data)
+        localStorage.setItem('user', JSON.stringify(response.data))
         setStep(2)
       }
     } catch (error) {
@@ -19,10 +22,10 @@ const ForgotPasswordPage = () => {
     }
   }
   const handleLogin = () => {
-    // Navigate to  the login page
+    navigate('/')
   }
   const handleNavigation = () => {
-    // Navigate to Reset Password
+    navigate('/reset-password')
   }
   return (
     <Box data-testId="forgot-page">

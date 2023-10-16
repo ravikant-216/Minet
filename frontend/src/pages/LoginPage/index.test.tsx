@@ -3,7 +3,12 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import LoginPage from '.'
 import { checkUser } from '@/api/api'
 import { EMAIL_PLACEHOLDER, PASSWORD_ENTER } from '@/strings/constant'
+import * as Router from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+}))
 jest.mock('@/api/api', () => ({
   checkUser: jest.fn(),
 }))
@@ -28,7 +33,11 @@ describe('LoginPage component', () => {
 
     ;(checkUser as jest.Mock).mockResolvedValue({ data: mockResponse })
 
-    render(<LoginPage />)
+    render(
+      <BrowserRouter>
+        <LoginPage />
+      </BrowserRouter>
+    )
     const emailInput = screen.getByPlaceholderText(EMAIL_PLACEHOLDER)
     const passwordInput = screen.getByPlaceholderText(PASSWORD_ENTER)
     const signInButton = screen.getByRole('button', { name: 'Sign in' })
@@ -41,7 +50,11 @@ describe('LoginPage component', () => {
   test('handles failed sign-in', async () => {
     ;(checkUser as jest.Mock).mockRejectedValue(new Error('Simulated error'))
 
-    render(<LoginPage />)
+    render(
+      <BrowserRouter>
+        <LoginPage />
+      </BrowserRouter>
+    )
 
     const emailInput = screen.getByPlaceholderText(EMAIL_PLACEHOLDER)
     const passwordInput = screen.getByPlaceholderText(PASSWORD_ENTER)
@@ -53,9 +66,38 @@ describe('LoginPage component', () => {
   })
 
   test('handle Google Login', async () => {
-    render(<LoginPage />)
+    render(
+      <BrowserRouter>
+        <LoginPage />
+      </BrowserRouter>
+    )
 
     const google = screen.getByText('Google')
     fireEvent.click(google)
+  })
+  test('handle Forgot Password', async () => {
+    const navigateMock = jest.fn()
+    jest.spyOn(Router, 'useNavigate').mockImplementation(() => navigateMock)
+    render(
+      <BrowserRouter>
+        <LoginPage />
+      </BrowserRouter>
+    )
+
+    const forgotPasswordLink = screen.getByText('Forgot Password')
+    fireEvent.click(forgotPasswordLink)
+  })
+
+  test('handle Signup', async () => {
+    const navigateMock = jest.fn()
+    jest.spyOn(Router, 'useNavigate').mockImplementation(() => navigateMock)
+    render(
+      <BrowserRouter>
+        <LoginPage />
+      </BrowserRouter>
+    )
+
+    const signupLink = screen.getByText('Signup')
+    fireEvent.click(signupLink)
   })
 })

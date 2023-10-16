@@ -14,6 +14,7 @@ import { MyPortfolioCardProps } from '@/components/molecules/MyPortfolioCard'
 import { formatCurrency } from '@/utils/functions'
 import walletService from '@/service/wallet.service'
 import transactionService from '@/service/transaction.service'
+import { useNavigate } from 'react-router-dom'
 
 interface PurchaseScreenProps {
   user: User
@@ -23,6 +24,7 @@ const PurchagePage = ({ user }: PurchaseScreenProps) => {
   const [coins, setCoins] = useState<CryptoDetailType[]>([])
   const [usdWallet, setUsdWallet] = useState<Wallet | undefined>()
   const [sliderValue, setSliderValue] = useState(0)
+  const navigate = useNavigate()
 
   const [selectCoin, setSelectCoin] = useState<CryptoDetailType | undefined>(
     undefined
@@ -65,7 +67,7 @@ const PurchagePage = ({ user }: PurchaseScreenProps) => {
 
   const handleCreateNewTransaction = async () => {
     if (sliderValue > 0) {
-      await transactionService.createNewTransaction({
+      const buyTransaction = await transactionService.createNewTransaction({
         date: new Date().toString(),
         type: 'Purchased',
         user: user,
@@ -75,7 +77,11 @@ const PurchagePage = ({ user }: PurchaseScreenProps) => {
         quantity,
         description: 'From Badgley',
       })
-      //After new transaction we will redirected to succressful page
+      navigate("/success", {
+        state: {
+          transaction: buyTransaction
+        }
+      })
     }
   }
 
@@ -103,9 +109,8 @@ const PurchagePage = ({ user }: PurchaseScreenProps) => {
             sliderMaxValue={
               (usdWallet?.totalBalance as number) - TRANSACTION_FREE_AMOUNT
             }
-            sliderValue={`1${
-              selectCoin?.symbol as string
-            } = ${formatCurrency.format(selectCoin?.price as number)}`}
+            sliderValue={`1${selectCoin?.symbol as string
+              } = ${formatCurrency.format(selectCoin?.price as number)}`}
             crypto="0.0234510 "
             label={selectCoin?.symbol as string}
             onSliderChange={handleSliderChange}
@@ -113,9 +118,8 @@ const PurchagePage = ({ user }: PurchaseScreenProps) => {
           <SelectDeliveryOption
             isOpen={false}
             coinType={selectCoin?.name as string}
-            transactionFees={`Transaction fees : 0.005 ${
-              selectCoin?.symbol as string
-            }`}
+            transactionFees={`Transaction fees : 0.005 ${selectCoin?.symbol as string
+              }`}
           />
         </Stack>
         <Stack

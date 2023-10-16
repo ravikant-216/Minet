@@ -18,6 +18,7 @@ import {
 } from '@/utils/types'
 import coinService from '@/service/coin.service'
 import transactionService from '@/service/transaction.service'
+import { useNavigate } from 'react-router-dom'
 
 interface DashBoardPageProps {
   user: User
@@ -30,6 +31,8 @@ const DashBoardPage = ({ user }: DashBoardPageProps) => {
     RecentTransactionType[]
   >([])
 
+  const navigate = useNavigate()
+
   const theme = useTheme()
 
   const fetchData = useCallback(async () => {
@@ -37,11 +40,17 @@ const DashBoardPage = ({ user }: DashBoardPageProps) => {
     setWatchListItem(res ?? [])
 
     const coinDetails = await coinService.fetchAllCoins()
-    setCoins(coinDetails)
+    if (coinDetails) setCoins(coinDetails)
 
     const transactions = await transactionService.fetchAllTransaction(user.id)
     setRecentTransactions(transactions ?? [])
   }, [user])
+
+  const discoverAssetOnClick = () => {
+    navigate('/trade')
+  }
+
+  const isNewUser = watchListItem.length == 0 && recentTransactions.length == 0
 
   useEffect(() => {
     fetchData()
@@ -50,12 +59,15 @@ const DashBoardPage = ({ user }: DashBoardPageProps) => {
     <DashBoardTemplate title="Dashboard" isButton={true}>
       <Stack direction="row" px={2} height="100%">
         <Stack p={2} width="70%">
-          <DashBoardWatchList items={watchListItem} />
+          <DashBoardWatchList
+            discoverAssetOnClick={discoverAssetOnClick}
+            items={watchListItem}
+          />
           <MyPortfolio
             {...MOCK_DATA_ONE}
             series={user.isNewUser ? undefined : MOCK_DATA_ONE.series}
           />
-          {!user.isNewUser && (
+          {!isNewUser && (
             <>
               <Stack direction="row" justifyContent="space-between" mt={3}>
                 <Typography variant="body1">

@@ -33,7 +33,6 @@ jobs:
           tags: | 
             ghcr.io/${{ secrets.GHCR_USERNAME}}/bootcamp123-mockserver:v${{ github.run_number }}
             ghcr.io/${{ secrets.GHCR_USERNAME}}/bootcamp123-mockserver:latest
-          file: Dockerfile  
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1

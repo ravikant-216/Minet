@@ -28,7 +28,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
-          context: ./data
+          context: ./frontend
           push: true
           tags: | 
             ghcr.io/${{ secrets.GHCR_USERNAME}}/bootcamp123-mockserver:v${{ github.run_number }}

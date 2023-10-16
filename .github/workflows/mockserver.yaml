@@ -41,14 +41,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-    #   - name: adding eks-cluster
-    #     env: 
-    #       aws_region: ${{ secrets.AWS_REGION }}
-    #       cluster_name: ${{ secrets.CLUSTER_NAME }}
-    #       IMAGE: ghcr.io/${{ secrets.GHCR_USERNAME}}/bootcamp123-mockserver:v${{ github.run_number }}
-    #     run: |
-    #         aws eks --region $aws_region update-kubeconfig --name $cluster_name
-    #         kubectl set image deployment/mockserver-deployment mockserver-container=$IMAGE
+      - name: adding eks-cluster
+        env: 
+          aws_region: ${{ secrets.AWS_REGION }}
+          cluster_name: ${{ secrets.CLUSTER_NAME }}
+          IMAGE: ghcr.io/${{ secrets.GHCR_USERNAME}}/bootcamp123-mockserver:v${{ github.run_number }}
+        run: |
+            aws eks --region $aws_region update-kubeconfig --name $cluster_name
+            kubectl set image deployment/mockserver-deployment mockserver-container=$IMAGE
             
 
     

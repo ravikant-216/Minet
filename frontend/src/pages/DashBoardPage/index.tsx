@@ -13,49 +13,70 @@ import watchListService from '@/service/watchList.service'
 import {
   CryptoDetailType,
   RecentTransactionType,
-  User,
+  Wallet,
   WatchListItemType,
 } from '@/utils/types'
 import coinService from '@/service/coin.service'
 import transactionService from '@/service/transaction.service'
+import { useNavigate } from 'react-router-dom'
+import walletService from '@/service/wallet.service'
+import { useAuthContext } from '@/context/AuthContext'
 
-interface DashBoardPageProps {
-  user: User
-}
-
-const DashBoardPage = ({ user }: DashBoardPageProps) => {
+const DashBoardPage = () => {
   const [watchListItem, setWatchListItem] = useState<WatchListItemType[]>([])
   const [coins, setCoins] = useState<CryptoDetailType[]>([])
+  const [wallets, setWallets] = useState<Wallet[]>([])
   const [recentTransactions, setRecentTransactions] = useState<
     RecentTransactionType[]
   >([])
+  const { user } = useAuthContext()
+
+  const navigate = useNavigate()
 
   const theme = useTheme()
 
   const fetchData = useCallback(async () => {
+    if (!user) {
+      return
+    }
     const res = await watchListService.getDashBoardWatchList(user.id)
     setWatchListItem(res ?? [])
 
+    const allWallets = await walletService.fetchAlllWalletByUserId(user.id)
+    if (allWallets) {
+      setWallets(allWallets)
+    }
+
     const coinDetails = await coinService.fetchAllCoins()
-    setCoins(coinDetails)
+    if (coinDetails) setCoins(coinDetails)
 
     const transactions = await transactionService.fetchAllTransaction(user.id)
     setRecentTransactions(transactions ?? [])
   }, [user])
 
+  const discoverAssetOnClick = () => {
+    navigate('/trade')
+  }
+
+  const isNewUser = watchListItem.length == 0 && recentTransactions.length == 0
+
   useEffect(() => {
     fetchData()
   }, [])
+
   return (
     <DashBoardTemplate title="Dashboard" isButton={true}>
       <Stack direction="row" px={2} height="100%">
         <Stack p={2} width="70%">
-          <DashBoardWatchList items={watchListItem} />
+          <DashBoardWatchList
+            discoverAssetOnClick={discoverAssetOnClick}
+            items={watchListItem}
+          />
           <MyPortfolio
             {...MOCK_DATA_ONE}
-            series={user.isNewUser ? undefined : MOCK_DATA_ONE.series}
+            series={isNewUser ? undefined : MOCK_DATA_ONE.series}
           />
-          {!user.isNewUser && (
+          {!isNewUser && (
             <>
               <Stack direction="row" justifyContent="space-between" mt={3}>
                 <Typography variant="body1">
@@ -78,11 +99,10 @@ const DashBoardPage = ({ user }: DashBoardPageProps) => {
               backgroundColor: theme.palette.gamma.GREY_WHITE,
               borderLeft: `1px solid ${theme.palette.gamma.GREY_100}`,
             }}
+            wallets={wallets}
             height="100%"
             width="100%"
-            totalBalance={user.balance}
             coins={coins}
-            usdWalletBalance={user.balance}
             recentTransactions={recentTransactions}
           />
         </Stack>

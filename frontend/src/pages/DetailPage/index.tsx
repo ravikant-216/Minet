@@ -1,19 +1,20 @@
-import { getAllTransactionsByCryptoId } from '@/api/api'
+/* eslint-disable prettier/prettier */
+import { getAllTransactionsByCryptoId, getCryptoById } from '@/api/api'
 import CurrencyDetailOverview from '@/components/molecules/CurrencyDetailOverview'
 import Tabs from '@/components/molecules/Tabs'
 import CurrencyDetailWallet from '@/components/organisms/CurrencyDetailWallet'
+import DashBoardTemplate from '@/components/templates/DashBoardTemplate'
+import { useAuthContext } from '@/context/AuthContext'
 import { formatter } from '@/strings/constant'
 import theme from '@/theme'
 import { formatTransactions } from '@/utils/functions'
 import { CryptoData, Transaction, TransactionData } from '@/utils/types'
 import { props } from '@Components/molecules/CurrencyDetailOverview/constant'
 import WatchListCard from '@Components/molecules/WatchListCard'
-import TradingTemplate from '@Components/templates/TradingTemplate'
 import styled from '@emotion/styled'
 import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
-// import { useLocation } from 'react-router-dom'
-// Will Impliment the cryptoId ,userId  Later using useLocation during the routing of pages
+import { useNavigate, useParams } from 'react-router-dom'
 
 const StyledBox = styled(Box)({
   padding: theme.spacing(6),
@@ -29,22 +30,24 @@ const Component = ({
   cryptoId: string
   userId: string
 }) => {
-  // const location = useLocation()
-  // const cryptoId = location.state.state.cryptoId
-  const [value, setValue] = useState('All Assets')
+  const [value, setValue] = useState('Overview')
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [crypto, setCrypto] = useState<CryptoData>()
   const [cryptoQuantitySum, setCryptoQuantitySum] = useState(0)
   const [transactionPriceSum, setTransactionPriceSum] = useState(0)
   const fetchData = async (cryptoId: string) => {
     try {
+      const cryptoRes = await getCryptoById(cryptoId)
       const transactionsRes = await getAllTransactionsByCryptoId(cryptoId)
 
       const transactionsData: TransactionData[] = transactionsRes.data.filter(
         (transaction: TransactionData) =>
-          transaction.user && transaction.user.id === userId
+          transaction.user &&
+          transaction.user.id === userId &&
+          transaction.crypto.id === cryptoId
       )
-      if (transactionsData.length > 0) setCrypto(transactionsData[0].crypto)
+      const cryptoData: CryptoData = cryptoRes.data
+      setCrypto(cryptoData)
       const {
         formattedTransactions,
         tempCryptoQuantitySum,
@@ -77,18 +80,18 @@ const Component = ({
       <Tabs
         tabs={[
           {
-            label: 'All Assets',
-            value: 'All Assets',
+            label: 'Overview',
+            value: 'Overview',
           },
           {
-            label: 'Watchlist',
-            value: 'Watchlist',
+            label: 'Wallet',
+            value: 'Wallet',
           },
         ]}
         onChange={(e, value) => setValue(value)}
         value={value}
       />
-      {value === 'All Assets' && crypto ? (
+      {value === 'Overview' && crypto ? (
         <Box pt={theme.spacing(6)} pb={theme.spacing(6)}>
           <CurrencyDetailOverview
             correlationCardData={props.correlationCardData}
@@ -107,9 +110,8 @@ const Component = ({
         <Box pt={theme.spacing(6)} pb={theme.spacing(6)}>
           <CurrencyDetailWallet
             textAlign="left"
-            totalBalance={`${cryptoQuantitySum} ${
-              crypto?.symbol
-            } (${formatter.format(transactionPriceSum)})`}
+            totalBalance={`${cryptoQuantitySum} ${crypto?.symbol
+              } (${formatter.format(transactionPriceSum)})`}
             transactions={transactions}
           />
         </Box>
@@ -118,17 +120,19 @@ const Component = ({
   )
 }
 
-const DetailPage = ({
-  cryptoId,
-  userId,
-}: {
-  cryptoId: string
-  userId: string
-}) => {
+const DetailPage = () => {
+  const { user } = useAuthContext()
+  const { cryptoId } = useParams<{ cryptoId: string }>()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!cryptoId) {
+      navigate('/dashboard')
+    }
+  }, [cryptoId, navigate])
   return (
-    <TradingTemplate dashboardHeading={'Trade'} isButton={true}>
-      <Component cryptoId={cryptoId} userId={userId} />
-    </TradingTemplate>
+    <DashBoardTemplate title={'Trade'} isButton={true}>
+      <Component cryptoId={cryptoId as string} userId={user?.id as string} />
+    </DashBoardTemplate>
   )
 }
 

@@ -11,7 +11,7 @@ const StyledBox = styled(Box)({
   height: '100%',
 })
 const PaymentPage = () => {
-  const location = useLocation() // will get this from Purchase page
+  const location = useLocation()
   const navigate = useNavigate()
   const transaction: TransactionData = location.state?.transaction
   useEffect(() => {
@@ -30,7 +30,7 @@ const PaymentPage = () => {
           coinCode={transaction.crypto.symbol}
           isSell={transaction.type === 'Sold'}
           onClick={() => {
-            navigate('/dashboard')
+            navigate('/cash-wallet')
           }}
         />
       </StyledBox>

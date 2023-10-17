@@ -1,11 +1,22 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import CashWalletScreen from '.'
 import recentTransactionService from '@/service/recentTransaction.service'
+import * as Router from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
+import * as authContext from '@/context/AuthContext'
+import { user } from '@/__mocks__'
 
 jest.mock('@/api/api')
 jest.mock('@/service/recentTransaction.service')
+
+const navigateMock = jest.fn()
 beforeEach(() => {
+  jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+  }))
+  jest.spyOn(Router, 'useNavigate').mockImplementation(() => navigateMock)
   jest.resetAllMocks()
   const fetchAllTransactions = jest.spyOn(
     recentTransactionService,
@@ -37,7 +48,16 @@ beforeEach(() => {
       },
     ])
   )
-  render(<CashWalletScreen id="b62177be-aca1-45d3-ab0e-60a9f4c79a5e" />)
+  jest.spyOn(authContext, 'useAuthContext').mockReturnValue({
+    user: user,
+  } as any)
+
+  render(
+    <BrowserRouter>
+      render(
+      <CashWalletScreen />)
+    </BrowserRouter>
+  )
 })
 
 describe('CashWalletScreen', () => {

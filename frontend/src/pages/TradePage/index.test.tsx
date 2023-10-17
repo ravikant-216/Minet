@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { TABS } from '@/strings/constant'
@@ -10,11 +11,19 @@ import {
   getWatchlistDataByUserId,
 } from '@/api/api'
 import { act } from 'react-dom/test-utils'
+import * as Router from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
+import * as authContext from '@/context/AuthContext'
 
 jest.mock('@/api/api')
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+}))
 describe('TradePage', () => {
+  const navigateMock = jest.fn()
   beforeEach(() => {
+    jest.spyOn(Router, 'useNavigate').mockImplementation(() => navigateMock)
     jest.resetAllMocks()
     ;(getAllCoins as jest.Mock).mockResolvedValue({
       data: [
@@ -69,10 +78,17 @@ describe('TradePage', () => {
     })
     ;(addWatchlist as jest.Mock).mockResolvedValue({})
     ;(deleteWatchlistById as jest.Mock).mockResolvedValue({})
+    jest.spyOn(authContext, 'useAuthContext').mockReturnValue({
+      user: user,
+    } as any)
   })
 
   test('should render the component with the trade table data and watch list data', async () => {
-    render(<TradePage />)
+    render(
+      <BrowserRouter>
+        <TradePage />
+      </BrowserRouter>
+    )
     await waitFor(() => expect(getAllCoins).toHaveBeenCalledTimes(1))
     await waitFor(() =>
       expect(getWatchlistDataByUserId).toHaveBeenCalledWith(user.id)
@@ -81,7 +97,11 @@ describe('TradePage', () => {
   })
 
   test('should handle star icon click to add or remove watch list item', async () => {
-    render(<TradePage />)
+    render(
+      <BrowserRouter>
+        <TradePage />
+      </BrowserRouter>
+    )
     await waitFor(() => expect(getAllCoins).toHaveBeenCalledTimes(1))
     await waitFor(() =>
       expect(getWatchlistDataByUserId).toHaveBeenCalledWith(user.id)

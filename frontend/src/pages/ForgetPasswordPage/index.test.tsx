@@ -2,6 +2,14 @@ import React from 'react'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import ForgotPassword from '.'
 import { checkUserByEmail } from '@/api/api'
+import * as Router from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
+
+const navigateMock = jest.fn()
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+}))
+jest.spyOn(Router, 'useNavigate').mockImplementation(() => navigateMock)
 
 jest.mock('@/api/api', () => ({
   checkUserByEmail: jest.fn(),
@@ -9,7 +17,11 @@ jest.mock('@/api/api', () => ({
 
 describe('ForgotPassword component', () => {
   test('renders the ForgotPassword component', () => {
-    render(<ForgotPassword />)
+    render(
+      <BrowserRouter>
+        <ForgotPassword />
+      </BrowserRouter>
+    )
   })
 
   test('handles email submission and success', async () => {
@@ -27,7 +39,11 @@ describe('ForgotPassword component', () => {
 
     ;(checkUserByEmail as jest.Mock).mockResolvedValue(mockResponse)
 
-    render(<ForgotPassword />)
+    render(
+      <BrowserRouter>
+        <ForgotPassword />
+      </BrowserRouter>
+    )
 
     const emailInput = screen.getByPlaceholderText('you@company.com')
     const submitButton = screen.getByText('Send Reset Link')
@@ -53,7 +69,11 @@ describe('ForgotPassword component', () => {
 
     ;(checkUserByEmail as jest.Mock).mockResolvedValue(mockResponse)
 
-    render(<ForgotPassword />)
+    render(
+      <BrowserRouter>
+        <ForgotPassword />
+      </BrowserRouter>
+    )
 
     const emailInput = screen.getByPlaceholderText('you@company.com')
     const submitButton = screen.getByText('Send Reset Link')
@@ -73,7 +93,11 @@ describe('ForgotPassword component', () => {
 
     ;(checkUserByEmail as jest.Mock).mockRejectedValue(new Error(errorMessage))
 
-    render(<ForgotPassword />)
+    render(
+      <BrowserRouter>
+        <ForgotPassword />
+      </BrowserRouter>
+    )
 
     const emailInput = screen.getByPlaceholderText('you@company.com')
     const submitButton = screen.getByText('Send Reset Link')
@@ -87,7 +111,11 @@ describe('ForgotPassword component', () => {
   })
 
   test('handles login click', () => {
-    render(<ForgotPassword />)
+    render(
+      <BrowserRouter>
+        <ForgotPassword />
+      </BrowserRouter>
+    )
 
     const loginButton = screen.getByText('Login')
 

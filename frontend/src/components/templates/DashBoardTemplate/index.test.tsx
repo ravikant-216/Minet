@@ -2,6 +2,13 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import DashBoardTemplate from '.'
 import { useAuth0 } from '@auth0/auth0-react'
 import { LOGOUT } from '@/strings/constant'
+import * as Router from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
+
+const navigateMock = jest.fn()
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+}))
 
 jest.mock('@auth0/auth0-react', () => ({
   useAuth0: jest.fn(),
@@ -14,9 +21,11 @@ const logoutMock = jest.fn()
 describe('DashBoardTemplate', () => {
   test('renders DashBoardTemplate component', () => {
     render(
-      <DashBoardTemplate title="home">
-        <div>Hi</div>
-      </DashBoardTemplate>
+      <BrowserRouter>
+        <DashBoardTemplate title="home">
+          <div>Hi</div>
+        </DashBoardTemplate>
+      </BrowserRouter>
     )
 
     expect(screen.getByText('Hi')).toBeInTheDocument()
@@ -26,5 +35,19 @@ describe('DashBoardTemplate', () => {
 
     const logoutButton = screen.getByAltText(LOGOUT)
     fireEvent.click(logoutButton)
+  })
+  test('should navigate', () => {
+    jest.spyOn(Router, 'useNavigate').mockImplementation(() => navigateMock)
+    render(
+      <BrowserRouter>
+        <DashBoardTemplate title="home">
+          <div>Hi</div>
+        </DashBoardTemplate>
+      </BrowserRouter>
+    )
+
+    expect(screen.getByText('Buy')).toBeInTheDocument()
+    expect(screen.getByText('Sell')).toBeInTheDocument()
+    fireEvent.click(screen.getByText('Buy'))
   })
 })

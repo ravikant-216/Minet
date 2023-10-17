@@ -1,4 +1,4 @@
-import { CryptoDetailData, RecentTransactions } from '@/__mocks__'
+import { CryptoDetailData, RecentTransactions, WALLET } from '@/__mocks__'
 import { render, screen } from '@testing-library/react'
 import MyPortfolioWallet from '.'
 import { ThemeProvider } from '@mui/material'
@@ -7,14 +7,18 @@ import theme from '@/theme'
 describe('MyPortfolioWallet', () => {
   const props = {
     coins: CryptoDetailData,
-    totalBalance: 14027,
-    usdWalletBalance: 34000.0,
+    recentTransactions: RecentTransactions,
+    wallets: WALLET,
     width: '400px',
   }
   test('RenderWithout Transactions', () => {
-    render(<MyPortfolioWallet {...props} />)
+    render(
+      <ThemeProvider theme={theme}>
+        <MyPortfolioWallet {...props} recentTransactions={undefined} />
+      </ThemeProvider>
+    )
     screen.getByAltText('NoTransaction')
-    screen.getByText(`$${props.totalBalance}`)
+    screen.getByText('$4200')
   })
   test('RenderWith Transactions', () => {
     render(
@@ -22,7 +26,7 @@ describe('MyPortfolioWallet', () => {
         <MyPortfolioWallet {...props} recentTransactions={RecentTransactions} />
       </ThemeProvider>
     )
-    screen.getByText(`$${props.totalBalance}`)
+    screen.getByText('$4200')
     expect(screen.getAllByTestId('transaction-card').length).toBe(
       RecentTransactions.length
     )

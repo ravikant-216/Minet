@@ -46,9 +46,10 @@ const SignUpButton = styled(ButtonComponent)({
 interface SignUpProps {
   onSignUp: (name: string, email: string, password: string) => void
   onIconClick: () => void
+  onSignIn?: () => void
 }
 
-const SignUp = ({ onIconClick, onSignUp }: SignUpProps) => {
+const SignUp = ({ onIconClick, onSignUp, onSignIn }: SignUpProps) => {
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -88,7 +89,7 @@ const SignUp = ({ onIconClick, onSignUp }: SignUpProps) => {
     !password ||
     !!passwordError
   return (
-    <MainContainer data-testId="sign-up">
+    <MainContainer data-testid="sign-up">
       <Container>
         <Typography color={theme.palette.text.highEmphasis} variant="heading4">
           {SignUP}
@@ -170,7 +171,7 @@ const SignUp = ({ onIconClick, onSignUp }: SignUpProps) => {
           <Typography color={theme.palette.text.mediumEmphasis} variant="body1">
             {ALREADY_HAVE_AN_ACCOUNT}
           </Typography>
-          <ButtonComponent variant="text" label={LOGIN} />
+          <ButtonComponent variant="text" label={LOGIN} onClick={onSignIn} />
         </Stack>
       </Container>
     </MainContainer>

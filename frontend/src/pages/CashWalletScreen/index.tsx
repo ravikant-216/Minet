@@ -10,6 +10,7 @@ import ButtonComponent from '@/components/atoms/Button'
 import DashBoardTemplate from '@/components/templates/DashBoardTemplate'
 import transactionService from '@/service/recentTransaction.service'
 import { Transaction } from '@/utils/types'
+import { useAuthContext } from '@/context/AuthContext'
 
 const StyleStack = styled(Stack)({
   border: `1px solid ${theme.palette.gamma.GREY_100}`,
@@ -31,13 +32,16 @@ const StyleButton = styled(ButtonComponent)({
   padding: `0 ${theme.spacing(4)}`,
 })
 
-const CashWalletScreen = ({ id }: { id: string }) => {
+const CashWalletScreen = () => {
   const [transaction, setTransaction] = useState<Transaction[]>([])
+  const { user } = useAuthContext()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await transactionService.fetchAllTransactions(id)
+        const response = await transactionService.fetchAllTransactions(
+          user?.id as string
+        )
         setTransaction(response as Transaction[])
       } catch (err) {
         console.log(err)
@@ -45,7 +49,7 @@ const CashWalletScreen = ({ id }: { id: string }) => {
     }
 
     fetchData()
-  }, [id])
+  }, [user])
   return (
     <DashBoardTemplate title={'Trade'} isButton={true}>
       <BodyContainer>

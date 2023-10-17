@@ -19,15 +19,17 @@ import BalanceCard from '@/components/molecules/BalanceCard'
 import UsdLogo from '@Assets/icons/UsdCoin.svg'
 import theme from '@/theme'
 import walletService from '@/service/wallet.service'
+import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '@/context/AuthContext'
 
-interface SellPageProps {
-  user: User
-}
 
-const SellPage = ({ user }: SellPageProps) => {
+
+const SellPage = () => {
   const [coins, setCoins] = useState<CryptoDetailType[]>([])
   const [sellSliderValue, setSellSliderValue] = useState(0)
   const [wallets, setWallets] = useState<Wallet[]>([])
+  const navigate = useNavigate()
+  const { user } = useAuthContext()
 
   const [currentSelectedCoin, setCurrentSelectedCoin] = useState<
     CryptoDetailType | undefined
@@ -43,7 +45,7 @@ const SellPage = ({ user }: SellPageProps) => {
       setCoins(fetchAllCoins)
       setCurrentSelectedCoin(fetchAllCoins[0])
     }
-    const wallets = await walletService.fetchAlllWalletByUserId(user.id)
+    const wallets = await walletService.fetchAlllWalletByUserId(user?.id as string)
     if (wallets) setWallets(wallets)
   }, [user])
 
@@ -63,7 +65,6 @@ const SellPage = ({ user }: SellPageProps) => {
 
   const handleOnSelect = (index: number) => {
     setCurrentSelectedCoin(coins[index])
-    console.log(index)
   }
 
   const handleSliderChange = (value: number) => {
@@ -72,16 +73,22 @@ const SellPage = ({ user }: SellPageProps) => {
 
   const handleCreateSellTransaction = async () => {
     if (sellSliderValue > 0) {
-      await transactionService.createNewTransaction({
+      const sellTransaction = await transactionService.createNewTransaction({
         date: new Date().toString(),
         type: 'Sold',
-        user: user,
+        user: user as User,
         price: sellSliderValue * (currentSelectedCoin?.price as number),
         crypto: currentSelectedCoin as CryptoDetailType,
         status: 'success',
         quantity,
         description: 'From Leslie Alexander',
       })
+      if (sellTransaction)
+        navigate("/payment-success", {
+          state: {
+            transaction: sellTransaction
+          }
+        })
     }
   }
 
@@ -105,9 +112,8 @@ const SellPage = ({ user }: SellPageProps) => {
           </Stack>
           <BalanceCard
             title={TOTAL_BALANCE}
-            detail={`${currentSelectedWallet?.totalBalance ?? 0} ${
-              currentSelectedCoin?.symbol
-            }`}
+            detail={`${currentSelectedWallet?.totalBalance ?? 0} ${currentSelectedCoin?.symbol
+              }`}
             logo={currentSelectedCoin?.icon as string}
             name={currentSelectedCoin?.name as string}
             detailVariant="subtitle1"
@@ -115,13 +121,11 @@ const SellPage = ({ user }: SellPageProps) => {
           />
           <AccountDetailCard
             isBuy={true}
-            userBalance={`${currentSelectedWallet?.totalBalance ?? 0} ${
-              currentSelectedCoin?.symbol
-            }`}
+            userBalance={`${currentSelectedWallet?.totalBalance ?? 0} ${currentSelectedCoin?.symbol
+              }`}
             sliderMaxValue={currentSelectedWallet?.totalBalance ?? 0}
-            sliderValue={`1${
-              currentSelectedCoin?.symbol as string
-            } = ${formatCurrency.format(currentSelectedCoin?.price as number)}`}
+            sliderValue={`1${currentSelectedCoin?.symbol as string
+              } = ${formatCurrency.format(currentSelectedCoin?.price as number)}`}
             crypto={`${currentSelectedWallet?.totalBalance ?? 0}`}
             label={currentSelectedCoin?.symbol as string}
             onSliderChange={handleSliderChange}

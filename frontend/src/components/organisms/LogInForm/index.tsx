@@ -23,7 +23,6 @@ const MainContainer = styled(Box)({
   width: theme.spacing(128),
   height: theme.spacing(152),
   gap: theme.spacing(6),
-  marginTop: theme.spacing(10),
 })
 const Container = styled(Stack)({
   gap: theme.spacing(6),
@@ -40,9 +39,16 @@ const SignInButton = styled(ButtonComponent)({
 interface LogInProps {
   onSignIn: (email: string, password: string) => void
   onIconClick?: () => void
+  onForgotPassword: () => void
+  onSignup: () => void
 }
 
-const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
+const LogIn = ({
+  onIconClick,
+  onSignIn,
+  onForgotPassword,
+  onSignup,
+}: LogInProps) => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [emailError, setEmailError] = useState<string>('')
@@ -72,7 +78,7 @@ const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
 
   const isDisabled = !email || !!emailError || !password || !!passwordError
   return (
-    <MainContainer data-testId="log-in">
+    <MainContainer data-testid="log-in">
       <Container>
         <Typography color={theme.palette.text.highEmphasis} variant="heading4">
           {LOGIN_HEADING}
@@ -117,6 +123,7 @@ const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
           <ButtonComponent
             variant="text"
             label={FORGOTPASSWORD}
+            onClick={onForgotPassword}
             typographyVarient="body2"
             textColor={theme.palette.primary.main}
             sx={{ width: theme.spacing(37) }}
@@ -154,7 +161,7 @@ const LogIn = ({ onIconClick, onSignIn }: LogInProps) => {
           <Typography color={theme.palette.text.mediumEmphasis} variant="body1">
             {DO_NOT_HAVE_ACCOUNT}
           </Typography>
-          <ButtonComponent variant="text" label={SIGN_UP} />
+          <ButtonComponent variant="text" label={SIGN_UP} onClick={onSignup} />
         </Stack>
       </Container>
     </MainContainer>

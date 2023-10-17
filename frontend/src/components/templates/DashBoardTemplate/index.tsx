@@ -6,6 +6,7 @@ import avatar from '@Assets/icons/avatar.svg'
 import Footer from '@/components/molecules/Footer'
 import theme from '@/theme'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router-dom'
 
 interface DashBoardTemplateProps {
   children: React.ReactNode
@@ -19,22 +20,23 @@ const DashBoardTemplate = ({
   isButton = true,
 }: DashBoardTemplateProps) => {
   const { logout } = useAuth0()
+  const navigate = useNavigate()
 
   const handleOnClick = (value: string) => {
     switch (value) {
       case DASHBOARD1:
-        // Navigate to dashboard page
-        // Will implement later at the time of page integration
+        navigate('/dashboard')
         break
       case LOGOUT:
         logout()
+        localStorage.clear()
         break
       default:
-        // Navigate to home page
-        // Will implement later at the time of page integration
+        navigate('/dashboard')
         break
     }
   }
+
   return (
     <Stack
       direction="row"
@@ -63,6 +65,12 @@ const DashBoardTemplate = ({
             dashboardHeading={title}
             isButton={isButton}
             avatar={avatar}
+            onSell={() => {
+              navigate('/sell')
+            }}
+            onBuy={() => {
+              navigate('/purchase')
+            }}
           />
           <Stack
             flexGrow={1}

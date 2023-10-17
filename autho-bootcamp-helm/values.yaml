@@ -18,7 +18,7 @@ deployments:
     container_name: frontend-container
     replicaCount: 1     
     image:
-      repository: ghcr.io/satyanarayana-senapathi/bootcamp123-frontend:v6
+      repository: ghcr.io/satyanarayana-senapathi/bootcamp123-frontend:latest
     imagePullSecrets: my-ghcr-secret
     port: 80
 

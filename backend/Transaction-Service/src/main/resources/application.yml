@@ -3,6 +3,18 @@ server:
 spring:
   application:
     name: transaction-service
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  flyway:
+    enabled: false
+
 eureka:
   client:
     fetch-registry: true

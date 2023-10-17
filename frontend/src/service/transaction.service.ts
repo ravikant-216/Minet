@@ -3,7 +3,7 @@ import {
   createWallet,
   getAllTransactionByUserId,
   getUsbWalletDetailsByUserId,
-  getWalletByCoinId,
+  getWalletByUserIdCoinId,
   updateWallet,
 } from '@/api/api'
 import { RecentTransactionType, TransactionData, Wallet } from '@/utils/types'
@@ -33,7 +33,7 @@ const fetchAllTransactionByUserId = async (
 
 const createNewTransaction = async (data: Omit<TransactionData, 'id'>) => {
   try {
-    const wallet = await getWalletByCoinId(data.crypto.id)
+    const wallet = await getWalletByUserIdCoinId(data.crypto.id, data.user.id)
     const usdWalletRequest = await getUsbWalletDetailsByUserId(data.user.id)
     const usdWallet = usdWalletRequest.data[0] as Wallet
     const resData = wallet.data as Wallet[]

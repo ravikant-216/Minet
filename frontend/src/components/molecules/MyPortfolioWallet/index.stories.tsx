@@ -3,6 +3,7 @@ import MyPortfolioWallet from '.'
 import {
   CryptoDetailData,
   RecentTransactions as RecentTransactions,
+  WALLET,
 } from '@/__mocks__'
 
 const meta: Meta<typeof MyPortfolioWallet> = {
@@ -15,17 +16,15 @@ type Story = StoryObj<typeof MyPortfolioWallet>
 export const WithTransaction: Story = {
   args: {
     coins: CryptoDetailData,
-    totalBalance: 14027,
-    usdWalletBalance: 34000.0,
     recentTransactions: RecentTransactions,
+    wallets: WALLET,
     width: '400px',
   },
 }
 export const WithOutTransaction: Story = {
   args: {
     coins: CryptoDetailData,
-    totalBalance: 14027,
-    usdWalletBalance: 34000.0,
+    wallets: WALLET,
     width: '400px',
   },
 }

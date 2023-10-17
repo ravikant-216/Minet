@@ -1,9 +1,13 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getAllTransactionsByCryptoId, getCryptoById } from '@/api/api'
 import theme from '@/theme/index'
 import { ThemeProvider } from '@emotion/react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import DetailPage from './index'
 import { BrowserRouter } from 'react-router-dom'
+import * as authContext from '@/context/AuthContext'
+import { user } from '@/__mocks__'
 
 jest.mock('react-apexcharts', () => ({
   __esModule: true,
@@ -15,39 +19,9 @@ jest.mock('@/api/api')
 describe('DetailPage', () => {
   beforeEach(() => {
     jest.resetAllMocks()
-    ;(getCryptoById as jest.Mock).mockResolvedValue({
-      data: [
-        {
-          id: '7590808b-044e-4140-b34b-9466cdc15cca',
-          name: 'Bitcoin',
-          symbol: 'BTC',
-          icon: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
-          price: 3285553.73,
-          change: 1.06,
-          marketCap: 60.1,
-          volume: 2.9,
-          circulatingSupply: 18.8,
-        },
-      ],
-    })
-    ;(getAllTransactionsByCryptoId as jest.Mock).mockResolvedValue({
-      data: [
-        {
-          id: '6f2b8e3f-9d3b-4f1d-9d8c-3e3e3e3e3e2e',
-          date: '2023-07-29T02:35:42',
-          status: 'SUCCESS',
-          type: 'SELL',
-          price: 3234,
-          quantity: 0.032343,
-          description: 'From Teja Minnikanti',
-          user: {
-            id: 'b62177be-aca1-45d3-ab0e-60a9f4c79a5e',
-            name: 'John Doe',
-            email: 'john@gmail.com',
-            password: 'JohnDoe@001',
-            balance: 34000,
-          },
-          crypto: {
+      ; (getCryptoById as jest.Mock).mockResolvedValue({
+        data: [
+          {
             id: '7590808b-044e-4140-b34b-9466cdc15cca',
             name: 'Bitcoin',
             symbol: 'BTC',
@@ -58,9 +32,42 @@ describe('DetailPage', () => {
             volume: 2.9,
             circulatingSupply: 18.8,
           },
-        },
-      ],
-    })
+        ],
+      })
+      ; (getAllTransactionsByCryptoId as jest.Mock).mockResolvedValue({
+        data: [
+          {
+            id: '6f2b8e3f-9d3b-4f1d-9d8c-3e3e3e3e3e2e',
+            date: '2023-07-29T02:35:42',
+            status: 'SUCCESS',
+            type: 'SELL',
+            price: 3234,
+            quantity: 0.032343,
+            description: 'From Teja Minnikanti',
+            user: {
+              id: 'b62177be-aca1-45d3-ab0e-60a9f4c79a5e',
+              name: 'John Doe',
+              email: 'john@gmail.com',
+              password: 'JohnDoe@001',
+              balance: 34000,
+            },
+            crypto: {
+              id: '7590808b-044e-4140-b34b-9466cdc15cca',
+              name: 'Bitcoin',
+              symbol: 'BTC',
+              icon: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
+              price: 3285553.73,
+              change: 1.06,
+              marketCap: 60.1,
+              volume: 2.9,
+              circulatingSupply: 18.8,
+            },
+          },
+        ],
+      })
+    jest.spyOn(authContext, 'useAuthContext').mockReturnValue({
+      user: user,
+    } as any)
   })
 
   const renderWithTheme = (component: React.ReactNode) => {
@@ -70,7 +77,7 @@ describe('DetailPage', () => {
   it('renders the WatchListCard component', async () => {
     renderWithTheme(
       <BrowserRouter>
-        <DetailPage userId="b62177be-aca1-45d3-ab0e-60a9f4c79a5e" />
+        <DetailPage />
       </BrowserRouter>
     )
     const component = await screen.findByTestId('watchlist-card')

@@ -78,7 +78,7 @@ const LogIn = ({
 
   const isDisabled = !email || !!emailError || !password || !!passwordError
   return (
-    <MainContainer data-testId="log-in">
+    <MainContainer data-testid="log-in">
       <Container>
         <Typography color={theme.palette.text.highEmphasis} variant="heading4">
           {LOGIN_HEADING}

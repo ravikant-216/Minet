@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import PurchagePage from '.'
 import { CryptoDetailData, user, walletMock } from '@/__mocks__'
@@ -7,6 +8,7 @@ import transactionService from '@/service/transaction.service'
 import { BUY_NOW } from '@/strings/constant'
 import { BrowserRouter } from 'react-router-dom'
 import * as Router from 'react-router'
+import * as authContext from '@/context/AuthContext'
 
 describe('Purchase Page', () => {
   const navigateMock = jest.fn()
@@ -22,11 +24,14 @@ describe('Purchase Page', () => {
       .spyOn(walletService, 'fetchUserUsbWallletData')
       .mockReturnValue(Promise.resolve(walletMock))
     jest.spyOn(transactionService, 'createNewTransaction')
+    jest.spyOn(authContext, 'useAuthContext').mockReturnValue({
+      user: user,
+    } as any)
   })
   test('Render Purchase page', async () => {
     render(
       <BrowserRouter>
-        <PurchagePage user={user} />
+        <PurchagePage />
       </BrowserRouter>
     )
     screen.getByText('Payment Method')
@@ -41,6 +46,7 @@ describe('Purchase Page', () => {
     })
     await waitFor(() => {
       expect(transactionService.createNewTransaction).toBeCalled()
+      expect(Router.useNavigate()).toBeCalled()
     })
   })
 })

@@ -15,15 +15,15 @@ import { formatCurrency } from '@/utils/functions'
 import walletService from '@/service/wallet.service'
 import transactionService from '@/service/transaction.service'
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '@/context/AuthContext'
 
-interface PurchaseScreenProps {
-  user: User
-}
 
-const PurchagePage = ({ user }: PurchaseScreenProps) => {
+
+const PurchagePage = () => {
   const [coins, setCoins] = useState<CryptoDetailType[]>([])
   const [usdWallet, setUsdWallet] = useState<Wallet | undefined>()
   const [sliderValue, setSliderValue] = useState(0)
+  const { user } = useAuthContext()
   const navigate = useNavigate()
 
   const [selectCoin, setSelectCoin] = useState<CryptoDetailType | undefined>(
@@ -36,7 +36,7 @@ const PurchagePage = ({ user }: PurchaseScreenProps) => {
       setCoins(fetchAllCoins)
       setSelectCoin(fetchAllCoins[0])
     }
-    const usdWalletData = await walletService.fetchUserUsbWallletData(user.id)
+    const usdWalletData = await walletService.fetchUserUsbWallletData(user?.id as string)
     if (usdWalletData) {
       setUsdWallet(usdWalletData)
       setSliderValue(usdWalletData.totalBalance / 2)
@@ -70,14 +70,14 @@ const PurchagePage = ({ user }: PurchaseScreenProps) => {
       const buyTransaction = await transactionService.createNewTransaction({
         date: new Date().toString(),
         type: 'Purchased',
-        user: user,
+        user: user as User,
         price: sliderValue,
         crypto: selectCoin as CryptoDetailType,
         status: 'success',
         quantity,
         description: 'From Badgley',
       })
-      navigate("/success", {
+      navigate("/payment-success", {
         state: {
           transaction: buyTransaction
         }

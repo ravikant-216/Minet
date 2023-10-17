@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { user } from '@/__mocks__/index'
 import {
   addWatchlist,
   deleteWatchlistById,
@@ -8,6 +7,7 @@ import {
 } from '@/api/api'
 import SearchTradeTable from '@/components/organisms/SearchTradeTable'
 import DashBoardTemplate from '@/components/templates/DashBoardTemplate'
+import { useAuthContext } from '@/context/AuthContext'
 import theme from '@/theme'
 import { formatCryptoData } from '@/utils/functions'
 import { CryptoData, TradeData, User, WatchlistData } from '@/utils/types'
@@ -85,9 +85,10 @@ const TradePageComponent = ({ user }: { user: User }) => {
   )
 }
 const TradePage = () => {
+  const { user } = useAuthContext()
   return (
     <DashBoardTemplate isButton={true} title={'Tarde'}>
-      <TradePageComponent user={user} />
+      <TradePageComponent user={user as User} />
     </DashBoardTemplate>
   )
 }

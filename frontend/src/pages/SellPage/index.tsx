@@ -20,16 +20,16 @@ import UsdLogo from '@Assets/icons/UsdCoin.svg'
 import theme from '@/theme'
 import walletService from '@/service/wallet.service'
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '@/context/AuthContext'
 
-interface SellPageProps {
-  user: User
-}
 
-const SellPage = ({ user }: SellPageProps) => {
+
+const SellPage = () => {
   const [coins, setCoins] = useState<CryptoDetailType[]>([])
   const [sellSliderValue, setSellSliderValue] = useState(0)
   const [wallets, setWallets] = useState<Wallet[]>([])
   const navigate = useNavigate()
+  const { user } = useAuthContext()
 
   const [currentSelectedCoin, setCurrentSelectedCoin] = useState<
     CryptoDetailType | undefined
@@ -45,7 +45,7 @@ const SellPage = ({ user }: SellPageProps) => {
       setCoins(fetchAllCoins)
       setCurrentSelectedCoin(fetchAllCoins[0])
     }
-    const wallets = await walletService.fetchAlllWalletByUserId(user.id)
+    const wallets = await walletService.fetchAlllWalletByUserId(user?.id as string)
     if (wallets) setWallets(wallets)
   }, [user])
 
@@ -76,7 +76,7 @@ const SellPage = ({ user }: SellPageProps) => {
       const sellTransaction = await transactionService.createNewTransaction({
         date: new Date().toString(),
         type: 'Sold',
-        user: user,
+        user: user as User,
         price: sellSliderValue * (currentSelectedCoin?.price as number),
         crypto: currentSelectedCoin as CryptoDetailType,
         status: 'success',
@@ -84,7 +84,7 @@ const SellPage = ({ user }: SellPageProps) => {
         description: 'From Leslie Alexander',
       })
       if (sellTransaction)
-        navigate("/success", {
+        navigate("/payment-success", {
           state: {
             transaction: sellTransaction
           }

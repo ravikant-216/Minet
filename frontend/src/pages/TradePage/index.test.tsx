@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { TABS } from '@/strings/constant'
@@ -12,6 +13,7 @@ import {
 import { act } from 'react-dom/test-utils'
 import * as Router from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
+import * as authContext from '@/context/AuthContext'
 
 jest.mock('@/api/api')
 
@@ -76,6 +78,9 @@ describe('TradePage', () => {
     })
     ;(addWatchlist as jest.Mock).mockResolvedValue({})
     ;(deleteWatchlistById as jest.Mock).mockResolvedValue({})
+    jest.spyOn(authContext, 'useAuthContext').mockReturnValue({
+      user: user,
+    } as any)
   })
 
   test('should render the component with the trade table data and watch list data', async () => {

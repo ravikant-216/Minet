@@ -4,7 +4,6 @@ import ChartIcon from '@Assets/icons/charts.svg'
 import ListIcon from '@Assets/icons/listIcon.svg'
 import theme from '@/theme'
 import CryptoCard from '../CryptoCard'
-import UsdCoin from '@Assets/icons/UsdCoin.svg'
 import NotransactionImg from '@Assets/images/NoTransactionImg.svg'
 import {
   MY_PORTFOLIO,
@@ -14,21 +13,19 @@ import {
   TOTAL_BALANCE,
   VIEW_ALL,
 } from '@/strings/constant'
-import { CryptoDetailType, RecentTransactionType } from '@/utils/types'
+import { CryptoDetailType, RecentTransactionType, Wallet } from '@/utils/types'
 import RecentTransactionCard from '../TransactionCard'
 
 interface MyPortfolioWalletProps extends StackProps {
   coins: CryptoDetailType[]
-  usdWalletBalance: number
-  totalBalance: number
   recentTransactions?: RecentTransactionType[]
+  wallets: Wallet[]
 }
 
 const MyPortfolioWallet = ({
   coins,
-  usdWalletBalance,
-  totalBalance,
   recentTransactions,
+  wallets,
   ...props
 }: MyPortfolioWalletProps) => {
   return (
@@ -62,7 +59,7 @@ const MyPortfolioWallet = ({
             {TOTAL_BALANCE}
           </Typography>
           <Typography variant="body1" color={theme.palette.text.highEmphasis}>
-            {`$${totalBalance}`}
+            {`$${4200}`}
           </Typography>
         </Stack>
         <Divider flexItem sx={{}} />
@@ -71,12 +68,19 @@ const MyPortfolioWallet = ({
         <Typography variant="subtitle1" color={theme.palette.text.highEmphasis}>
           {MY_WALLET}
         </Typography>
-        <CryptoCard
-          name="USD Coin"
-          image={UsdCoin}
-          sign="US Dollar"
-          amount={usdWalletBalance}
-        />
+        <Stack>
+          {wallets.map(({ id, crypto, totalBalance }) => {
+            return (
+              <CryptoCard
+                key={id}
+                name={crypto.name}
+                image={crypto.icon}
+                sign={crypto.symbol}
+                amount={totalBalance * crypto.price}
+              />
+            )
+          })}
+        </Stack>
       </Stack>
       <Stack gap={3}>
         <Stack direction="row" justifyContent="space-between">

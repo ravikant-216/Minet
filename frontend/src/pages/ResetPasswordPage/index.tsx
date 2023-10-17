@@ -37,7 +37,7 @@ const ResetPasswordPage = () => {
   }
 
   return (
-    <Box data-testId="signup-page">
+    <Box data-testid="signup-page">
       <AuthTemplate
         image={LoginImage}
         data={

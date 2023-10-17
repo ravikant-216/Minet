@@ -28,7 +28,7 @@ const ForgotPasswordPage = () => {
     navigate('/reset-password')
   }
   return (
-    <Box data-testId="forgot-page">
+    <Box data-testid="forgot-page">
       <AuthTemplate
         image={LoginImage}
         data={

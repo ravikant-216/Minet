@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prettier/prettier */
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import LoginPage from '.'
@@ -5,6 +7,7 @@ import { checkUser } from '@/api/api'
 import { EMAIL_PLACEHOLDER, PASSWORD_ENTER } from '@/strings/constant'
 import * as Router from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
+import * as authContext from '@/context/AuthContext'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -20,6 +23,11 @@ jest.mock('@auth0/auth0-react', () => ({
 }))
 
 describe('LoginPage component', () => {
+  const fn = jest.fn()
+  jest.spyOn(authContext, 'useAuthContext').mockReturnValue({
+    setUser: fn
+  } as any)
+
   test('handles successful sign-in', async () => {
     const mockResponse = [
       {
@@ -31,7 +39,7 @@ describe('LoginPage component', () => {
       },
     ]
 
-    ;(checkUser as jest.Mock).mockResolvedValue({ data: mockResponse })
+      ; (checkUser as jest.Mock).mockResolvedValue({ data: mockResponse })
 
     render(
       <BrowserRouter>
@@ -48,7 +56,7 @@ describe('LoginPage component', () => {
   })
 
   test('handles failed sign-in', async () => {
-    ;(checkUser as jest.Mock).mockRejectedValue(new Error('Simulated error'))
+    ; (checkUser as jest.Mock).mockRejectedValue(new Error('Simulated error'))
 
     render(
       <BrowserRouter>

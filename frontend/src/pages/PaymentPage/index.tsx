@@ -30,7 +30,7 @@ const PaymentPage = () => {
           coinCode={transaction.crypto.symbol}
           isSell={transaction.type === 'Sold'}
           onClick={() => {
-            navigate('/dashboard')
+            navigate('/cash-wallet')
           }}
         />
       </StyledBox>

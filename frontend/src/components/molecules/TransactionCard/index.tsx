@@ -33,11 +33,12 @@ const InnerLayout = styled(Box)({
 const ImageContainer = styled(Box)(({ theme }) => ({
   height: theme.spacing(11.5),
   width: theme.spacing(11),
+  display: 'flex',
+  gap: theme.spacing(2.5),
+  alignItems: 'center',
 }))
 
-const DataContainer = styled(Box)(({ theme }) => ({
-  height: theme.spacing(11.5),
-  width: theme.spacing(73.5),
+const DataContainer = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
@@ -63,8 +64,6 @@ const RecentTransactionCard = ({
       <InnerLayout>
         <ImageContainer>
           <Image src={TickMarkIcon} alt={ALTERNATE_MESSAGE} />
-        </ImageContainer>
-        <DataContainer>
           <Box>
             <Typography variant="body1">{cryptoName}</Typography>
             <ChipComponent
@@ -75,6 +74,8 @@ const RecentTransactionCard = ({
               height={theme.spacing(5)}
             />
           </Box>
+        </ImageContainer>
+        <DataContainer>
           <TypographyLabel
             position="right"
             color1={theme.palette.text.highEmphasis}

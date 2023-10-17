@@ -89,7 +89,7 @@ const SignUp = ({ onIconClick, onSignUp, onSignIn }: SignUpProps) => {
     !password ||
     !!passwordError
   return (
-    <MainContainer data-testId="sign-up">
+    <MainContainer data-testid="sign-up">
       <Container>
         <Typography color={theme.palette.text.highEmphasis} variant="heading4">
           {SignUP}

@@ -1,4 +1,4 @@
-import { TransactionData, Wallet, WatchlistData } from '@/utils/types'
+import { TransactionData, User, Wallet, WatchlistData } from '@/utils/types'
 import api_routes from './api_routes'
 import apiClient from './axios'
 
@@ -20,13 +20,34 @@ export const getWatchListByUserId = (userId: string) => {
   return apiClient.get(api_routes.GET_WATCHLIST_BY_USER_ID(userId))
 }
 
-export const addUser = (name: string, email: string, password: string) => {
-  return apiClient.post(api_routes.ADD_USER, {
+export const addUser = async (
+  name: string,
+  email: string,
+  password: string
+) => {
+  const newUserResponse = await apiClient.post(api_routes.ADD_USER, {
     name: name,
     email: email,
     password: password,
     balance: 50000,
   })
+  const data = {
+    user: newUserResponse.data,
+    crypto: {
+      id: 'dd9f0c6a-72ec-4d6e-8f05-84555cff3102',
+      name: 'USD Coin',
+      symbol: 'USDC',
+      icon: 'https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389',
+      price: 74.31,
+      change: 0.11,
+      marketCap: 4.6,
+      volume: 2.1,
+      circulatingSupply: 12.8,
+    },
+    totalBalance: 50000,
+  }
+  await createWallet(data)
+  return newUserResponse.data as User
 }
 
 export const addAuthUser = async (
@@ -36,12 +57,12 @@ export const addAuthUser = async (
 ) => {
   const response = await checkUserByEmail(email)
   if (response.data.length == 0) {
-    const newUserResponse = addUser(name, email, password)
+    const newUserResponse = await addUser(name, email, password)
     localStorage.setItem('user', JSON.stringify(newUserResponse))
     return newUserResponse
   } else {
     localStorage.setItem('user', JSON.stringify(response.data))
-    return response
+    return response.data[0] as User
   }
 }
 

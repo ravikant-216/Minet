@@ -8,6 +8,7 @@ import SellPage from '.'
 import walletService from '@/service/wallet.service'
 import { BrowserRouter } from 'react-router-dom'
 import * as Router from 'react-router'
+import * as authContext from '@/context/AuthContext'
 
 describe('Sell Page', () => {
   const navigateMock = jest.fn()
@@ -27,11 +28,14 @@ describe('Sell Page', () => {
     jest
       .spyOn(transactionService, 'createNewTransaction')
       .mockReturnValue(jest.fn() as any)
+    jest.spyOn(authContext, 'useAuthContext').mockReturnValue({
+      user: user,
+    } as any)
   })
   test('Render Purchase page Not called', async () => {
     render(
       <BrowserRouter>
-        <SellPage user={user} />
+        <SellPage />
       </BrowserRouter>
     )
     await waitFor(() => {
@@ -47,7 +51,7 @@ describe('Sell Page', () => {
   test('Render Purchase page called', async () => {
     render(
       <BrowserRouter>
-        <SellPage user={user} />
+        <SellPage />
       </BrowserRouter>
     )
     await waitFor(() => {
@@ -60,6 +64,7 @@ describe('Sell Page', () => {
     })
     await waitFor(() => {
       expect(transactionService.createNewTransaction).toBeCalled()
+      expect(Router.useNavigate).toBeCalled()
     })
   })
 })

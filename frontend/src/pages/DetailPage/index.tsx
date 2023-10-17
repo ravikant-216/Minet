@@ -4,6 +4,7 @@ import CurrencyDetailOverview from '@/components/molecules/CurrencyDetailOvervie
 import Tabs from '@/components/molecules/Tabs'
 import CurrencyDetailWallet from '@/components/organisms/CurrencyDetailWallet'
 import DashBoardTemplate from '@/components/templates/DashBoardTemplate'
+import { useAuthContext } from '@/context/AuthContext'
 import { formatter } from '@/strings/constant'
 import theme from '@/theme'
 import { formatTransactions } from '@/utils/functions'
@@ -109,9 +110,8 @@ const Component = ({
         <Box pt={theme.spacing(6)} pb={theme.spacing(6)}>
           <CurrencyDetailWallet
             textAlign="left"
-            totalBalance={`${cryptoQuantitySum} ${
-              crypto?.symbol
-            } (${formatter.format(transactionPriceSum)})`}
+            totalBalance={`${cryptoQuantitySum} ${crypto?.symbol
+              } (${formatter.format(transactionPriceSum)})`}
             transactions={transactions}
           />
         </Box>
@@ -120,17 +120,18 @@ const Component = ({
   )
 }
 
-const DetailPage = ({ userId }: { userId: string }) => {
+const DetailPage = () => {
+  const { user } = useAuthContext()
   const { cryptoId } = useParams<{ cryptoId: string }>()
   const navigate = useNavigate()
   useEffect(() => {
     if (!cryptoId) {
       navigate('/dashboard')
     }
-  }, [cryptoId])
+  }, [cryptoId, navigate])
   return (
     <DashBoardTemplate title={'Trade'} isButton={true}>
-      <Component cryptoId={cryptoId as string} userId={userId} />
+      <Component cryptoId={cryptoId as string} userId={user?.id as string} />
     </DashBoardTemplate>
   )
 }

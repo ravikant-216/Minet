@@ -29,9 +29,10 @@ const DashBoardTemplate = ({
         break
       case LOGOUT:
         logout()
+        localStorage.clear()
         break
       default:
-        navigate('/dashboards')
+        navigate('/dashboard')
         break
     }
   }

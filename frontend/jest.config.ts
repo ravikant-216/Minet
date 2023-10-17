@@ -27,6 +27,7 @@ const config: Config.InitialOptions = {
     '<rootDir>/src/api/',
     '<rootDir>/src/api/',
     '<rootDir>/src/router/index.tsx',
+    '<rootDir>/src/context/AuthContext/index.tsx',
   ],
   transformIgnorePatterns: ['node_modules/(?!@prekari/core-ui)'],
   moduleNameMapper: {

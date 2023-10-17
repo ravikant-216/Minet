@@ -49,7 +49,7 @@ jobs:
         with:
           context: ./frontend
           push: true
-          file: frontend.Dockerfile
+          file: ./frontend/frontend.Dockerfile
           tags: | 
             ghcr.io/${{ secrets.GHCR_USERNAME }}/bootcamp123-frontend:latest
             ghcr.io/${{ secrets.GHCR_USERNAME }}/bootcamp123-frontend:v${{ github.run_number }}

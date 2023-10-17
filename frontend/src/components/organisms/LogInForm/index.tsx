@@ -89,36 +89,24 @@ const LogIn = ({
               inputLabel={EMAIL}
               value={email}
               placeholder={EMAIL_PLACEHOLDER}
+              error={emailError.length > 0}
+              helperText={emailError}
               onChange={(e) => handleChange(e, 'email')}
               type="text"
               size="small"
             />
-            {emailError && (
-              <Typography
-                color={theme.palette.gamma.WARNING_300}
-                variant="body2"
-              >
-                {emailError}
-              </Typography>
-            )}
           </Stack>
           <Stack>
             <InputField
               inputLabel={PASSWORD}
               value={password}
               placeholder={PASSWORD_ENTER}
+              error={passwordError.length > 0}
+              helperText={passwordError}
               type="password"
               onChange={(e) => handleChange(e, 'password')}
               size="small"
             />
-            {passwordError && (
-              <Typography
-                color={theme.palette.gamma.WARNING_300}
-                variant="body2"
-              >
-                {passwordError}
-              </Typography>
-            )}
           </Stack>
           <ButtonComponent
             variant="text"

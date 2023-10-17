@@ -12,12 +12,13 @@ interface AuthTemplateProps {
 const MainContainer = styled(Grid)({
   width: '100vw',
   height: '100vh',
-  overflow: 'hidden',
+  overflow: 'auto',
 })
 
 const RightContainer = styled(Grid)({
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
 })
 
 const LeftContainer = styled(Grid)({

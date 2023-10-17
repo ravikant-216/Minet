@@ -33,6 +33,8 @@ const GET_WALLET_BY_COIN_ID = (coinId: string) =>
   `${WALLET}?crypto.id=${coinId}`
 
 const GET_WALLET_BY_USER_ID = (userId: string) => `${WALLET}?user.id=${userId}`
+const GET_WALLET_BY_USER_ID_AND_CRYPTO_ID = (userId: string, coinId: string) =>
+  `${WALLET}?user.id=${userId}&crypto.id=${coinId}`
 
 export default {
   GET_ALL_COINS,
@@ -55,4 +57,5 @@ export default {
   GET_USD_WALLET_BY_USER_ID,
   GET_WALLET_BY_COIN_ID,
   GET_WALLET_BY_USER_ID,
+  GET_WALLET_BY_USER_ID_AND_CRYPTO_ID,
 }

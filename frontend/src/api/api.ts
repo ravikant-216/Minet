@@ -117,6 +117,12 @@ export const getWalletByCoinId = (coinId: string) => {
   return apiClient.get(api_routes.GET_WALLET_BY_COIN_ID(coinId))
 }
 
+export const getWalletByUserIdCoinId = (coinId: string, userId: string) => {
+  return apiClient.get(
+    api_routes.GET_WALLET_BY_USER_ID_AND_CRYPTO_ID(userId, coinId)
+  )
+}
+
 export const createWallet = (data: Omit<Wallet, 'id'>) => {
   return apiClient.post(api_routes.WALLET, data)
 }

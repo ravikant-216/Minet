@@ -88,6 +88,7 @@ const DashboardHeader = ({
             }}
             onClick={() => {
               logout()
+              localStorage.clear()
             }}
           />
         </Stack>

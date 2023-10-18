@@ -458,7 +458,7 @@ export const COINS = [
 export const NAME = 'Name'
 export const PRICE = 'Price'
 export const CHANGE = 'Change'
-export const MARKETCAP = 'MarketCap'
+export const MARKETCAP = 'Market Cap'
 export const WATCH = 'Watch'
 export const ALTERNATE = 'Up and Down Arrow'
 export const SOCIAL_LOGIN_DATA = [
@@ -468,7 +468,7 @@ export const SOCIAL_LOGIN_DATA = [
 ]
 export const LOGIN_HEADING = 'Login to Minet'
 export const PASSWORD = 'Password'
-export const SIGN_IN = 'Sign in'
+export const SIGN_IN = 'Sign In'
 export const OR = 'Or'
 export const DO_NOT_HAVE_ACCOUNT = 'Don’t have an account?'
 export const EMAIL_IS_REQUIRED = 'Email is required'
@@ -504,7 +504,7 @@ export const EMAIL_PLACEHOLDER = 'you@company.com'
 export const CREATE_PASSWORD_PLACEHOLDER = 'Create Password'
 export const PASSWORD_CHECK =
   'A min of 8 charaters with atleast 1 special character and number included'
-export const SIGN_UP_BUTTON = 'Sign Up'
+export const SIGN_UP_BUTTON = 'Sign up'
 export const ALREADY_HAVE_AN_ACCOUNT = 'Already have an account?'
 export const PURCHASE = 'Purchase'
 export const TRANSACTION_MESSAGE =
@@ -515,8 +515,8 @@ export const SELL_CRYPTO = 'SELL CRYPTO'
 export const BUY_CRYPTO = 'BUY CRYPTO'
 export const USD_COIN_BUTTON = 'GO TO USD COIN'
 export const Sell = 'Sell'
-export const SELL = 'Sell'
-export const BUY = 'Buy'
+export const SELL = 'SELL'
+export const BUY = 'BUY'
 
 export const TABS = [
   {

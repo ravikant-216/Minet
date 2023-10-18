@@ -46,8 +46,8 @@ describe('DashBoardTemplate', () => {
       </BrowserRouter>
     )
 
-    expect(screen.getByText('Buy')).toBeInTheDocument()
-    expect(screen.getByText('Sell')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('Buy'))
+    expect(screen.getByText('BUY')).toBeInTheDocument()
+    expect(screen.getByText('SELL')).toBeInTheDocument()
+    fireEvent.click(screen.getByText('BUY'))
   })
 })

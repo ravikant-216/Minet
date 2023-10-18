@@ -1,6 +1,6 @@
 import Image from '@/components/atoms/Image'
 import Tabs from '@/components/molecules/Tabs'
-import { FILTER_DROPDOWN, TABS, TRADE_DATA } from '@/strings/constant'
+import { FILTER_DROPDOWN, TABS } from '@/strings/constant'
 import theme from '@/theme'
 import {
   InputAdornment,
@@ -46,6 +46,9 @@ const StyleDropdown = styled(Stack)({
 })
 
 const StyleTextField = styled(TextField)({
+  color: theme.palette.text.mediumEmphasis,
+  borderRadius: 1,
+  border: `1px solid ${theme.palette.gamma.GREY_WHITE}`,
   '& .MuiOutlinedInput-root': {
     height: theme.spacing(10),
     '&:focus fieldset': {
@@ -82,8 +85,8 @@ const SearchTradeTable = ({
   const onClearSearch = () => {
     if (searchText) {
       setSearchText('')
-      setAssets(TRADE_DATA)
-      setWatchList(TRADE_DATA.filter((data) => data.checked))
+      setAssets(tradeTableData)
+      setWatchList(tradeTableData.filter((data) => data.checked))
     }
   }
 
@@ -92,18 +95,18 @@ const SearchTradeTable = ({
 
     if (tabValue === TABS[0].value) {
       const filteredData = searchText
-        ? TRADE_DATA.filter((asset) =>
+        ? tradeTableData.filter((asset) =>
             asset.name.toLowerCase().includes(text.toLowerCase())
           )
-        : TRADE_DATA
+        : tradeTableData
       setAssets(filteredData)
     } else {
       const filteredData = searchText
-        ? TRADE_DATA.filter(
+        ? watchListData.filter(
             (row) =>
               row.name.toLowerCase().includes(text.toLowerCase()) && row.checked
           )
-        : TRADE_DATA.filter((row) => row.checked)
+        : watchListData.filter((row) => row.checked)
       setWatchList(filteredData)
     }
   }

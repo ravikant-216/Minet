@@ -23,8 +23,8 @@ describe('DashboardHeader Component', () => {
       />
     )
     expect(getByText('My Dashboard')).toBeInTheDocument()
-    expect(getByText('Buy')).toBeInTheDocument()
-    expect(getByText('Sell')).toBeInTheDocument()
+    expect(getByText('BUY')).toBeInTheDocument()
+    expect(getByText('SELL')).toBeInTheDocument()
   })
 
   it('does not render buttons when `isButton` is false', () => {
@@ -36,8 +36,8 @@ describe('DashboardHeader Component', () => {
       />
     )
 
-    expect(queryByText('Buy')).toBeNull()
-    expect(queryByText('Sell')).toBeNull()
+    expect(queryByText('BUY')).toBeNull()
+    expect(queryByText('SELL')).toBeNull()
   })
 
   it('calls the `onBuy` and `onSell` functions when buttons are clicked', () => {
@@ -54,8 +54,8 @@ describe('DashboardHeader Component', () => {
       />
     )
 
-    fireEvent.click(getByText('Buy'))
-    fireEvent.click(getByText('Sell'))
+    fireEvent.click(getByText('BUY'))
+    fireEvent.click(getByText('SELL'))
 
     expect(buyHandler).toHaveBeenCalledTimes(1)
     expect(sellHandler).toHaveBeenCalledTimes(1)

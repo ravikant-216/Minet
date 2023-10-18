@@ -51,7 +51,7 @@ const CurrencyDetailOverview = ({
           </Stack>
           <Stack alignSelf="center">
             <TimeTabs
-              borderRadius={false}
+              borderRadius={true}
               width={theme.spacing(74)}
               height="fit-content"
             />

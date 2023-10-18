@@ -118,6 +118,7 @@ const SellPage = () => {
             name={currentSelectedCoin?.name as string}
             detailVariant="subtitle1"
             detailColor={theme.palette.text.highEmphasis}
+            sx={{backgroundColor: theme.palette.gamma.GREY_WHITE}}
           />
           <AccountDetailCard
             isBuy={true}

@@ -26,7 +26,7 @@ describe('SignUp Component', () => {
   })
 
   it('displays the correct details', () => {
-    expect(screen.getByText('Sign Up')).toBeInTheDocument()
+    expect(screen.getByText('Sign up')).toBeInTheDocument()
     expect(screen.getByText('Already have an account?')).toBeInTheDocument()
   })
 
@@ -34,7 +34,7 @@ describe('SignUp Component', () => {
     const nameInput = screen.getByPlaceholderText('Eg: John Doe')
     const emailInput = screen.getByPlaceholderText('you@company.com')
     const passwordInput = screen.getByPlaceholderText('Create Password')
-    const signUpButton = screen.getByRole('button', { name: 'Sign Up' })
+    const signUpButton = screen.getByRole('button', { name: 'Sign up' })
 
     expect(signUpButton).toBeInTheDocument()
     expect(signUpButton).toBeDisabled()

@@ -48,7 +48,7 @@ describe('LoginPage component', () => {
     )
     const emailInput = screen.getByPlaceholderText(EMAIL_PLACEHOLDER)
     const passwordInput = screen.getByPlaceholderText(PASSWORD_ENTER)
-    const signInButton = screen.getByRole('button', { name: 'Sign in' })
+    const signInButton = screen.getByRole('button', { name: 'Sign In' })
 
     fireEvent.change(emailInput, { target: { value: 'majahar@gmail.com' } })
     fireEvent.change(passwordInput, { target: { value: 'Test@1234' } })
@@ -66,7 +66,7 @@ describe('LoginPage component', () => {
 
     const emailInput = screen.getByPlaceholderText(EMAIL_PLACEHOLDER)
     const passwordInput = screen.getByPlaceholderText(PASSWORD_ENTER)
-    const signInButton = screen.getByRole('button', { name: 'Sign in' })
+    const signInButton = screen.getByRole('button', { name: 'Sign In' })
 
     fireEvent.change(emailInput, { target: { value: 'majahar@gmail.com' } })
     fireEvent.change(passwordInput, { target: { value: 'Test@123456' } })

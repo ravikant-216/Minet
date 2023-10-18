@@ -50,7 +50,7 @@ describe('SignUpPage component', () => {
     const passwordInput = screen.getByPlaceholderText(
       CREATE_PASSWORD_PLACEHOLDER
     )
-    const signUpButton = screen.getByRole('button', { name: 'Sign Up' })
+    const signUpButton = screen.getByRole('button', { name: 'Sign up' })
 
     fireEvent.change(nameInput, { target: { value: 'temp' } })
     fireEvent.change(emailInput, { target: { value: 'temp@gmail.com' } })
@@ -72,7 +72,7 @@ describe('SignUpPage component', () => {
     const passwordInput = screen.getByPlaceholderText(
       CREATE_PASSWORD_PLACEHOLDER
     )
-    const signUpButton = screen.getByRole('button', { name: 'Sign Up' })
+    const signUpButton = screen.getByRole('button', { name: 'Sign up' })
 
     fireEvent.change(nameInput, { target: { value: 'temp' } })
     fireEvent.change(emailInput, { target: { value: 'temp@gmail.com' } })
@@ -116,7 +116,7 @@ describe('SignUpPage component', () => {
     const passwordInput = screen.getByPlaceholderText(
       CREATE_PASSWORD_PLACEHOLDER
     )
-    const signUpButton = screen.getByRole('button', { name: 'Sign Up' })
+    const signUpButton = screen.getByRole('button', { name: 'Sign up' })
 
     fireEvent.change(nameInput, { target: { value: 'temp' } })
     fireEvent.change(emailInput, { target: { value: 'temp@gmail.com' } })

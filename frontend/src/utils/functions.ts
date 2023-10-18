@@ -32,7 +32,9 @@ export const formatTransactions = (transactionsData: TransactionData[]) => {
         id: transaction.id,
         status: transaction.status.toLowerCase() as Transaction['status'],
         transactionType:
-          transaction.type.toLowerCase() as Transaction['transactionType'],
+          transaction.type === 'Purchased'
+            ? 'buy'
+            : ('sold' as Transaction['transactionType']),
         user: transaction.user,
       }
     }

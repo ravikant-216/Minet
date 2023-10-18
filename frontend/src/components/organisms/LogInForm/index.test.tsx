@@ -29,7 +29,7 @@ describe('LogIn Component', () => {
   it('disables Sign In button when fields are empty', () => {
     const emailInput = screen.getByPlaceholderText('you@company.com')
     const passwordInput = screen.getByPlaceholderText('Enter Password')
-    const signInButton = screen.getByRole('button', { name: 'Sign in' })
+    const signInButton = screen.getByRole('button', { name: 'Sign In' })
 
     expect(signInButton).toBeInTheDocument()
     expect(signInButton).toBeDisabled()

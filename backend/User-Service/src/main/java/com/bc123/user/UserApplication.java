@@ -9,12 +9,18 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 
 import javax.sql.DataSource;
+import org.modelmapper.ModelMapper;
 
 @SpringBootApplication
 public class UserApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserApplication.class, args);
+	}
+	
+	@Bean
+	public ModelMapper modelMapper(){
+		return new ModelMapper();
 	}
 	@Bean
 	DataSource configureUMDataSource(
@@ -44,5 +50,4 @@ public class UserApplication {
 		flyway.repair();
 		flyway.migrate();
 	}
-
 }

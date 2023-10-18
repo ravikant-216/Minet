@@ -21,6 +21,11 @@
 		<sonar.exclusions>
 			./pom.xml,
 			**/com/bc123/crypto/CryptoApplication.java,
+			**/com/bc123/crypto/entity/**,
+			**/com/bc123/crypto/mapper/**,
+			**/com/bc123/crypto/exception/**,
+			**/com/bc123/crypto/dto/**,
+			**/com/bc123/crypto/config/**
 		</sonar.exclusions>
 	</properties>
 	<dependencies>
@@ -119,6 +124,26 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.8</version>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

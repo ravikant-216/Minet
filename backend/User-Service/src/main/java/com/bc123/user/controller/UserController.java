@@ -1,5 +1,7 @@
 package com.bc123.user.controller;
 
+import com.bc123.user.config.JwtService;
+import com.bc123.user.dto.Auth;
 import com.bc123.user.dto.UserDto;
 import com.bc123.user.service.UserService;
 import jakarta.validation.Valid;
@@ -9,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-import static com.bc123.user.utils.Constants.BASE_URL;
-import static com.bc123.user.utils.Constants.ID;
+import static com.bc123.user.utils.Constants.*;
 
 @Slf4j
 @RestController
@@ -19,9 +20,18 @@ public class UserController {
 	
 	private UserService userService;
 	
+	private JwtService jwtService;
+	
 	@Autowired
-	public UserController(UserService userService) {
+	public UserController(UserService userService, JwtService jwtService) {
 		this.userService = userService;
+		this.jwtService = jwtService;
+	}
+	
+	@PostMapping(LOGIN)
+	public String getToken(@RequestBody Auth auth){
+		log.info("Inside getToken method in Controller Layer");
+		return jwtService.generateToken(auth.getEmail(), auth.getPassword());
 	}
 	
 	@GetMapping(ID)

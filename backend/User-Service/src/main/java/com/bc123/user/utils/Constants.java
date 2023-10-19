@@ -7,4 +7,6 @@ public class Constants {
 	public static final String ID = "/{id}";
 	
 	public static final String NOT_FOUND = "not Found";
+	
+	public static final String LOGIN = "/login";
 }

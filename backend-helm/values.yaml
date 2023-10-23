@@ -94,6 +94,7 @@ deployments:
       env:
         - name: EUREKA_INSTANCE_HOSTNAME
           value: service-registry
+          
         - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
           value: https://bc123be.bootcamp64.tk/eureka/
         - name: DATASOURCE_URL
@@ -226,4 +227,4 @@ ingress:
           - path: /
             pathType: Prefix
             serviceName: api-gateway
-            servicePort: 9191
+            servicePort: 8080

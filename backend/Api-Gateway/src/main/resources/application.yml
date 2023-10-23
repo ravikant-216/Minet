@@ -17,22 +17,26 @@ spring:
         - id: portfolio-service
           uri: lb://PORTFOLIO-SERVICE
           predicates:
-            - Path=/watchlist/**
-            - Path=/wallet/**
+            - Path=/api/v1/watchlist/**
+            - Path=/api/v1/wallet/**
+          filters:
+            - AuthenticationFilter
         - id: transaction-service
           uri: lb://TRANSACTION-SERVICE
           predicates:
             - Path=/transactions/**
+          filters:
+            - AuthenticationFilter
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/users/**
-          filters:
-            - AuthenticationFilter
+            - Path=/api/v1/users/**
         - id: crypto-service
           uri: lb://CRYPTO-SERVICE
           predicates:
-            - Path=/crypto/**
+            - Path=/api/v1/crypto/**
+          filters:
+            - AuthenticationFilter
 eureka:
   client:
     fetch-registry: true

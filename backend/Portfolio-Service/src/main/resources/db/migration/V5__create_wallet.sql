@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS `minet`.`wallet` (
   PRIMARY KEY (`id`),
   KEY `wallet_user_id_fkey` (`user_id`),
   KEY `wallet_crypto_id_fkey` (`crypto_id`),
-  CONSTRAINT `wallet_crypto_id_fkey` FOREIGN KEY (`crypto_id`) REFERENCES `crypto` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `wallet_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `wallet_crypto_id_fkey` FOREIGN KEY (`crypto_id`) REFERENCES `crypto` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `wallet_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ;

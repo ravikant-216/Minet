@@ -26,4 +26,3 @@ eureka:
     prefer-ip-address: true
 
 SECRET_ID: 2b7e151628aed2a6abf7158809cf4f3c2b7e151628aed2a6abf7158809cf4f3c2
-

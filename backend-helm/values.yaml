@@ -16,7 +16,7 @@ deployments:
         - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
           value: https://bc123be.bootcamp64.tk/eureka/
         - name: DATASOURCE_URL
-          value: dbc:mysql://18.234.143.49:30002/minet
+          value: jdbc:mysql://18.234.143.49:30002/minet
 
         - name: DB_PASSWORD
           value: bc@123
@@ -43,7 +43,7 @@ deployments:
         - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
           value: https://bc123be.bootcamp64.tk/eureka/
         - name: DATASOURCE_URL
-          value: dbc:mysql://18.234.143.49:30002/minet
+          value: jdbc:mysql://18.234.143.49:30002/minet
 
         - name: DB_PASSWORD
           value: bc@123
@@ -70,7 +70,7 @@ deployments:
         - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
           value: https://bc123be.bootcamp64.tk/eureka/
         - name: DATASOURCE_URL
-          value: dbc:mysql://18.234.143.49:30002/minet
+          value: jdbc:mysql://18.234.143.49:30002/minet
 
         - name: DB_PASSWORD
           value: bc@123
@@ -97,7 +97,7 @@ deployments:
         - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
           value: https://bc123be.bootcamp64.tk/eureka/
         - name: DATASOURCE_URL
-          value: dbc:mysql://18.234.143.49:30002/minet
+          value: jdbc:mysql://18.234.143.49:30002/minet
 
         - name: DB_PASSWORD
           value: bc@123
@@ -124,7 +124,7 @@ deployments:
         - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
           value: https://bc123be.bootcamp64.tk/eureka/
         - name: DATASOURCE_URL
-          value: dbc:mysql://18.234.143.49:30002/minet
+          value: jdbc:mysql://18.234.143.49:30002/minet
 
         - name: DB_PASSWORD
           value: bc@123
@@ -151,7 +151,7 @@ deployments:
         - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
           value: https://bc123be.bootcamp64.tk/eureka/
         - name: DATASOURCE_URL
-          value: dbc:mysql://18.234.143.49:30002/minet
+          value: jdbc:mysql://18.234.143.49:30002/minet
 
         - name: DB_PASSWORD
           value: bc@123

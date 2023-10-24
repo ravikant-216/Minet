@@ -12,7 +12,8 @@ import java.util.function.Predicate;
 @NoArgsConstructor
 public class RouteValidator {
     public static final List<String> openApiEndpoints = List.of(
-            "/user"
+            "/user",
+            "/api/v1/wallet/**"
     );
 
     public static final Predicate<ServerHttpRequest> isSecured =

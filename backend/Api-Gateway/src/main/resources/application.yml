@@ -17,13 +17,11 @@ spring:
         - id: portfolio-service
           uri: lb://PORTFOLIO-SERVICE
           predicates:
-            - Path=/api/v1/watchlist/**
-          filters:
-            - AuthenticationFilter
+            - Path=/api/v1/portfolio/**
         - id: transaction-service
           uri: lb://TRANSACTION-SERVICE
           predicates:
-            - Path=/transactions/**
+            - Path=/api/v1/transactions/**
           filters:
             - AuthenticationFilter
         - id: user-service

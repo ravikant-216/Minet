@@ -1,5 +1,4 @@
 package com.bc123.portfolio.controller;
-import com.bc123.portfolio.controller.WatchlistController;
 import com.bc123.portfolio.dto.WatchlistDto;
 import com.bc123.portfolio.exception.WatchlistException;
 import com.bc123.portfolio.request.WatchlistRequest;
@@ -9,10 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-import java.util.Collections;
-import java.util.UUID;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -43,28 +44,6 @@ class WatchlistControllerTest {
         assertEquals(watchlistDto, response);
     }
 
-//    @Test
-//    void testGetWatchlistByCryptoId() {
-//        UUID cryptoId = UUID.randomUUID();
-//        WatchlistDto watchlistDto = new WatchlistDto();
-//
-//        when(watchlistService.getAllByCryptoId(cryptoId)).thenReturn(Collections.singletonList(watchlistDto));
-//
-//        List<WatchlistDto> response = watchlistController.getAllByCryptoId(cryptoId).getBody();
-//        assertEquals(Collections.singletonList(watchlistDto), response);
-//    }
-
-//    @Test
-//    void testGetWatchlistByUserId() {
-//        UUID userId = UUID.randomUUID();
-//        WatchlistDto watchlistDto = new WatchlistDto();
-//
-//        when(watchlistService.getAllByUserId(userId)).thenReturn(Collections.singletonList(watchlistDto));
-//
-//        List<WatchlistDto> response = watchlistController.getAllByUserId(userId).getBody();
-//        assertEquals(Collections.singletonList(watchlistDto), response);
-//    }
-
     @Test
     void testAddWatchlist() {
         WatchlistRequest request = new WatchlistRequest();
@@ -86,28 +65,49 @@ class WatchlistControllerTest {
     }
 
     @Test
+    void testGetWatchlist() {
+        UUID cryptoId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+        List<WatchlistDto> watchlistDtos = new ArrayList<>();
+        WatchlistDto watchlistDto = new WatchlistDto();
+        watchlistDtos.add(watchlistDto);
+
+        when(watchlistService.getWatchlist(userId, cryptoId)).thenReturn(watchlistDtos);
+
+        ResponseEntity<List<WatchlistDto>> response = watchlistController.getWatchlist(cryptoId, userId);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(watchlistDtos, response.getBody());
+    }
+
+    @Test
+    void testGetWatchlistException() {
+        UUID cryptoId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+
+        when(watchlistService.getWatchlist(userId, cryptoId)).thenThrow(new WatchlistException("Test WatchlistException"));
+
+        assertThrows(WatchlistException.class, () -> watchlistController.getWatchlist(cryptoId, userId));
+    }
+
+    @Test
+    void testGetWatchlistWithNullParameters() {
+        List<WatchlistDto> watchlistDtos = new ArrayList<>();
+
+        when(watchlistService.getWatchlist(null, null)).thenReturn(watchlistDtos);
+
+        ResponseEntity<List<WatchlistDto>> response = watchlistController.getWatchlist(null, null);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(watchlistDtos, response.getBody());
+    }
+    @Test
     void testGetWatchlistByIdThrowsException() {
         UUID watchlistId = UUID.randomUUID();
         when(watchlistService.getById(watchlistId)).thenThrow(new WatchlistException("Test WatchlistException"));
 
         assertThrows(WatchlistException.class, () -> watchlistController.getById(watchlistId));
     }
-
-//    @Test
-//    void testGetWatchlistByCryptoIdThrowsException() {
-//        UUID cryptoId = UUID.randomUUID();
-//        when(watchlistService.getAllByCryptoId(cryptoId)).thenThrow(new WatchlistException("Test WatchlistException"));
-//
-//        assertThrows(WatchlistException.class, () -> watchlistController.getAllByCryptoId(cryptoId));
-//    }
-//
-//    @Test
-//    void testGetWatchlistByUserIdThrowsException() {
-//        UUID userId = UUID.randomUUID();
-//        when(watchlistService.getAllByUserId(userId)).thenThrow(new WatchlistException("Test WatchlistException"));
-//
-//        assertThrows(WatchlistException.class, () -> watchlistController.getAllByUserId(userId));
-//    }
 
     @Test
     void testAddWatchlistThrowsException() {

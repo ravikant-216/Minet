@@ -8,8 +8,7 @@ import java.util.UUID;
 
 public interface IWatchlistService {
     WatchlistDto getById(UUID id);
-    List<WatchlistDto> getAllByCryptoId(UUID id);
-    List<WatchlistDto> getAllByUserId(UUID id);
+    List<WatchlistDto> getWatchlist(UUID cryptoId,UUID userId);
     WatchlistDto add(WatchlistRequest watchlistRequest);
     void deleteById(UUID id);
 }

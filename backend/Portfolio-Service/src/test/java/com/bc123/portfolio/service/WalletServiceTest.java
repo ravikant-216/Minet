@@ -68,9 +68,20 @@ class WalletServiceTest {
         List<Wallet> wallets = new ArrayList<>();
         when(walletRepository.findAllByCryptoId(cryptoId)).thenReturn(wallets);
 
-        List<WalletDto> result = walletService.getAllByCryptoId(cryptoId);
+        List<WalletDto> result = walletService.getWallets(cryptoId,null);
 
         assertNotNull(result);
+    }
+    @Test
+    void testGetWalletsThrowsExceptionWithInvalidParameters() {
+        UUID cryptoId = null;
+        UUID userId = null;
+
+        when(walletRepository.findAllByUserIdAndCryptoId(userId, cryptoId)).thenReturn(new ArrayList<>());
+        when(walletRepository.findAllByCryptoId(cryptoId)).thenReturn(new ArrayList<>());
+        when(walletRepository.findAllByUserId(userId)).thenReturn(new ArrayList<>());
+
+        assertThrows(WalletException.class, () -> walletService.getWallets(cryptoId, userId));
     }
 
     @Test
@@ -79,7 +90,7 @@ class WalletServiceTest {
         List<Wallet> wallets = new ArrayList<>();
         when(walletRepository.findAllByUserId(userId)).thenReturn(wallets);
 
-        List<WalletDto> result = walletService.getAllByUserId(userId);
+        List<WalletDto> result = walletService.getWallets(null,userId);
 
         assertNotNull(result);
     }
@@ -136,7 +147,7 @@ class WalletServiceTest {
         UUID cryptoId = UUID.randomUUID();
         when(walletRepository.findAllByCryptoId(cryptoId)).thenThrow(new WalletException("Test WalletException"));
 
-        assertThrows(WalletException.class, () -> walletService.getAllByCryptoId(cryptoId));
+        assertThrows(WalletException.class, () -> walletService.getWallets(cryptoId,null));
     }
 
     @Test
@@ -144,7 +155,7 @@ class WalletServiceTest {
         UUID userId = UUID.randomUUID();
         when(walletRepository.findAllByUserId(userId)).thenThrow(new WalletException("Test WalletException"));
 
-        assertThrows(WalletException.class, () -> walletService.getAllByUserId(userId));
+        assertThrows(WalletException.class, () -> walletService.getWallets(null,userId));
     }
 
     @Test
@@ -175,7 +186,7 @@ class WalletServiceTest {
         when(walletRepository.findAllByUserIdAndCryptoId(userId, cryptoId)).thenReturn(wallets);
         when(converter.walletToDto(any())).thenReturn(walletDto);
 
-        List<WalletDto> result = walletService.getByUserIdAndCryptoId(userId, cryptoId);
+        List<WalletDto> result = walletService.getWallets(cryptoId, userId);
 
         assertNotNull(result);
         assertEquals(0, result.size());
@@ -186,7 +197,7 @@ class WalletServiceTest {
         UUID cryptoId = UUID.randomUUID();
         when(walletRepository.findAllByUserIdAndCryptoId(userId, cryptoId)).thenThrow(new WalletException("Test WalletException"));
 
-        assertThrows(WalletException.class, () -> walletService.getByUserIdAndCryptoId(userId, cryptoId));
+        assertThrows(WalletException.class, () -> walletService.getWallets(cryptoId, userId));
     }
 
 }

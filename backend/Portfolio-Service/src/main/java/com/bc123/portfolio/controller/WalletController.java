@@ -41,15 +41,7 @@ public class WalletController {
     ) {
         log.info("Get Wallets with CryptoId: {} and UserId: {}", cryptoId, userId);
         try {
-            if (cryptoId != null && userId != null) {
-                return ResponseEntity.ok(walletService.getByUserIdAndCryptoId(userId, cryptoId));
-            } else if (cryptoId != null) {
-                return ResponseEntity.ok(walletService.getAllByCryptoId(cryptoId));
-            } else if (userId != null) {
-                return ResponseEntity.ok(walletService.getAllByUserId(userId));
-            } else {
-                throw new WalletException("Invalid parameters");
-            }
+            return ResponseEntity.ok(walletService.getWallets(cryptoId,userId));
         } catch (Exception e) {
             throw new WalletException(e.getMessage());
         }

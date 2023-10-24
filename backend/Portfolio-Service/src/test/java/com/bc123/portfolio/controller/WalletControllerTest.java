@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -46,23 +48,48 @@ class WalletControllerTest {
         WalletDto response = walletController.getById(walletId).getBody();
         assertEquals(walletDto, response);
     }
-
-    @Test
-    void testGetWalletByCryptoId() throws Exception {
-        UUID cryptoId = UUID.randomUUID();
-        WalletDto walletDto = new WalletDto();
-
-        when(walletService.getAllByCryptoId(cryptoId)).thenReturn(Collections.singletonList(walletDto));
-
-        List<WalletDto> response = walletController.getWallets(cryptoId,null).getBody();
-        assertEquals(Collections.singletonList(walletDto), response);
-    }
     @Test
     void testGetWalletByIdThrowsException() {
         UUID walletId = UUID.randomUUID();
         when(walletService.getById(walletId)).thenThrow(new WalletException("Test WalletException"));
 
         assertThrows(WalletException.class, () -> walletController.getById(walletId));
+    }
+
+    @Test
+    void testGetWallets() {
+        UUID cryptoId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+        WalletDto walletDto = new WalletDto();
+
+        when(walletService.getWallets(cryptoId, userId)).thenReturn(Collections.singletonList(walletDto));
+
+        ResponseEntity<List<WalletDto>> response = walletController.getWallets(cryptoId, userId);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(Collections.singletonList(walletDto), response.getBody());
+    }
+
+    @Test
+    void testGetWalletsException() {
+        UUID cryptoId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+
+        when(walletService.getWallets(cryptoId, userId)).thenThrow(new WalletException("Test WalletException"));
+
+        assertThrows(WalletException.class, () -> walletController.getWallets(cryptoId, userId));
+    }
+
+    @Test
+    void testGetWalletsWithNullParameters() {
+        WalletDto walletDto = new WalletDto();
+
+        when(walletService.getWallets(null, null)).thenReturn(Collections.singletonList(walletDto));
+
+        ResponseEntity<List<WalletDto>> response = walletController.getWallets(null, null);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(Collections.singletonList(walletDto), response.getBody());
     }
 
     @Test
@@ -88,7 +115,7 @@ class WalletControllerTest {
         UUID userId = UUID.randomUUID();
         WalletDto walletDto = new WalletDto();
 
-        when(walletService.getAllByUserId(userId)).thenReturn(Collections.singletonList(walletDto));
+        when(walletService.getWallets(null,userId)).thenReturn(Collections.singletonList(walletDto));
 
         List<WalletDto> response = walletController.getWallets(null,userId).getBody();
         assertEquals(Collections.singletonList(walletDto), response);
@@ -122,29 +149,9 @@ class WalletControllerTest {
     @Test
     void testGetWalletsByCryptoIdThrowsException() {
         UUID cryptoId = UUID.randomUUID();
-        when(walletService.getAllByCryptoId(cryptoId)).thenThrow(new WalletException("Test WalletException"));
+        when(walletService.getWallets(cryptoId,null)).thenThrow(new WalletException("Test WalletException"));
 
         assertThrows(WalletException.class, () -> walletController.getWallets(cryptoId, null));
     }
 
-    @Test
-    void testGetWalletsByUserIdAndCryptoId() throws Exception {
-        UUID userId = UUID.randomUUID();
-        UUID cryptoId = UUID.randomUUID();
-        WalletDto walletDto = new WalletDto();
-
-        when(walletService.getByUserIdAndCryptoId(userId, cryptoId)).thenReturn(Collections.singletonList(walletDto));
-
-        List<WalletDto> response = walletController.getWallets(cryptoId, userId).getBody();
-        assertEquals(Collections.singletonList(walletDto), response);
-    }
-
-    @Test
-    void testGetWalletsByUserIdAndCryptoIdThrowsException() {
-        UUID userId = UUID.randomUUID();
-        UUID cryptoId = UUID.randomUUID();
-        when(walletService.getByUserIdAndCryptoId(userId, cryptoId)).thenThrow(new WalletException("Test WalletException"));
-
-        assertThrows(WalletException.class, () -> walletController.getWallets(cryptoId, userId));
-    }
 }

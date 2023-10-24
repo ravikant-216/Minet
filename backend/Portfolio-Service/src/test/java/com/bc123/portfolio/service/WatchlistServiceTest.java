@@ -63,7 +63,7 @@ import static org.junit.jupiter.api.Assertions.*;
         List<Watchlist> watchlists = new ArrayList<>();
         when(watchlistRepository.findAllByCryptoId(cryptoId)).thenReturn(watchlists);
 
-        List<WatchlistDto> result = watchlistService.getAllByCryptoId(cryptoId);
+        List<WatchlistDto> result = watchlistService.getWatchlist(cryptoId,null);
 
         assertNotNull(result);
     }
@@ -74,7 +74,7 @@ import static org.junit.jupiter.api.Assertions.*;
         List<Watchlist> watchlists = new ArrayList<>();
         when(watchlistRepository.findAllByUserId(userId)).thenReturn(watchlists);
 
-        List<WatchlistDto> result = watchlistService.getAllByUserId(userId);
+        List<WatchlistDto> result = watchlistService.getWatchlist(null,userId);
 
         assertNotNull(result);
     }
@@ -122,7 +122,7 @@ import static org.junit.jupiter.api.Assertions.*;
          UUID cryptoId = UUID.randomUUID();
          when(watchlistRepository.findAllByCryptoId(cryptoId)).thenThrow(new WatchlistException("Test WatchlistException"));
 
-         assertThrows(WatchlistException.class, () -> watchlistService.getAllByCryptoId(cryptoId));
+         assertThrows(WatchlistException.class, () -> watchlistService.getWatchlist(cryptoId,null));
      }
 
      @Test
@@ -130,7 +130,7 @@ import static org.junit.jupiter.api.Assertions.*;
          UUID userId = UUID.randomUUID();
          when(watchlistRepository.findAllByUserId(userId)).thenThrow(new WatchlistException("Test WatchlistException"));
 
-         assertThrows(WatchlistException.class, () -> watchlistService.getAllByUserId(userId));
+         assertThrows(WatchlistException.class, () -> watchlistService.getWatchlist(null,userId));
      }
 
      @Test
@@ -149,4 +149,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
          assertThrows(WatchlistException.class, () -> watchlistService.deleteById(watchlistId));
      }
-}
+     @Test
+     void testGetWatchlistThrowsExceptionWhenInvalidParameters() {
+         assertThrows(WatchlistException.class, () -> watchlistService.getWatchlist(null, null));
+     }
+     @Test
+     void testAddThrowsExceptionWithInvalidParameter() {
+         WatchlistRequest watchlistRequest = new WatchlistRequest();
+         when(userRepository.findById(watchlistRequest.getUserId())).thenReturn(Optional.empty());
+         when(cryptoRepository.findById(watchlistRequest.getCryptoId())).thenReturn(Optional.empty());
+
+         assertThrows(WatchlistException.class, () -> watchlistService.add(watchlistRequest));
+     }
+     @Test
+     void testDeleteByIdThrowsExceptionWhenWatchlistNotFound() {
+         UUID watchlistId = UUID.randomUUID();
+
+         when(watchlistRepository.findById(watchlistId)).thenReturn(Optional.empty());
+
+         assertThrows(WatchlistException.class, () -> watchlistService.deleteById(watchlistId));
+     }
+ }

@@ -17,10 +17,7 @@ spring:
         - id: portfolio-service
           uri: lb://PORTFOLIO-SERVICE
           predicates:
-            - Path=/api/v1/watchlist/**
-            - Path=/api/v1/wallet/**
-          filters:
-            - AuthenticationFilter
+            - Path=/api/v1/portfolio/**
         - id: transaction-service
           uri: lb://TRANSACTION-SERVICE
           predicates:

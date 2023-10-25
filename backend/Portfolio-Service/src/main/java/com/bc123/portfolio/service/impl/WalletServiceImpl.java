@@ -29,7 +29,8 @@ public class WalletServiceImpl implements IWalletService {
     private final CryptoRepository cryptoRepository;
 
     @Autowired
-    public WalletServiceImpl(WalletRepository walletRepository, Converter converter, CryptoRepository cryptoRepository, UserRepository userRepository) {
+    public WalletServiceImpl(WalletRepository walletRepository, Converter converter, CryptoRepository cryptoRepository,
+            UserRepository userRepository) {
         this.walletRepository = walletRepository;
         this.converter = converter;
         this.userRepository = userRepository;
@@ -42,7 +43,7 @@ public class WalletServiceImpl implements IWalletService {
         try {
             Wallet wallet = walletRepository.findById(id).orElseThrow(() -> new WalletException(id + NOT_FOUND));
             return converter.walletToDto(wallet);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new WalletException(e.getMessage());
         }
     }
@@ -87,25 +88,17 @@ public class WalletServiceImpl implements IWalletService {
             wallet.setTotalBalance(walletRequest.getTotalBalance());
             Wallet saveWallet = walletRepository.save(wallet);
             return converter.walletToDto(saveWallet);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new WalletException(e.getMessage());
         }
     }
 
     @Override
     public WalletDto update(UUID id, WalletRequest walletRequest) {
-        log.info("Update wallet with ID: " + id + " and wallet: "+walletRequest);
+        log.info("Update wallet with ID: " + id + " and wallet: " + walletRequest);
         try {
             Wallet wallet = walletRepository.findById(id)
                     .orElseThrow(() -> new WalletException(id + " not found"));
-
-            User user = userRepository.findById(walletRequest.getUserId())
-                    .orElseThrow(() -> new WalletException("User not found"));
-            Crypto crypto = cryptoRepository.findById(walletRequest.getCryptoId())
-                    .orElseThrow(() -> new WalletException("Crypto not found"));
-
-            wallet.setUser(user);
-            wallet.setCrypto(crypto);
             wallet.setTotalBalance(walletRequest.getTotalBalance());
 
             wallet = walletRepository.save(wallet);

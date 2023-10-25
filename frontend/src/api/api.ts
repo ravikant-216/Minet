@@ -53,7 +53,7 @@ export const addUser = async (
 
   const data = {
     userId: newUserResponse.data.id,
-    cryptoId: 'b2cb2d51-72f4-11ee-9753-fe98efe3f5a2',
+    cryptoId: 'c9cac812-7326-11ee-9753-fe98efe3f5a2',
     totalBalance: 50000,
   }
 

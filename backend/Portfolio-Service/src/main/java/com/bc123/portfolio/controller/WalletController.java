@@ -37,11 +37,12 @@ public class WalletController {
     @GetMapping
     public ResponseEntity<List<WalletDto>> getWallets(
             @RequestParam(name = "cryptoId", required = false) UUID cryptoId,
-            @RequestParam(name = "userId", required = false) UUID userId
+            @RequestParam(name = "userId", required = false) UUID userId,
+            @RequestParam(name = "cryptoSymbol", required = false) String cryptoSymbol
     ) {
-        log.info("Get Wallets with CryptoId: {} and UserId: {}", cryptoId, userId);
+        log.info("Get Wallets with CryptoId: {}, UserId: {}, CryptoSymbol: {}", cryptoId, userId, cryptoSymbol);
         try {
-            return ResponseEntity.ok(walletService.getWallets(cryptoId,userId));
+            return ResponseEntity.ok(walletService.getWallets(cryptoId, userId, cryptoSymbol));
         } catch (Exception e) {
             throw new WalletException(e.getMessage());
         }

@@ -62,9 +62,9 @@ class WalletControllerTest {
         UUID userId = UUID.randomUUID();
         WalletDto walletDto = new WalletDto();
 
-        when(walletService.getWallets(cryptoId, userId)).thenReturn(Collections.singletonList(walletDto));
+        when(walletService.getWallets(cryptoId, userId,null)).thenReturn(Collections.singletonList(walletDto));
 
-        ResponseEntity<List<WalletDto>> response = walletController.getWallets(cryptoId, userId);
+        ResponseEntity<List<WalletDto>> response = walletController.getWallets(cryptoId, userId,null);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(Collections.singletonList(walletDto), response.getBody());
@@ -75,18 +75,18 @@ class WalletControllerTest {
         UUID cryptoId = UUID.randomUUID();
         UUID userId = UUID.randomUUID();
 
-        when(walletService.getWallets(cryptoId, userId)).thenThrow(new WalletException("Test WalletException"));
+        when(walletService.getWallets(cryptoId, userId,null)).thenThrow(new WalletException("Test WalletException"));
 
-        assertThrows(WalletException.class, () -> walletController.getWallets(cryptoId, userId));
+        assertThrows(WalletException.class, () -> walletController.getWallets(cryptoId, userId,null));
     }
 
     @Test
     void testGetWalletsWithNullParameters() {
         WalletDto walletDto = new WalletDto();
 
-        when(walletService.getWallets(null, null)).thenReturn(Collections.singletonList(walletDto));
+        when(walletService.getWallets(null, null,null)).thenReturn(Collections.singletonList(walletDto));
 
-        ResponseEntity<List<WalletDto>> response = walletController.getWallets(null, null);
+        ResponseEntity<List<WalletDto>> response = walletController.getWallets(null, null,null);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(Collections.singletonList(walletDto), response.getBody());
@@ -115,9 +115,9 @@ class WalletControllerTest {
         UUID userId = UUID.randomUUID();
         WalletDto walletDto = new WalletDto();
 
-        when(walletService.getWallets(null,userId)).thenReturn(Collections.singletonList(walletDto));
+        when(walletService.getWallets(null,userId,null)).thenReturn(Collections.singletonList(walletDto));
 
-        List<WalletDto> response = walletController.getWallets(null,userId).getBody();
+        List<WalletDto> response = walletController.getWallets(null,userId,null).getBody();
         assertEquals(Collections.singletonList(walletDto), response);
     }
 
@@ -145,13 +145,38 @@ class WalletControllerTest {
         WalletDto response = walletController.update(request).getBody();
         assertEquals(walletDto, response);
     }
+    @Test
+    void testGetWallets_ByCryptoSymbol() {
+        UUID cryptoId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+        String cryptoSymbol = "BTC"; // Replace with the crypto symbol you want to test
+        WalletDto walletDto = new WalletDto();
+
+        when(walletService.getWallets(cryptoId, userId, cryptoSymbol)).thenReturn(Collections.singletonList(walletDto));
+
+        ResponseEntity<List<WalletDto>> response = walletController.getWallets(cryptoId, userId, cryptoSymbol);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(Collections.singletonList(walletDto), response.getBody());
+    }
+
+    @Test
+    void testGetWalletsException_ByCryptoSymbol() {
+        UUID cryptoId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+        String cryptoSymbol = "BTC"; // Replace with the crypto symbol you want to test
+
+        when(walletService.getWallets(cryptoId, userId, cryptoSymbol)).thenThrow(new WalletException("Test WalletException"));
+
+        assertThrows(WalletException.class, () -> walletController.getWallets(cryptoId, userId, cryptoSymbol));
+    }
 
     @Test
     void testGetWalletsByCryptoIdThrowsException() {
         UUID cryptoId = UUID.randomUUID();
-        when(walletService.getWallets(cryptoId,null)).thenThrow(new WalletException("Test WalletException"));
+        when(walletService.getWallets(cryptoId,null,null)).thenThrow(new WalletException("Test WalletException"));
 
-        assertThrows(WalletException.class, () -> walletController.getWallets(cryptoId, null));
+        assertThrows(WalletException.class, () -> walletController.getWallets(cryptoId, null,null));
     }
 
 }

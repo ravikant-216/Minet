@@ -48,11 +48,15 @@ public class WalletServiceImpl implements IWalletService {
     }
 
     @Override
-    public List<WalletDto> getWallets(UUID cryptoId,UUID userId) {
-        log.info("Get Wallets with CryptoId: {} and UserId: {}", cryptoId, userId);
+    public List<WalletDto> getWallets(UUID cryptoId, UUID userId, String cryptoSymbol) {
+        log.info("Get Wallets with CryptoId: {}, UserId: {}, CryptoSymbol: {}", cryptoId, userId, cryptoSymbol);
         try {
             if (cryptoId != null && userId != null) {
                 List<Wallet> wallets = walletRepository.findAllByUserIdAndCryptoId(userId, cryptoId);
+                return wallets.stream().map(converter::walletToDto).toList();
+            } else if (userId != null && cryptoSymbol != null) {
+                // Fetch wallets by userId and cryptoSymbol
+                List<Wallet> wallets = walletRepository.findAllByUserIdAndCryptoSymbol(userId, cryptoSymbol);
                 return wallets.stream().map(converter::walletToDto).toList();
             } else if (cryptoId != null) {
                 List<Wallet> wallets = walletRepository.findAllByCryptoId(cryptoId);

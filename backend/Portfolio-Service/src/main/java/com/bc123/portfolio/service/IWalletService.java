@@ -10,5 +10,5 @@ public interface IWalletService {
     WalletDto getById(UUID id);
     WalletDto add(WalletRequest walletRequest);
     WalletDto update(UUID id,WalletRequest walletRequest);
-    List<WalletDto> getWallets(UUID userId, UUID cryptoId);
+    List<WalletDto> getWallets(UUID cryptoId, UUID userId, String cryptoSymbol);
 }

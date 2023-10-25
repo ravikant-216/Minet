@@ -40,8 +40,8 @@ const createNewTransaction = async (data: Omit<TransactionData, 'id'>) => {
     let currentWalllet: Wallet | undefined = undefined
     if (resData.length === 0) {
       const response = await createWallet({
-        user: data.user,
-        crypto: data.crypto,
+        userId: data.user.id,
+        cryptoId: data.crypto.id,
         totalBalance: data.quantity,
       })
       currentWalllet = response.data as Wallet
@@ -50,24 +50,44 @@ const createNewTransaction = async (data: Omit<TransactionData, 'id'>) => {
     }
     if (data.type === 'Purchased') {
       await Promise.all([
-        updateWallet(currentWalllet.id, {
+        updateWallet({
+          cryptoId: usdWallet.crypto.id,
+          userId: data.user.id,
+          id: currentWalllet.id,
           totalBalance: currentWalllet.totalBalance + data.quantity,
         }),
-        updateWallet(usdWallet.id, {
+        updateWallet({
+          cryptoId: usdWallet.crypto.id,
+          userId: data.user.id,
+          id: usdWallet.id,
           totalBalance: usdWallet.totalBalance - data.price,
         }),
       ])
     } else {
       await Promise.all([
-        updateWallet(currentWalllet.id, {
+        updateWallet({
+          cryptoId: data.crypto.id,
+          userId: data.user.id,
+          id: currentWalllet.id,
           totalBalance: currentWalllet.totalBalance - data.quantity,
         }),
-        updateWallet(usdWallet.id, {
+        updateWallet({
+          cryptoId: data.crypto.id,
+          userId: data.user.id,
+          id: usdWallet.id,
           totalBalance: usdWallet.totalBalance + data.price,
         }),
       ])
     }
-    const transaction = await createTransaction(data)
+    const transaction = await createTransaction({
+      price: data.price,
+      userId: data.user.id,
+      cryptoId: data.crypto.id,
+      type: data.type === 'Sold' ? 'sold' : 'buy',
+      quantity: data.quantity,
+      status: data.status,
+      description: data.description,
+    })
     return transaction.data as TransactionData
   } catch (error) {
     console.error(error)

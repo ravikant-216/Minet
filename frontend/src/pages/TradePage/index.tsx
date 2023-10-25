@@ -61,8 +61,8 @@ const TradePageComponent = ({ user }: { user: User }) => {
       const findCrypto = cryptoData.find((data) => data.id === id)
       if (findCrypto) {
         addWatchlist({
-          crypto: findCrypto,
-          user: user,
+          cryptoId: findCrypto.id,
+          userId: user.id,
         })
       }
     }

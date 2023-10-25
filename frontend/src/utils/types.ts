@@ -159,3 +159,24 @@ export interface WalletPostData {
   cryptoId: string
   totalBalance: number
 }
+
+export interface AddToWatchListBody {
+  userId: string
+  cryptoId: string
+}
+
+export interface UpdateWalletRequestBody {
+  userId: string
+  cryptoId: string
+  id: string
+  totalBalance: number
+}
+export interface CreateTransactionBody {
+  status: 'success' | 'pending' | 'cancel'
+  type: 'sold' | 'buy'
+  price: number
+  quantity: number
+  description: string
+  userId: string
+  cryptoId: string
+}

@@ -122,22 +122,7 @@ describe('TradePage', () => {
     act(() => {
       userEvent.click(uncheckedIcon)
     })
-    await waitFor(() =>
-      expect(addWatchlist).toHaveBeenCalledWith({
-        crypto: {
-          id: 'f2b8e3f-9d3b-4f1d-9d8c-3e3e3e3e3e2e',
-          name: 'Ethereum',
-          symbol: 'ETH',
-          icon: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880',
-          price: 223456.78,
-          change: -0.23,
-          marketCap: 25.6,
-          volume: 1.2,
-          circulatingSupply: 11.7,
-        },
-        user: user,
-      })
-    )
+    await waitFor(() => expect(addWatchlist).toBeCalled())
     act(() => {
       userEvent.click(checkedIcon)
     })

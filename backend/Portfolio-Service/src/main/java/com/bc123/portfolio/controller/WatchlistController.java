@@ -43,7 +43,7 @@ public class WatchlistController {
     ) {
         log.info("Get Watchlist with CryptoId: {} and UserId: {}", cryptoId, userId);
         try {
-            return ResponseEntity.ok(watchlistService.getWatchlist(userId,cryptoId));
+            return ResponseEntity.ok(watchlistService.getWatchlist(cryptoId,userId));
         } catch (Exception e) {
             throw new WatchlistException(e.getMessage());
         }

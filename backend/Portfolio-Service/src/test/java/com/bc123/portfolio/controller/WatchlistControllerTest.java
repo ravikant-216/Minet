@@ -72,7 +72,7 @@ class WatchlistControllerTest {
         WatchlistDto watchlistDto = new WatchlistDto();
         watchlistDtos.add(watchlistDto);
 
-        when(watchlistService.getWatchlist(userId, cryptoId)).thenReturn(watchlistDtos);
+        when(watchlistService.getWatchlist(cryptoId, userId)).thenReturn(watchlistDtos);
 
         ResponseEntity<List<WatchlistDto>> response = watchlistController.getWatchlist(cryptoId, userId);
 
@@ -85,7 +85,7 @@ class WatchlistControllerTest {
         UUID cryptoId = UUID.randomUUID();
         UUID userId = UUID.randomUUID();
 
-        when(watchlistService.getWatchlist(userId, cryptoId)).thenThrow(new WatchlistException("Test WatchlistException"));
+        when(watchlistService.getWatchlist(cryptoId, userId)).thenThrow(new WatchlistException("Test WatchlistException"));
 
         assertThrows(WatchlistException.class, () -> watchlistController.getWatchlist(cryptoId, userId));
     }

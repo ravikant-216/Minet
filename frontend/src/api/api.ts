@@ -1,9 +1,10 @@
 import {
-  TransactionData,
+  AddToWatchListBody,
+  CreateTransactionBody,
+  UpdateWalletRequestBody,
   User,
   Wallet,
   WalletPostData,
-  WatchlistData,
 } from '@/utils/types'
 import api_routes from './api_routes'
 import apiClient from './axios'
@@ -52,7 +53,7 @@ export const addUser = async (
 
   const data = {
     userId: newUserResponse.data.id,
-    cryptoId: 'dd9f0c6a-72ec-4d6e-8f05-84555cff3102',
+    cryptoId: 'c9cac812-7326-11ee-9753-fe98efe3f5a2',
     totalBalance: 50000,
   }
 
@@ -117,7 +118,7 @@ export const deleteWatchlistById = (watchListId: string) => {
   return apiClient.delete(api_routes.GET_WATCHLIST_BY_ID(watchListId))
 }
 
-export const addWatchlist = (watchListData: Partial<WatchlistData>) => {
+export const addWatchlist = (watchListData: AddToWatchListBody) => {
   return apiClient.post(api_routes.WATCHLIST, watchListData)
 }
 
@@ -143,12 +144,12 @@ export const createWallet = (data: Omit<WalletPostData, 'id'>) => {
   return apiClient.post(api_routes.WALLET, data)
 }
 
-export const createTransaction = (data: Omit<TransactionData, 'id'>) => {
+export const createTransaction = (data: CreateTransactionBody) => {
   return apiClient.post(api_routes.TRANSACTION, data)
 }
 
-export const updateWallet = (walletId: string, data: Partial<Wallet>) => {
-  return apiClient.patch(api_routes.GET_WALLET_BY_ID(walletId), data)
+export const updateWallet = (data: UpdateWalletRequestBody) => {
+  return apiClient.patch(api_routes.WALLET, data)
 }
 
 export const getWalletByUserId = (userId: string) => {

@@ -19,10 +19,12 @@ public class Watchlist {
     @GenericGenerator(name = "uuid-hibernate-generator", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
     @JoinColumn(name = "crypto_id")
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH})
     private Crypto crypto;
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH})
     private User user;
 }

@@ -119,7 +119,6 @@ const Graph = ({
         options={options}
         series={series}
         width={width}
-        maxWidth="100%"
         height={height}
         type="area"
       ></Chart>

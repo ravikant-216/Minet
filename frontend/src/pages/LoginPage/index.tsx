@@ -15,10 +15,12 @@ const LoginPage = () => {
   const handleSignIn = async (email: string, password: string) => {
     try {
       const response = await checkUser(email, password)
-      if (Array.isArray(response.data) && response.data.length > 0) {
-        localStorage.setItem('user', JSON.stringify(response.data[0]))
-        setUser(response.data[0])
+      if (response) {
+        localStorage.setItem('user', JSON.stringify(response.data))
+        setUser(response.data)
         navigate('/dashboard')
+      } else {
+        window.alert('Check your email and password')
       }
     } catch (err) {
       console.error(err)

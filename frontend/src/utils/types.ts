@@ -153,3 +153,9 @@ export interface Wallet {
   crypto: CryptoData
   totalBalance: number
 }
+export interface WalletPostData {
+  id: string
+  userId: string
+  cryptoId: string
+  totalBalance: number
+}

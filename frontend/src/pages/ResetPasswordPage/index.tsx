@@ -15,9 +15,9 @@ const ResetPasswordPage = () => {
       const userDataString = localStorage.getItem('user')
 
       if (userDataString) {
-        const userData: userDataType[] = JSON.parse(userDataString)
-        const userId = userData[0].id
-        const password = userData[0].password
+        const userData: userDataType = JSON.parse(userDataString)
+        const userId = userData.id
+        const password = userData.password
 
         if (password !== newPassword) {
           await updatePassword(newPassword, userId)

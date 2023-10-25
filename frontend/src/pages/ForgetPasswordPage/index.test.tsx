@@ -63,9 +63,7 @@ describe('ForgotPassword component', () => {
   })
 
   test('handles email submission and no user found', async () => {
-    const mockResponse = {
-      data: [],
-    }
+    const mockResponse = false
 
     ;(checkUserByEmail as jest.Mock).mockResolvedValue(mockResponse)
 

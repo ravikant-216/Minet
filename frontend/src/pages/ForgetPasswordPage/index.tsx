@@ -13,9 +13,11 @@ const ForgotPasswordPage = () => {
     try {
       const response = await checkUserByEmail(email)
 
-      if (response.data.length > 0) {
+      if (response) {
         localStorage.setItem('user', JSON.stringify(response.data))
         setStep(2)
+      } else {
+        window.alert('Email is not valid')
       }
     } catch (error) {
       console.error(error)

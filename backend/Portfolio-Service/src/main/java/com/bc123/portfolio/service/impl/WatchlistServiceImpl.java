@@ -4,7 +4,6 @@ import com.bc123.portfolio.dto.WatchlistDto;
 import com.bc123.portfolio.entity.Crypto;
 import com.bc123.portfolio.entity.User;
 import com.bc123.portfolio.entity.Watchlist;
-import com.bc123.portfolio.exception.ExceptionResponse;
 import com.bc123.portfolio.exception.WatchlistException;
 import com.bc123.portfolio.repository.CryptoRepository;
 import com.bc123.portfolio.repository.UserRepository;
@@ -14,7 +13,6 @@ import com.bc123.portfolio.service.IWatchlistService;
 import com.bc123.portfolio.utils.Converter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,24 +47,20 @@ public class WatchlistServiceImpl implements IWatchlistService {
     }
 
     @Override
-    public List<WatchlistDto> getAllByCryptoId(UUID cryptoId) {
-        log.info("Get All watchlist with crypto ID: " + cryptoId);
+    public List<WatchlistDto> getWatchlist(UUID cryptoId,UUID userId) {
+        log.info("Get Watchlist with CryptoId: {} and UserId: {}", cryptoId, userId);
         try {
-            List<Watchlist> watchlist = watchlistRepository.findAllByCryptoId(cryptoId);
-            return watchlist.stream().map(converter::watchListToDto).toList();
-        } catch (Exception e){
-            throw new WatchlistException("Error getting Watchlist by CryptoId");
-        }
-    }
-
-    @Override
-    public List<WatchlistDto> getAllByUserId(UUID userId) {
-        log.info("Get All watchlist with user ID: " + userId);
-        try {
-            List<Watchlist> watchlist = watchlistRepository.findAllByUserId(userId);
-            return watchlist.stream().map(converter::watchListToDto).toList();
-        } catch (Exception e){
-            throw new WatchlistException("Error getting Watchlist by userId");
+            if (cryptoId != null) {
+                List<Watchlist> watchlist = watchlistRepository.findAllByCryptoId(cryptoId);
+                return watchlist.stream().map(converter::watchListToDto).toList();
+            } else if (userId != null) {
+                List<Watchlist> watchlist = watchlistRepository.findAllByUserId(userId);
+                return watchlist.stream().map(converter::watchListToDto).toList();
+            } else {
+                throw new WatchlistException("Invalid parameters");
+            }
+        } catch (Exception e) {
+            throw new WatchlistException(e.getMessage());
         }
     }
 

@@ -15,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -49,21 +48,26 @@ public class WalletServiceImpl implements IWalletService {
     }
 
     @Override
-    public List<WalletDto> getAllByCryptoId(UUID cryptoId) {
-        log.info("Get All wallet with crypto ID: " + cryptoId);
+    public List<WalletDto> getWallets(UUID cryptoId, UUID userId, String cryptoSymbol) {
+        log.info("Get Wallets with CryptoId: {}, UserId: {}, CryptoSymbol: {}", cryptoId, userId, cryptoSymbol);
         try {
-            return walletRepository.findAllByCryptoId(cryptoId).stream().map(converter::walletToDto).toList();
-        }catch (Exception exc){
-            throw new WalletException(exc.getMessage());
-        }
-    }
-
-    @Override
-    public List<WalletDto> getAllByUserId(UUID userId) {
-        log.info("Get All wallet with user ID: " + userId);
-        try {
-            return walletRepository.findAllByUserId(userId).stream().map(converter::walletToDto).toList();
-        } catch (Exception e){
+            if (cryptoId != null && userId != null) {
+                List<Wallet> wallets = walletRepository.findAllByUserIdAndCryptoId(userId, cryptoId);
+                return wallets.stream().map(converter::walletToDto).toList();
+            } else if (userId != null && cryptoSymbol != null) {
+                // Fetch wallets by userId and cryptoSymbol
+                List<Wallet> wallets = walletRepository.findAllByUserIdAndCryptoSymbol(userId, cryptoSymbol);
+                return wallets.stream().map(converter::walletToDto).toList();
+            } else if (cryptoId != null) {
+                List<Wallet> wallets = walletRepository.findAllByCryptoId(cryptoId);
+                return wallets.stream().map(converter::walletToDto).toList();
+            } else if (userId != null) {
+                List<Wallet> wallets = walletRepository.findAllByUserId(userId);
+                return wallets.stream().map(converter::walletToDto).toList();
+            } else {
+                throw new WalletException("Invalid parameters");
+            }
+        } catch (Exception e) {
             throw new WalletException(e.getMessage());
         }
     }
@@ -110,16 +114,4 @@ public class WalletServiceImpl implements IWalletService {
             throw new WalletException(e.getMessage());
         }
     }
-
-    @Override
-    public List<WalletDto> getByUserIdAndCryptoId(UUID userId, UUID cryptoId) {
-        try {
-            log.info("Get Wallet by UserId: {} and CryptoId: {}", userId, cryptoId);
-            return walletRepository.findAllByUserIdAndCryptoId(userId,cryptoId)
-                    .stream().map(converter::walletToDto).toList();
-        }catch (Exception e){
-            throw new WalletException(e.getMessage());
-        }
-    }
-
 }

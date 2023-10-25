@@ -11,4 +11,6 @@ public interface WalletRepository extends JpaRepository<Wallet, UUID> {
     List<Wallet> findAllByCryptoId(UUID cryptoId);
     List<Wallet> findAllByUserId(UUID userId);
     List<Wallet> findAllByUserIdAndCryptoId(UUID userId, UUID cryptoId);
+
+    List<Wallet> findAllByUserIdAndCryptoSymbol(UUID userId, String cryptoSymbol);
 }

@@ -25,21 +25,21 @@ jest.mock('@auth0/auth0-react', () => ({
 describe('LoginPage component', () => {
   const fn = jest.fn()
   jest.spyOn(authContext, 'useAuthContext').mockReturnValue({
-    setUser: fn
+    setUser: fn,
   } as any)
 
   test('handles successful sign-in', async () => {
-    const mockResponse = [
-      {
-        id: 'b62177be-aca1-45d3-ab0e-60a9f4c79a5e',
-        name: 'John Doe',
-        email: 'john@gmail.com',
-        password: 'JohnDoe@001',
-        balance: 34000,
+    const mockResponse = {
+      data: {
+        email: 'majahar@gmail.com',
+        id: 'ef02ef1a-59be-4b35-a3ef-d04e0d644eb5',
+        name: 'Shaik Majahar',
+        password:
+          '$2a$10$JgFMJnySbLTKskgDV9xkBeWfEJY56pM1AevfnlHCMsJAi1yb3IImm',
       },
-    ]
+    }
 
-      ; (checkUser as jest.Mock).mockResolvedValue({ data: mockResponse })
+    ;(checkUser as jest.Mock).mockResolvedValue(mockResponse)
 
     render(
       <BrowserRouter>
@@ -53,10 +53,33 @@ describe('LoginPage component', () => {
     fireEvent.change(emailInput, { target: { value: 'majahar@gmail.com' } })
     fireEvent.change(passwordInput, { target: { value: 'Test@1234' } })
     fireEvent.click(signInButton)
+
+    expect(checkUser).toHaveBeenCalledTimes(1)
   })
 
   test('handles failed sign-in', async () => {
-    ; (checkUser as jest.Mock).mockRejectedValue(new Error('Simulated error'))
+    ;(checkUser as jest.Mock).mockResolvedValue(false)
+
+    const alertMock = jest.fn()
+    window.alert = alertMock
+
+    render(
+      <BrowserRouter>
+        <LoginPage />
+      </BrowserRouter>
+    )
+
+    const emailInput = screen.getByPlaceholderText(EMAIL_PLACEHOLDER)
+    const passwordInput = screen.getByPlaceholderText(PASSWORD_ENTER)
+    const signInButton = screen.getByRole('button', { name: 'Sign In' })
+
+    fireEvent.change(emailInput, { target: { value: 'majahar@gmail.com' } })
+    fireEvent.change(passwordInput, { target: { value: 'Test@123456' } })
+    fireEvent.click(signInButton)
+  })
+
+  test('handles failed sign-in', async () => {
+    ;(checkUser as jest.Mock).mockRejectedValue(new Error('Simulated error'))
 
     render(
       <BrowserRouter>

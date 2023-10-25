@@ -43,13 +43,7 @@ public class WatchlistController {
     ) {
         log.info("Get Watchlist with CryptoId: {} and UserId: {}", cryptoId, userId);
         try {
-            if (cryptoId != null) {
-                return ResponseEntity.ok(watchlistService.getAllByCryptoId(cryptoId));
-            } else if (userId != null) {
-                return ResponseEntity.ok(watchlistService.getAllByUserId(userId));
-            } else {
-                throw new WatchlistException("Invalid parameters");
-            }
+            return ResponseEntity.ok(watchlistService.getWatchlist(userId,cryptoId));
         } catch (Exception e) {
             throw new WatchlistException(e.getMessage());
         }

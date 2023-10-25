@@ -16,12 +16,11 @@ describe('ResetPasswordPage component', () => {
   test('handles new password submission and success', async () => {
     const navigateMock = jest.fn()
     jest.spyOn(Router, 'useNavigate').mockImplementation(() => navigateMock)
-    const userData = [
-      {
-        id: 'user123',
-        password: 'oldPassword@123',
-      },
-    ]
+    const userData = {
+      id: 'user123',
+      password: 'oldPassword@123',
+    }
+
     const userDataString = JSON.stringify(userData)
     const setItemSpy = jest.spyOn(Storage.prototype, 'setItem')
     setItemSpy.mockReturnValue()

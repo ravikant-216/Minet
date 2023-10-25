@@ -8,9 +8,7 @@ import java.util.UUID;
 
 public interface IWalletService {
     WalletDto getById(UUID id);
-    List<WalletDto> getAllByCryptoId(UUID cryptoId);
-    List<WalletDto> getAllByUserId(UUID userId);
     WalletDto add(WalletRequest walletRequest);
     WalletDto update(UUID id,WalletRequest walletRequest);
-    List<WalletDto> getByUserIdAndCryptoId(UUID userId, UUID cryptoId);
+    List<WalletDto> getWallets(UUID cryptoId, UUID userId, String cryptoSymbol);
 }

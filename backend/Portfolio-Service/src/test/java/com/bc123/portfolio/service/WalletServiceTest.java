@@ -68,9 +68,20 @@ class WalletServiceTest {
         List<Wallet> wallets = new ArrayList<>();
         when(walletRepository.findAllByCryptoId(cryptoId)).thenReturn(wallets);
 
-        List<WalletDto> result = walletService.getAllByCryptoId(cryptoId);
+        List<WalletDto> result = walletService.getWallets(cryptoId,null,null);
 
         assertNotNull(result);
+    }
+    @Test
+    void testGetWalletsThrowsExceptionWithInvalidParameters() {
+        UUID cryptoId = null;
+        UUID userId = null;
+
+        when(walletRepository.findAllByUserIdAndCryptoId(userId, cryptoId)).thenReturn(new ArrayList<>());
+        when(walletRepository.findAllByCryptoId(cryptoId)).thenReturn(new ArrayList<>());
+        when(walletRepository.findAllByUserId(userId)).thenReturn(new ArrayList<>());
+
+        assertThrows(WalletException.class, () -> walletService.getWallets(cryptoId, userId,null));
     }
 
     @Test
@@ -79,9 +90,34 @@ class WalletServiceTest {
         List<Wallet> wallets = new ArrayList<>();
         when(walletRepository.findAllByUserId(userId)).thenReturn(wallets);
 
-        List<WalletDto> result = walletService.getAllByUserId(userId);
+        List<WalletDto> result = walletService.getWallets(null,userId,null);
 
         assertNotNull(result);
+    }
+    @Test
+    void testGetByUserIdAndCryptoSymbol() {
+        UUID userId = UUID.randomUUID();
+        String cryptoSymbol = "USDC"; // Replace with the crypto symbol you want to test
+        List<Wallet> wallets = new ArrayList<>();
+        WalletDto walletDto = new WalletDto();
+
+        when(walletRepository.findAllByUserIdAndCryptoSymbol(userId, cryptoSymbol)).thenReturn(wallets);
+        when(converter.walletToDto(any())).thenReturn(walletDto);
+
+        List<WalletDto> result = walletService.getWallets(null, userId, cryptoSymbol);
+
+        assertNotNull(result);
+        assertEquals(0, result.size());
+    }
+
+    @Test
+    void testGetByUserIdAndCryptoSymbolThrowsException() {
+        UUID userId = UUID.randomUUID();
+        String cryptoSymbol = "USDC"; // Replace with the crypto symbol you want to test
+
+        when(walletRepository.findAllByUserIdAndCryptoSymbol(userId, cryptoSymbol)).thenThrow(new WalletException("Test WalletException"));
+
+        assertThrows(WalletException.class, () -> walletService.getWallets(null, userId, cryptoSymbol));
     }
 
     @Test
@@ -136,7 +172,7 @@ class WalletServiceTest {
         UUID cryptoId = UUID.randomUUID();
         when(walletRepository.findAllByCryptoId(cryptoId)).thenThrow(new WalletException("Test WalletException"));
 
-        assertThrows(WalletException.class, () -> walletService.getAllByCryptoId(cryptoId));
+        assertThrows(WalletException.class, () -> walletService.getWallets(cryptoId,null,null));
     }
 
     @Test
@@ -144,7 +180,7 @@ class WalletServiceTest {
         UUID userId = UUID.randomUUID();
         when(walletRepository.findAllByUserId(userId)).thenThrow(new WalletException("Test WalletException"));
 
-        assertThrows(WalletException.class, () -> walletService.getAllByUserId(userId));
+        assertThrows(WalletException.class, () -> walletService.getWallets(null,userId,null));
     }
 
     @Test
@@ -175,7 +211,7 @@ class WalletServiceTest {
         when(walletRepository.findAllByUserIdAndCryptoId(userId, cryptoId)).thenReturn(wallets);
         when(converter.walletToDto(any())).thenReturn(walletDto);
 
-        List<WalletDto> result = walletService.getByUserIdAndCryptoId(userId, cryptoId);
+        List<WalletDto> result = walletService.getWallets(cryptoId, userId,null);
 
         assertNotNull(result);
         assertEquals(0, result.size());
@@ -186,7 +222,7 @@ class WalletServiceTest {
         UUID cryptoId = UUID.randomUUID();
         when(walletRepository.findAllByUserIdAndCryptoId(userId, cryptoId)).thenThrow(new WalletException("Test WalletException"));
 
-        assertThrows(WalletException.class, () -> walletService.getByUserIdAndCryptoId(userId, cryptoId));
+        assertThrows(WalletException.class, () -> walletService.getWallets(cryptoId, userId,null));
     }
 
 }

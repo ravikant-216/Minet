@@ -43,7 +43,7 @@ class TransactionControllerTest extends AbstractControllerTest {
         .thenReturn(new TransactionDto());
     MvcResult mvcResult =
         mockMvc
-            .perform(MockMvcRequestBuilders.post("/transactions")
+            .perform(MockMvcRequestBuilders.post("/api/v1/transactions")
                          .content(mapToJson(new NewTransactionRequest()))
                          .contentType("application/json"))
             .andReturn();
@@ -59,7 +59,7 @@ class TransactionControllerTest extends AbstractControllerTest {
         UUID.randomUUID(), TransactionType.buy);
     MvcResult mvcResult =
         mockMvc
-            .perform(MockMvcRequestBuilders.post("/transactions")
+            .perform(MockMvcRequestBuilders.post("/api/v1/transactions")
                          .content(mapToJson(newTransactionRequest))
                          .contentType("application/json"))
             .andReturn();
@@ -71,7 +71,7 @@ class TransactionControllerTest extends AbstractControllerTest {
     when(transactionService.getAllTransactions(any()))
         .thenReturn(List.of(new TransactionDto()));
     MvcResult mvcResult =
-        mockMvc.perform(MockMvcRequestBuilders.get("/transactions"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/transactions"))
             .andReturn();
     assertEquals(200, mvcResult.getResponse().getStatus());
   }

@@ -87,7 +87,7 @@ const DashBoardPage = () => {
                   <Typography variant="caption2">{CLICK_ONCURRENCY}</Typography>
                 </Stack>
               </Stack>
-              <Stack>
+              <Stack width="65vw">
                 <CurrencySelection stackProps={{ mt: 4 }} />
               </Stack>
             </>

@@ -1,0 +1,230 @@
+deployments:
+  - name: api-gateway
+    labels:
+      app: api-gateway
+      project: bootcamp123
+    container:
+      name: api-gateway-container
+      image:
+        repository: ghcr.io/ishtiaqsamdani007/bc-123-backend-api-gateway
+        tag: latest  # Replace with the specific image tag
+      ports:
+        containerPort: 8080
+      env:
+        - name: EUREKA_INSTANCE_HOSTNAME
+          value: api-gateway
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          value: https://bc123be.bootcamp64.tk/eureka/
+        - name: DATASOURCE_URL
+          value: jdbc:mysql://18.234.143.49:30002/minet
+
+        - name: DB_PASSWORD
+          value: bc@123
+
+        - name: DB_USERNAME
+          value: root
+    imagePullSecrets:
+      - name: my-docker-secret
+      
+  - name: crypto-service
+    labels:
+      app: crypto-service
+      project: bootcamp123
+    container:
+      name: crypto-service-container
+      image:
+        repository: ghcr.io/ishtiaqsamdani007/bc-123-backend-crypto-service
+        tag: latest  # Replace with the specific image tag
+      ports:
+        containerPort: 8003
+      env:
+        - name: EUREKA_INSTANCE_HOSTNAME
+          value: crypto-service
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          value: https://bc123be.bootcamp64.tk/eureka/
+        - name: DATASOURCE_URL
+          value: jdbc:mysql://18.234.143.49:30002/minet
+
+        - name: DB_PASSWORD
+          value: bc@123
+
+        - name: DB_USERNAME
+          value: root
+    imagePullSecrets:
+      - name: my-docker-secret
+      
+  - name: portfolio-service
+    labels:
+      app: portfolio-service
+      project: bootcamp123
+    container:
+      name: portfolio-service-container
+      image:
+        repository: ghcr.io/ishtiaqsamdani007/bc-123-backend-portfolio-service
+        tag: latest  # Replace with the specific image tag
+      ports:
+        containerPort: 8002
+      env:
+        - name: EUREKA_INSTANCE_HOSTNAME
+          value: portfolio-service
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          value: https://bc123be.bootcamp64.tk/eureka/
+        - name: DATASOURCE_URL
+          value: jdbc:mysql://18.234.143.49:30002/minet
+
+        - name: DB_PASSWORD
+          value: bc@123
+
+        - name: DB_USERNAME
+          value: root
+    imagePullSecrets:
+      - name: my-docker-secret
+      
+  - name: service-registry
+    labels:
+      app: service-registry
+      project: bootcamp123
+    container:
+      name: service-registry-container
+      image:
+        repository: ghcr.io/ishtiaqsamdani007/bc-123-backend-service-registry
+        tag: latest  # Replace with the specific image tag
+      ports:
+        containerPort: 8761
+      env:
+        - name: EUREKA_INSTANCE_HOSTNAME
+          value: service-registry
+          
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          value: https://bc123be.bootcamp64.tk/eureka/
+        - name: DATASOURCE_URL
+          value: jdbc:mysql://18.234.143.49:30002/minet
+
+        - name: DB_PASSWORD
+          value: bc@123
+
+        - name: DB_USERNAME
+          value: root
+    imagePullSecrets:
+      - name: my-docker-secret
+      
+  - name: transaction-service
+    labels:
+      app: transaction-service
+      project: bootcamp123
+    container:
+      name: transaction-service-container
+      image:
+        repository: ghcr.io/ishtiaqsamdani007/bc-123-backend-transaction-service
+        tag: latest  # Replace with the specific image tag
+      ports:
+        containerPort: 8004
+      env:
+        - name: EUREKA_INSTANCE_HOSTNAME
+          value: transaction-service
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          value: https://bc123be.bootcamp64.tk/eureka/
+        - name: DATASOURCE_URL
+          value: jdbc:mysql://18.234.143.49:30002/minet
+
+        - name: DB_PASSWORD
+          value: bc@123
+
+        - name: DB_USERNAME
+          value: root
+    imagePullSecrets:
+      - name: my-docker-secret
+      
+  - name: user-service
+    labels:
+      app: user-service
+      project: bootcamp123
+    container:
+      name: user-service-container
+      image:
+        repository: ghcr.io/ishtiaqsamdani007/bc-123-backend-user-service
+        tag: latest  # Replace with the specific image tag
+      ports:
+        containerPort: 8004
+      env:
+        - name: EUREKA_INSTANCE_HOSTNAME
+          value: user-service
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          value: https://bc123be.bootcamp64.tk/eureka/
+        - name: DATASOURCE_URL
+          value: jdbc:mysql://18.234.143.49:30002/minet
+
+        - name: DB_PASSWORD
+          value: bc@123
+
+        - name: DB_USERNAME
+          value: root
+    imagePullSecrets:
+      - name: my-docker-secret
+
+
+services:
+  - name: api-gateway
+    labels:
+      app: api-gateway
+      project: bootcamp123
+    port: 8080
+    targetPort: 8080
+
+  - name: crypto-service
+    labels:
+      app: crypto-service
+      project: bootcamp123
+    port: 8003
+    targetPort: 8003
+
+  - name: portfolio-service
+    labels:
+      app: portfolio-service
+      project: bootcamp123
+    port: 8002
+    targetPort: 8002
+
+  - name: service-registry
+    labels:
+      app: service-registry
+      project: bootcamp123
+    port: 8761
+    targetPort: 8761
+
+  - name: transaction-service
+    labels:
+      app: transaction-service
+      project: bootcamp123
+    port: 8004
+    targetPort: 8004
+
+  - name: user-service
+    labels:
+      app: user-service
+      project: bootcamp123
+    port: 8004
+    targetPort: 8004
+
+
+ingress:
+  name: ingress-bc-123
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  ingressClassName: nginx
+  rules:
+    - host: bc123be.bootcamp64.tk
+      http:
+        paths:
+          - path: /$
+            pathType: Exact
+            serviceName: service-registry
+            servicePort: 8761
+          - path: /eureka
+            pathType: Prefix
+            serviceName: service-registry
+            servicePort: 8761
+          - path: /
+            pathType: Prefix
+            serviceName: api-gateway
+            servicePort: 8080

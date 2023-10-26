@@ -21,7 +21,7 @@ spring:
         - id: transaction-service
           uri: lb://TRANSACTION-SERVICE
           predicates:
-            - Path=/transactions/**
+            - Path=/api/v1/transactions/**
           filters:
             - AuthenticationFilter
         - id: user-service

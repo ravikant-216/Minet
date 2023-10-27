@@ -20,9 +20,9 @@ const fetchAllTransactionByUserId = async (
         cryptoName: value.crypto.name,
         transactionDate: new Date(value.date),
         transactionType: value.type,
-        cryptoAmount: `${value.type === 'Sold' ? '-' : '+'}${value.quantity} ${
-          value.crypto.symbol
-        }`,
+        cryptoAmount: `${value.type.toLowerCase() === 'sold' ? '-' : '+'}${
+          value.quantity
+        } ${value.crypto.symbol}`,
         dollarAmount: `+${value.price}`,
       }
     })
